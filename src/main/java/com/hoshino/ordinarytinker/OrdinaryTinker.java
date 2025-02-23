@@ -1,7 +1,7 @@
-package com.hoshino.solidarytinker;
+package com.hoshino.ordinarytinker;
 
-import com.hoshino.solidarytinker.Context.DamageType.STDamageTypeProvider;
-import com.hoshino.solidarytinker.Context.Init.SolidarytinkerModifier;
+import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerModifier;
+import com.hoshino.ordinarytinker.Context.Network.OTChannel;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -18,41 +18,35 @@ import java.util.Locale;
 import java.util.function.Supplier;
 
 
-@Mod(Solidarytinker.MODID)
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Solidarytinker {
-    public static final String MODID = "solidarytinker";
-    public static Solidarytinker instance;
-    public Solidarytinker() {
+@Mod(OrdinaryTinker.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD,modid = OrdinaryTinker.MODID)
+public class OrdinaryTinker {
+    public static final String MODID = "ordinarytinker";
+    public static OrdinaryTinker instance;
+    public OrdinaryTinker() {
         instance = this;
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(EventPriority.NORMAL, false, GatherDataEvent.class, this::gatherData);
         bus.addListener(EventPriority.NORMAL, false, FMLCommonSetupEvent.class, this::commonSetup);
-        bus.register(new SolidarytinkerModifier());
+        bus.register(new OrdinaryTinkerModifier());
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
+        OTChannel.register();
     }
     @SubscribeEvent
     public void gatherData(@NotNull GatherDataEvent event) {
         RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
-        STDamageTypeProvider.register(registrySetBuilder);
         //Damage
     }
     public static String prefix(String name) {
         return MODID + "." + name.toLowerCase(Locale.CHINA);
     }
 
-
-
-
     public static ResourceLocation getResource(String name) {
         return new ResourceLocation(MODID, name);
     }
 
-    public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
-        return TinkerDataCapability.TinkerDataKey.of(getResource(name));
-    }
     public static <T> TinkerDataCapability.ComputableDataKey<T> createKey(String name, Supplier<T> constructor) {
         return TinkerDataCapability.ComputableDataKey.of(getResource(name), constructor);
     }

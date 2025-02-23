@@ -1,4 +1,4 @@
-package com.hoshino.solidarytinker.Context.Modifiers;
+package com.hoshino.ordinarytinker.Context.Modifiers;
 
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
