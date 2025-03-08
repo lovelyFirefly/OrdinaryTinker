@@ -4,8 +4,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -22,8 +25,16 @@ public class OrdinaryTinkerTab {
             //图标
             .icon(()-> Items.GLASS.getDefaultInstance())
             .displayItems((itemDisplayParameters, output) -> {
+                for(RegistryObject<Item> itemsDeferredRegister:OrdinaryTinkerItem.CommonItem){
+                    if(itemsDeferredRegister.isPresent()){
+                        output.accept(itemsDeferredRegister.get());
+                    }
+                }
                 //这个物品栏当中包含的物品
             })
             .build()
     );
+    public static void register(IEventBus bus){
+        creative_mode_tab.register(bus);
+    }
 }

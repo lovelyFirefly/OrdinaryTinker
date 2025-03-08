@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Context.Data.Model;
 
-import com.hoshino.ordinarytinker.Context.Data.Language.LanguageEnum;
+import com.hoshino.ordinarytinker.Context.Data.Language.Enums.CommonEnum;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -16,9 +16,9 @@ public class OTModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        LanguageEnum[] languageEnum = LanguageEnum.values();
+        CommonEnum[] commonEnum = CommonEnum.values();
         List<Item> items=new ArrayList<>();
-        for (LanguageEnum anEnum : languageEnum) {
+        for (CommonEnum anEnum : commonEnum) {
             items.add(anEnum.GetItem());
         }
         for(Item item : items){
