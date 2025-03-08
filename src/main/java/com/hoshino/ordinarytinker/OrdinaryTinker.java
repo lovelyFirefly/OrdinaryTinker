@@ -1,18 +1,19 @@
 package com.hoshino.ordinarytinker;
 
+import com.hoshino.ordinarytinker.Context.Data.DamageType.OTDamageTypeProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.CNLanguageProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.ENLanguageProvider;
-import com.hoshino.ordinarytinker.Context.Data.Model.ModelProvider;
+import com.hoshino.ordinarytinker.Context.Data.Model.OTModelProvider;
 import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerItem;
 import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerModifier;
 import com.hoshino.ordinarytinker.Context.Network.OTChannel;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.ModLauncherFactory;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
+import slimeknights.tconstruct.common.data.DamageTypeProvider;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 import java.util.Locale;
@@ -47,21 +49,24 @@ public class OrdinaryTinker {
     public void gatherData(@NotNull GatherDataEvent event) {
         RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
         ExistingFileHelper existingFileHelper=event.getExistingFileHelper();
-        event.getGenerator().addProvider(
+        DataGenerator generator = event.getGenerator();
+        PackOutput packOutput = generator.getPackOutput();
+        generator.addProvider(
                 event.includeClient(),
                 (DataProvider.Factory<CNLanguageProvider>)pOutput->new CNLanguageProvider(pOutput,MODID,"zh_cn") {
                 }
         );
-        event.getGenerator().addProvider(
+        generator.addProvider(
                 event.includeClient(),
                 (DataProvider.Factory<ENLanguageProvider>)pOutput->new ENLanguageProvider(pOutput,MODID,"en_us") {
                 }
         );
-        event.getGenerator().addProvider(
+        generator.addProvider(
                 event.includeClient(),
-                (DataProvider.Factory<ModelProvider>) pOutput->new ModelProvider(pOutput,MODID,existingFileHelper) {
+                (DataProvider.Factory<OTModelProvider>) pOutput->new OTModelProvider(pOutput,MODID,existingFileHelper) {
                 }
         );
+        OTDamageTypeProvider.register(registrySetBuilder);
     }
     public static String prefix(String name) {
         return MODID + "." + name.toLowerCase(Locale.CHINA);

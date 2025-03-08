@@ -14,13 +14,13 @@ public class ENLanguageProvider extends LanguageProvider {
     }
     @Override
     protected void addTranslations() {
-        NameEnum[] nameEnum=NameEnum.values();
+        LanguageEnum[] languageEnum = LanguageEnum.values();
         List<Item> items=new ArrayList<>();
         List<String>En=new ArrayList<>();
-        for (NameEnum anEnum : nameEnum) {
+        for (LanguageEnum anEnum : languageEnum) {
             items.add(anEnum.GetItem());
         }
-        for (NameEnum anEnum : nameEnum) {
+        for (LanguageEnum anEnum : languageEnum) {
             En.add(anEnum.GetEn());
         }
         for(int i=0;i<En.size();i++){

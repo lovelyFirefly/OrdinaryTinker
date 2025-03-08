@@ -1,6 +1,5 @@
 package com.hoshino.ordinarytinker.Context.Data.Language;
 
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -15,18 +14,17 @@ public class CNLanguageProvider extends LanguageProvider {
     }
     @Override
     protected void addTranslations() {
-        NameEnum[] nameEnum=NameEnum.values();
+        LanguageEnum[] languageEnum = LanguageEnum.values();
         List<Item> items=new ArrayList<>();
         List<String>Cn=new ArrayList<>();
-        for (NameEnum anEnum : nameEnum) {
+        for (LanguageEnum anEnum : languageEnum) {
             items.add(anEnum.GetItem());
         }
-        for (NameEnum anEnum : nameEnum) {
+        for (LanguageEnum anEnum : languageEnum) {
             Cn.add(anEnum.GetCn());
         }
         for(int i=0;i<Cn.size();i++){
             this.add(items.get(i),Cn.get(i));
         }
-//        this.add(OrdinaryTinkerItem.ArmorSteel_ingot.get(),"装甲钢锭");
     }
 }
