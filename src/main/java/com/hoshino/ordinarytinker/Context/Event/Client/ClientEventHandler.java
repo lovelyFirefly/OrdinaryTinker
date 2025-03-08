@@ -1,7 +1,6 @@
 package com.hoshino.ordinarytinker.Context.Event.Client;
 
 import com.hoshino.ordinarytinker.Context.Client.KeyBroad.KeyBinding;
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerModifier;
 import com.hoshino.ordinarytinker.Context.Network.OTChannel;
 import com.hoshino.ordinarytinker.Context.Network.Packet.KeyBoardPacket;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
@@ -12,7 +11,6 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID,value = Dist.CLIENT)
 public class ClientEventHandler {
@@ -24,11 +22,9 @@ public class ClientEventHandler {
     public static void onKeyPressed(InputEvent.Key event){
         Player player=Minecraft.getInstance().player;
         if (player!= null) {
-            if(ModifierUtil.getModifierLevel(player.getMainHandItem(), OrdinaryTinkerModifier.aaaStaticModifier.getId())>0){
                 if(KeyBinding.DIGGING_SPEED_KEY.isDown()){
                     OTChannel.SendToServer(new KeyBoardPacket());
                 }
-            }
         }
     }
 }

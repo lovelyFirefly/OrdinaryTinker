@@ -1,6 +1,5 @@
 package com.hoshino.ordinarytinker.Context.Init;
 
-import com.hoshino.ordinarytinker.Context.Modifiers.aaa;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -12,5 +11,5 @@ public class OrdinaryTinkerModifier {
     public OrdinaryTinkerModifier(){
         MODIFIERS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
-    public static final StaticModifier<aaa> aaaStaticModifier = MODIFIERS.register("aaa", aaa::new);
+
 }
