@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 public class OrdinaryTinkerTab {
-    public static final DeferredRegister<CreativeModeTab> creative_mode_tab=DeferredRegister.create(Registries.CREATIVE_MODE_TAB,MODID);
+    public static final DeferredRegister<CreativeModeTab> creative_mode_tab= DeferredRegister.create(Registries.CREATIVE_MODE_TAB,MODID);
     public static final String OrdinaryTinkerTab="ordinarytinker.materials";
     public static final Supplier<CreativeModeTab> materials=creative_mode_tab.register("materials",()-> CreativeModeTab.builder()
             //槽位位置
@@ -23,7 +23,7 @@ public class OrdinaryTinkerTab {
             //物品栏名称
             .title(Component.translatable(OrdinaryTinkerTab))
             //图标
-            .icon(()-> Items.GLASS.getDefaultInstance())
+            .icon(Items.GLASS::getDefaultInstance)
             .displayItems((itemDisplayParameters, output) -> {
                 for(RegistryObject<Item> itemsDeferredRegister:OrdinaryTinkerItem.CommonItem){
                     if(itemsDeferredRegister.isPresent()){

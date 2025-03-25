@@ -3,6 +3,7 @@ package com.hoshino.ordinarytinker.Context.Data;
 import com.hoshino.ordinarytinker.Context.Data.DamageType.OTDamageTypeProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.CNLanguageProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.ENLanguageProvider;
+import com.hoshino.ordinarytinker.Context.Data.Model.OTBucketModelProvider;
 import com.hoshino.ordinarytinker.Context.Data.Model.OTModelProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -24,6 +25,7 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 public final class DataGenerator {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void gatherData(@NotNull GatherDataEvent event) {
+
         RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
         ExistingFileHelper existingFileHelper=event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
@@ -38,5 +40,6 @@ public final class DataGenerator {
         generator.addProvider(server, new OTModelProvider(output,MODID, existingFileHelper));
         generator.addProvider(server, new CNLanguageProvider(output,MODID, "zh_cn"));
         generator.addProvider(server, new ENLanguageProvider(output,MODID, "en_us"));
+        generator.addProvider(server, new OTBucketModelProvider(output,MODID));
     }
 }

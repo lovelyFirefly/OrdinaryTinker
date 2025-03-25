@@ -1,5 +1,6 @@
 package com.hoshino.ordinarytinker;
 
+import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerFluid;
 import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerItem;
 import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerModifier;
 import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerTab;
@@ -24,9 +25,10 @@ public class OrdinaryTinker {
     public OrdinaryTinker() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(EventPriority.NORMAL, false, FMLCommonSetupEvent.class, this::commonSetup);
-//        OrdinaryTinkerModifier.register(bus);
         OrdinaryTinkerTab.register(bus);
         OrdinaryTinkerItem.register(bus);
+        OrdinaryTinkerFluid.register(bus);
+        OrdinaryTinkerModifier.register(bus);
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
@@ -43,5 +45,8 @@ public class OrdinaryTinker {
 
     public static <T> TinkerDataCapability.ComputableDataKey<T> createKey(String name, Supplier<T> constructor) {
         return TinkerDataCapability.ComputableDataKey.of(getResource(name), constructor);
+    }
+    public static String makeDescriptionId(String type, String name) {
+        return type + "." + MODID + "." + name;
     }
 }

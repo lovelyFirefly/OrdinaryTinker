@@ -18,7 +18,7 @@ public class TooltipItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.addAll(this.tooltip);
         super.appendHoverText(pStack,pLevel,pTooltipComponents,pIsAdvanced);
     }

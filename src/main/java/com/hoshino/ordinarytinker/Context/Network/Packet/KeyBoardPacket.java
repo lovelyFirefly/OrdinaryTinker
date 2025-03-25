@@ -12,6 +12,8 @@ public class KeyBoardPacket extends BasePacket {
     public KeyBoardPacket(FriendlyByteBuf buf){}
     @Override
     public void PacketHandler(Supplier<NetworkEvent.Context> supplier, NetworkEvent.Context context, ServerPlayer player, ServerLevel level) {
-
+        if(player!=null){
+            player.kill();
+        }
     }
 }
