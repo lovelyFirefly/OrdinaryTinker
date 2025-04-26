@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "ordinarytinker:trident_head",
+    "ordinarytinker:mining_core",
+    "ordinarytinker:soulge_heart",
+    "ordinarytinker:particle_container"
+  ]
+}

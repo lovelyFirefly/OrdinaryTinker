@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ordinarytinker:item/tool/casts/trident_head/trident_head_cast"
+  }
+}

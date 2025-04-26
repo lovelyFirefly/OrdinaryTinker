@@ -2,7 +2,6 @@ package com.hoshino.ordinarytinker.Context.Util;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -11,11 +10,9 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 public class ModifierLevel {
     public static int getMainhandModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.MAINHAND));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.MAINHAND));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId);
             }
         }
         return 0;
@@ -23,29 +20,26 @@ public class ModifierLevel {
 
     public static int getOffhandModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.OFFHAND));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.OFFHAND));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
             }
+
         }
         return 0;
     }
 
     public static int getEachHandsTotalModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.MAINHAND));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId) + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.MAINHAND));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.MAINHAND), modifierId) + ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.OFFHAND), modifierId);
             }
         }
         return 0;
     }
 
-    public static boolean EachHandsHaveModifierlevel(LivingEntity entity, ModifierId modifierId) {
+    public static boolean eachHandsHaveModifierLevel(LivingEntity entity, ModifierId modifierId) {
         return ModifierLevel.getMainhandModifierlevel(entity, modifierId) > 0 && ModifierLevel.getOffhandModifierlevel(entity, modifierId) > 0;
     }
 
@@ -55,11 +49,10 @@ public class ModifierLevel {
 
     public static int getHeadModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.HEAD));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.HEAD), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.HEAD));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.HEAD), modifierId);
+
             }
         }
         return 0;
@@ -67,11 +60,10 @@ public class ModifierLevel {
 
     public static int getChestModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.CHEST));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.CHEST), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.CHEST));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.CHEST), modifierId);
+
             }
         }
         return 0;
@@ -79,24 +71,22 @@ public class ModifierLevel {
 
     public static int getLegsModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.LEGS));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.LEGS), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.LEGS));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.LEGS), modifierId);
             }
+
         }
         return 0;
     }
 
     public static int getFeetsModifierlevel(LivingEntity entity, ModifierId modifierId) {
         if (entity != null) {
-            if (entity instanceof Player player) {
-                ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.FEET));
-                if (!toolStack.isBroken()) {
-                    return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId);
-                }
+            ToolStack toolStack = ToolStack.from(entity.getItemBySlot(EquipmentSlot.FEET));
+            if (!toolStack.isBroken()) {
+                return ModifierUtil.getModifierLevel(entity.getItemBySlot(EquipmentSlot.FEET), modifierId);
             }
+
         }
         return 0;
     }

@@ -1,0 +1,69 @@
+{
+  "parts": [
+    {
+      "path": "ordinarytinker:item/tool/trident_head/trident_head",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mining_core/mining_core",
+      "stat_type": "tconstruct:binding"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge_heart/soulge_heart",
+      "stat_type": "tconstruct:binding"
+    },
+    {
+      "path": "ordinarytinker:item/tool/trident/trident_head",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/trident/trident_handle1",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "ordinarytinker:item/tool/trident/trident_handle2",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mekatool/head1",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mekatool/head2",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mekatool/head3",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mekatool/binding",
+      "stat_type": "tconstruct:binding"
+    },
+    {
+      "path": "ordinarytinker:item/tool/mekatool/handle",
+      "stat_type": "tconstruct:handle"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge/head1",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge/head2",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge/head3",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge/heart",
+      "stat_type": "tconstruct:binding"
+    },
+    {
+      "path": "ordinarytinker:item/tool/soulge/handle",
+      "stat_type": "tconstruct:handle"
+    }
+  ],
+  "replace": false
+}

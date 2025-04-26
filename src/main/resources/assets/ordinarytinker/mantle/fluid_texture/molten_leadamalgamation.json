@@ -1,0 +1,5 @@
+{
+  "color": "FFFFFFFF",
+  "flowing": "ordinarytinker:fluid/molten_leadamalgamation/flowing",
+  "still": "ordinarytinker:fluid/molten_leadamalgamation/still"
+}

@@ -1,15 +1,16 @@
 package com.hoshino.ordinarytinker;
 
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerFluid;
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerItem;
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerModifier;
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerTab;
-import com.hoshino.ordinarytinker.Context.Network.OTChannel;
+import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
+import com.hoshino.ordinarytinker.Network.OTChannel;
+import com.hoshino.ordinarytinker.Register.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
@@ -25,13 +26,16 @@ public class OrdinaryTinker {
     public OrdinaryTinker() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(EventPriority.NORMAL, false, FMLCommonSetupEvent.class, this::commonSetup);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, OrdinaryTinkerConfig.Toolspec, "ordinarytinkert.toml");
         OrdinaryTinkerTab.register(bus);
         OrdinaryTinkerItem.register(bus);
         OrdinaryTinkerFluid.register(bus);
         OrdinaryTinkerModifier.register(bus);
+        OrdinaryTinkerEffect.register(bus);
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(OrdinaryTinkerMaterialStat::setup);
         OTChannel.register();
     }
 
@@ -49,4 +53,5 @@ public class OrdinaryTinker {
     public static String makeDescriptionId(String type, String name) {
         return type + "." + MODID + "." + name;
     }
+
 }

@@ -1,0 +1,68 @@
+{
+  "tab.ordinarytinker.tools": "平凡工匠-工具",
+  "tab.ordinarytinker.materials": "平凡工匠-材料",
+
+  "key.category.ordinarytinker": "平凡工匠按键映射",
+  "key.ordinarytinker.digging_speed": "开拓者工具调速按键",
+
+  "fluid.ordinarytinker.molten_armorsteel": "熔融装甲钢",
+  "fluid.ordinarytinker.molten_leadamalgamation": "熔融铅汞齐",
+  "item.ordinarytinker.molten_armorsteel_bucket": "熔融装甲钢桶",
+  "item.ordinarytinker.molten_leadamalgamation_bucket": "熔融铅汞齐桶",
+
+
+  "item.ordinarytinker.mekatool": "开拓者工具",
+  "item.ordinarytinker.mekatool.description": "类似于mekanism的原子分解机,可以挖掘各种物品并且无视挖掘等级,可以配置按键来切换速度",
+  "item.ordinarytinker.soulge": "魂戈",
+  "item.ordinarytinker.soulge.description": "一种强大的武器,可以同时攻击多目标并且带有高额伤害的斩杀效果",
+  "item.ordinarytinker.trident": "三叉戟",
+  "item.ordinarytinker.trident.description": "和原版三叉戟相差无几,拥有更高的基础伤害。基础攻速更低",
+
+  "item.ordinarytinker.trident_head": "三叉戟头",
+  "item.ordinarytinker.mining_core": "挖掘核心",
+  "item.ordinarytinker.soulge_heart": "魂珠",
+  "stat.ordinarytinker.soulge_heart": "魂珠",
+
+  "tool_stat.ordinarytinker.detection_range": "索敌范围",
+  "tool_stat.ordinarytinker.soulge_heart.detection_range.description": "索敌的范围，在这个范围可以标记并且伤害你的目标,至高100格",
+  "tool_stat.ordinarytinker.exert_times": "施加印记层数",
+  "tool_stat.ordinarytinker.soulge_heart.exert_times.description": "单次生效右键攻击目标后对其施加的可攻击层数,至高叠加到基础层数的三倍",
+  "tool_stat.ordinarytinker.attack_frequency": "攻击间隔",
+  "tool_stat.ordinarytinker.soulge_heart.attack_frequency.description": "每隔这个刻数会消耗目标一层印记并且生效攻击",
+  "tool_stat.ordinarytinker.kill_threshold": "斩杀线",
+  "tool_stat.ordinarytinker.soulge_heart.kill_threshold.description": "目标低于这个最大生命百分比会被直接处决",
+
+  "item.ordinarytinker.trident_head_cast": "三叉戟头金质铸膜",
+  "item.ordinarytinker.trident_head_red_sand_cast": "三叉戟头红沙铸膜",
+  "item.ordinarytinker.trident_head_sand_cast": "三叉戟头沙子铸膜",
+
+  "modifier.ordinarytinker.crawl": "扼杀",
+  "modifier.ordinarytinker.crawl.description": "在你的魂戈即将斩杀目标之时将其抓取至你的身前斩杀",
+  "modifier.ordinarytinker.crawl.flavor": "你逃不出去的",
+
+  "modifier.ordinarytinker.riptide": "激流",
+  "modifier.ordinarytinker.riptide.description": "强化版的激流,相较于原版使你非水环境可以正常使用三叉戟,雨天和水中则会进入激流模式,提升词条等级以提升激流冲刺距离",
+  "modifier.ordinarytinker.riptide.flavor": "激流勇进！",
+
+  "modifier.ordinarytinker.seabless": "海神赐福",
+  "modifier.ordinarytinker.seabless.description": "在水中或者下雨耐久消耗降低50%",
+  "modifier.ordinarytinker.seabless.flavor": "不是海王",
+
+  "modifier.ordinarytinker.loyal": "忠诚",
+  "modifier.ordinarytinker.loyal.description": "工具丢出后会返回你的手中！",
+  "modifier.ordinarytinker.loyal.flavor": "美妙的谎言",
+
+  "modifier.ordinarytinker.lightningbolt": "引雷",
+  "modifier.ordinarytinker.lightningbolt.description": "在雨天可以触发雷击效果",
+  "modifier.ordinarytinker.lightningbolt.flavor": "同原版",
+
+  "modifier.ordinarytinker.crcs": "风雨无阻",
+  "modifier.ordinarytinker.crcs.description": "让你不再依赖于水,可以自由冲刺,并且助手持有时完全免疫摔落伤害",
+  "modifier.ordinarytinker.crcs.flavor": "海神祝我！",
+
+  "modifier.ordinarytinker.sophisticated": "精工细作",
+  "modifier.ordinarytinker.sophisticated.description": "提升工具400点基础耐久，如果工具是近战工具则额外增加8%攻速每级，如果为护甲则每级增加1点韧性和护甲",
+  "modifier.ordinarytinker.sophisticated.flavor": "独具匠心的锻造"
+
+
+}

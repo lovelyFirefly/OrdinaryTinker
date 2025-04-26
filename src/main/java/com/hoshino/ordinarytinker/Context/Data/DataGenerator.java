@@ -1,10 +1,11 @@
 package com.hoshino.ordinarytinker.Context.Data;
 
-import com.hoshino.ordinarytinker.Context.Data.DamageType.OTDamageTypeProvider;
+import com.hoshino.ordinarytinker.Context.Data.DamageType.OrdinaryTinkerDamageTypeProvider;
+import com.hoshino.ordinarytinker.Context.Data.DamageType.OrdinaryTinkerDamageTypeTagProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.CNLanguageProvider;
 import com.hoshino.ordinarytinker.Context.Data.Language.ENLanguageProvider;
-import com.hoshino.ordinarytinker.Context.Data.Model.OTBucketModelProvider;
-import com.hoshino.ordinarytinker.Context.Data.Model.OTModelProvider;
+import com.hoshino.ordinarytinker.Context.Data.Model.OrdinaryTinkerBucketModelProvider;
+import com.hoshino.ordinarytinker.Context.Data.Model.OrdinaryTinkerModelProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
@@ -27,19 +28,20 @@ public final class DataGenerator {
     public static void gatherData(@NotNull GatherDataEvent event) {
 
         RegistrySetBuilder registrySetBuilder = new RegistrySetBuilder();
-        ExistingFileHelper existingFileHelper=event.getExistingFileHelper();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         net.minecraft.data.DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         boolean server = event.includeServer();
 
-        OTDamageTypeProvider.register(registrySetBuilder);
+        OrdinaryTinkerDamageTypeProvider.register(registrySetBuilder);
         DatapackBuiltinEntriesProvider DatapackRegistryProvider = new DatapackBuiltinEntriesProvider(output, lookupProvider, registrySetBuilder, Set.of(MODID));
         generator.addProvider(server, DatapackRegistryProvider);
 
-        generator.addProvider(server, new OTModelProvider(output,MODID, existingFileHelper));
-        generator.addProvider(server, new CNLanguageProvider(output,MODID, "zh_cn"));
-        generator.addProvider(server, new ENLanguageProvider(output,MODID, "en_us"));
-        generator.addProvider(server, new OTBucketModelProvider(output,MODID));
+        generator.addProvider(server, new OrdinaryTinkerModelProvider(output, MODID, existingFileHelper));
+        generator.addProvider(server, new OrdinaryTinkerDamageTypeTagProvider(output, DatapackRegistryProvider.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(server, new CNLanguageProvider(output, MODID, "zh_cn"));
+        generator.addProvider(server, new ENLanguageProvider(output, MODID, "en_us"));
+        generator.addProvider(server, new OrdinaryTinkerBucketModelProvider(output, MODID));
     }
 }

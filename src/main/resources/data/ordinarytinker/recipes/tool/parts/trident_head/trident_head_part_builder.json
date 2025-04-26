@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:part_builder",
+  "pattern": "ordinarytinker:trident_head",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "ordinarytinker:trident_head"
+    }
+  ],
+  "cost": 5,
+  "result": {
+    "item": "ordinarytinker:trident_head"
+  }
+}

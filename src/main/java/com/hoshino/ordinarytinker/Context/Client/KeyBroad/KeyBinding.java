@@ -11,6 +11,6 @@ public class KeyBinding {
     public static final String KEY_CATEGORY_ORDINARYTINKER="key.category.ordinarytinker";
     //具体按键
     public static final String KEY_ADJUST_DIGGING_SPEED="key.ordinarytinker.digging_speed";
-    //按键注册
+
     public static final KeyMapping DIGGING_SPEED_KEY=new KeyMapping(KEY_CATEGORY_ORDINARYTINKER, KeyConflictContext.IN_GAME, InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Y,KEY_ADJUST_DIGGING_SPEED);
 }

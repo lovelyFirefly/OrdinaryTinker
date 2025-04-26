@@ -1,6 +1,7 @@
 package com.hoshino.ordinarytinker.Context.Data.Language.Enums;
 
-import com.hoshino.ordinarytinker.Context.Init.OrdinaryTinkerFluid;
+
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerFluid;
 import net.minecraft.world.level.material.Fluid;
 
 public enum FluidEnum {
@@ -15,10 +16,13 @@ public enum FluidEnum {
         this.FluidCn = FluidCn;
         this.FluidEn = FluidEn;
     }
-    public Fluid GetFluid(){
+    public Fluid getFluid(){
         return this.Fluid;
     }
-    public String GetFluidCn(){
+    public String getFluidCn(){
         return this.FluidCn;
+    }
+    public String getFluidEn(){
+        return this.FluidEn;
     }
 }

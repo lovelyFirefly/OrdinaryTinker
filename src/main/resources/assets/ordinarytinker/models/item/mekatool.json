@@ -1,0 +1,36 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "head1": "ordinarytinker:item/tool/mekatool/head1",
+    "head2": "ordinarytinker:item/tool/mekatool/head2",
+    "head3": "ordinarytinker:item/tool/mekatool/head3",
+    "binding": "ordinarytinker:item/tool/mekatool/binding",
+    "handle": "ordinarytinker:item/tool/mekatool/handle"
+  },
+  "modifier_roots": [
+    "ordinarytinker:item/tool/mekatool/modifiers/"
+  ],
+  "parts": [
+    {
+      "name": "head3",
+      "index": 0
+    },
+    {
+      "name": "binding",
+      "index": 1
+    },
+    {
+      "name": "head2",
+      "index": 2
+    },
+    {
+      "name": "head1",
+      "index": 3
+    },
+    {
+      "name": "handle",
+      "index": 4
+    }
+  ]
+}

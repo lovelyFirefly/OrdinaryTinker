@@ -1,0 +1,64 @@
+{
+  "translation_key": "item.ordinarytinker.mekatool",
+  "icon": {
+    "item": "ordinarytinker:mekatool",
+    "nbt": {
+      "tic_display": true,
+      "tic_materials": [
+        "tconstruct:ui_render#head",
+        "tconstruct:ui_render#handle",
+        "tconstruct:ui_render#extra",
+        "tconstruct:ui_render#large",
+        "tconstruct:ui_render#extra_large"
+      ]
+    }
+  },
+  "sortIndex": 10,
+  "input_slots": [
+    {
+      "icon": "tconstruct:broad_axe_head",
+      "translation_key": "item.tconstruct.broad_axe_head",
+      "x": 45,
+      "y": 46,
+      "filter": {
+        "item": "tconstruct:broad_axe_head"
+      }
+    },
+    {
+      "icon": "ordinarytinker:mining_core",
+      "translation_key": "item.ordinarytinker.mining_core",
+      "x": 25,
+      "y": 46,
+      "filter": {
+        "item": "ordinarytinker:mining_core"
+      }
+    },
+    {
+      "icon": "tconstruct:large_plate",
+      "translation_key": "item.tconstruct.large_plate",
+      "x": 45,
+      "y": 26,
+      "filter": {
+        "item": "tconstruct:large_plate"
+      }
+    },
+    {
+      "icon": "tconstruct:pick_head",
+      "translation_key": "item.tconstruct.pick_head",
+      "x": 25,
+      "y": 26,
+      "filter": {
+        "item": "tconstruct:pick_head"
+      }
+    },
+    {
+      "icon": "tconstruct:tough_handle",
+      "translation_key": "item.tconstruct.tough_handle",
+      "x": 7,
+      "y": 62,
+      "filter": {
+        "item": "tconstruct:tough_handle"
+      }
+    }
+  ]
+}

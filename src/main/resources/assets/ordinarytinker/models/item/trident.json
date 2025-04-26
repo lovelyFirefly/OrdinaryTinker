@@ -1,0 +1,26 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "trident_head": "ordinarytinker:item/tool/trident/trident_head",
+    "trident_handle1": "ordinarytinker:item/tool/trident/trident_handle1",
+    "trident_handle2": "ordinarytinker:item/tool/trident/trident_handle2"
+  },
+  "modifier_roots": [
+    "ordinarytinker:item/tool/trident/modifiers/"
+  ],
+  "parts": [
+    {
+      "name": "trident_head",
+      "index": 0
+    },
+    {
+      "name": "trident_handle1",
+      "index": 1
+    },
+    {
+      "name": "trident_handle2",
+      "index": 2
+    }
+  ]
+}

@@ -32,6 +32,8 @@ public class OTDamageTypes {
     public static DamageSource source(Level level, ResourceKey<DamageType> type) {
         return source(level, type, null, null);
     }
-    //DamageType注册
+    //DamageType项
     public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
+
+    public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
 }
