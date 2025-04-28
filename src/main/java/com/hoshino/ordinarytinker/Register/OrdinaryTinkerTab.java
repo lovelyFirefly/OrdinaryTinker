@@ -7,6 +7,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import slimeknights.mantle.registration.object.EnumObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.library.tools.helper.ToolBuildHandler;
 import slimeknights.tconstruct.library.tools.item.IModifiable;
@@ -36,6 +37,9 @@ public class OrdinaryTinkerTab {
     private static void accept(CreativeModeTab.Output output, Function<CastItemObject, ItemLike> getter, CastItemObject cast) {
         output.accept(getter.apply(cast));
     }
+    private static void acceptTools(Consumer<ItemStack> output, EnumObject<?,? extends IModifiable> tools) {
+        tools.forEach(tool -> ToolBuildHandler.addVariants(output, tool, ""));
+    }
     private static void addCasts(CreativeModeTab.Output output, Function<CastItemObject,ItemLike> getter) {
         accept(output, getter, OrdinaryTinkerItem.tridentHeadCast);
     }
@@ -49,6 +53,7 @@ public class OrdinaryTinkerTab {
         acceptPart(output,OrdinaryTinkerItem.mining_core);
         acceptTool(output,OrdinaryTinkerItem.soulge);
         acceptPart(output,OrdinaryTinkerItem.soulge_heart);
+        acceptTools(output,OrdinaryTinkerItem.fluid_plate);
         addCasts(tab, CastItemObject::get);
         addCasts(tab, CastItemObject::getSand);
         addCasts(tab, CastItemObject::getRedSand);

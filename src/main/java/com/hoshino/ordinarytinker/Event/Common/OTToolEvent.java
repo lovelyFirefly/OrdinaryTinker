@@ -36,5 +36,13 @@ public class OTToolEvent {
             }
         }
     }
-
+    @SubscribeEvent
+    public static void soulGeAttackTime(LivingEvent.LivingTickEvent event) {
+        var livingEntity = event.getEntity();
+        var entityData = livingEntity.getPersistentData();
+        var targetedTimes = entityData.getInt("targeted");
+        if(targetedTimes>0&&livingEntity.tickCount%200==0){
+            entityData.putInt("targeted",targetedTimes-1);
+        }
+    }
 }
