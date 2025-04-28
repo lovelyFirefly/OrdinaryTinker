@@ -1,0 +1,10 @@
+{
+  "stats": {
+    "ordinarytinker:soulge_heart": {
+      "detection_range": 9,
+      "exert_times": 4,
+      "attack_frequency": 5,
+      "kill_threshold": 0.05
+    }
+  }
+}
