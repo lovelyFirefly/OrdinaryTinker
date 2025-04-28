@@ -1,0 +1,6 @@
+{
+  "type": "tconstruct:tool_building",
+  "result": "ordinarytinker:fluid_plate_boots",
+  "result_count": 1,
+  "slot_layout": "ordinarytinker:fluid_plate_armor"
+}

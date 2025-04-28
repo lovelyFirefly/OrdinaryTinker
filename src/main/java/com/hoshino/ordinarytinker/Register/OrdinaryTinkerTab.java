@@ -54,6 +54,7 @@ public class OrdinaryTinkerTab {
         acceptTool(output,OrdinaryTinkerItem.soulge);
         acceptPart(output,OrdinaryTinkerItem.soulge_heart);
         acceptTools(output,OrdinaryTinkerItem.fluid_plate);
+        acceptPart(output,OrdinaryTinkerItem.fluid_escape);
         addCasts(tab, CastItemObject::get);
         addCasts(tab, CastItemObject::getSand);
         addCasts(tab, CastItemObject::getRedSand);

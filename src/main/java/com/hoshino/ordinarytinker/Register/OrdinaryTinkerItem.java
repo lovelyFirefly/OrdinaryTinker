@@ -1,6 +1,7 @@
 package com.hoshino.ordinarytinker.Register;
 
 import com.hoshino.ordinarytinker.Context.Item.Tool.OrdinaryTinkerArmorDefinitions;
+import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.FluidEscapeMaterialStats;
 import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.SoulGeHeartMaterialStats;
 import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.FluidShieldArmor;
 import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.MekaTool;
@@ -56,6 +57,7 @@ public class OrdinaryTinkerItem {
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));
     public static final ItemObject<ToolPartItem> soulge_heart = OTHER_ITEM.register("soulge_heart", () -> new ToolPartItem(PART,SoulGeHeartMaterialStats.ID));
     public static final ItemObject<ToolPartItem> trident_head = OTHER_ITEM.register("trident_head", () -> new ToolPartItem(PART, HeadMaterialStats.ID));
+    public static final ItemObject<ToolPartItem> fluid_escape = OTHER_ITEM.register("fluid_escape", () -> new ToolPartItem(PART, FluidEscapeMaterialStats.ID));
 
     public static final CastItemObject tridentHeadCast = OTHER_ITEM.registerCast(trident_head, CASTS);
 
