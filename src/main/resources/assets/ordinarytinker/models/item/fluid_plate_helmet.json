@@ -1,0 +1,26 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "head1": "ordinarytinker:item/tool/fluid_plate/head1",
+    "head2": "ordinarytinker:item/tool/fluid_plate/head2",
+    "head3": "ordinarytinker:item/tool/fluid_plate/head3"
+  },
+  "modifier_roots": [
+    "ordinarytinker:item/tool/fluid_plate/modifiers/"
+  ],
+  "parts": [
+    {
+      "name": "head1",
+      "index": 0
+    },
+    {
+      "name": "head2",
+      "index": 1
+    },
+    {
+      "name": "head3",
+      "index": 2
+    }
+  ]
+}
