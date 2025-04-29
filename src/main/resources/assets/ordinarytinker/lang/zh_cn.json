@@ -10,18 +10,25 @@
   "item.ordinarytinker.molten_armorsteel_bucket": "熔融装甲钢桶",
   "item.ordinarytinker.molten_leadamalgamation_bucket": "熔融铅汞齐桶",
 
-
   "item.ordinarytinker.mekatool": "开拓者工具",
   "item.ordinarytinker.mekatool.description": "类似于mekanism的原子分解机,可以挖掘各种物品并且无视挖掘等级,可以配置按键来切换速度",
   "item.ordinarytinker.soulge": "魂戈",
   "item.ordinarytinker.soulge.description": "一种强大的武器,可以同时攻击多目标并且带有高额伤害的斩杀效果",
   "item.ordinarytinker.trident": "三叉戟",
   "item.ordinarytinker.trident.description": "和原版三叉戟相差无几,拥有更高的基础伤害。基础攻速更低",
+  "item.ordinarytinker.fluid_plate_helmet": "流能装甲头盔",
+  "item.ordinarytinker.fluid_plate_chestplate": "流能装甲胸甲",
+  "item.ordinarytinker.fluid_plate_leggings": "流能装甲护腿",
+  "item.ordinarytinker.fluid_plate_boots": "流能装甲靴子",
+  "gui.ordinarytinker.fluid_plate": "流能装甲",
+  "gui.ordinarytinker.fluid_plate.description": "流能装甲套装是可以储存液体的装甲,存储水时可以减免伤害,存储熔岩时候可以减伤的同时将一部分伤害以火焰的形式返还,四件会一同计算免伤和效果",
 
   "item.ordinarytinker.trident_head": "三叉戟头",
   "item.ordinarytinker.mining_core": "挖掘核心",
   "item.ordinarytinker.soulge_heart": "魂珠",
   "stat.ordinarytinker.soulge_heart": "魂珠",
+  "item.ordinarytinker.fluid_escape": "流体逸散器",
+  "stat.ordinarytinker.fluid_escape": "流体逸散器",
 
   "tool_stat.ordinarytinker.detection_range": "索敌范围",
   "tool_stat.ordinarytinker.soulge_heart.detection_range.description": "索敌的范围，在这个范围可以标记并且伤害你的目标,至高100格",
@@ -31,6 +38,15 @@
   "tool_stat.ordinarytinker.soulge_heart.attack_frequency.description": "每隔这个刻数会消耗目标一层印记并且生效攻击",
   "tool_stat.ordinarytinker.kill_threshold": "斩杀线",
   "tool_stat.ordinarytinker.soulge_heart.kill_threshold.description": "目标低于这个最大生命百分比会被直接处决",
+
+  "tool_stat.ordinarytinker.base_consumption": "基础流体损耗",
+  "tool_stat.ordinarytinker.fluid_escape.base_consumption.description": "流体的基础损耗值,每抵挡一点实际伤害会消耗的mB量",
+  "tool_stat.ordinarytinker.consumption_multiplier": "流体消耗倍率",
+  "tool_stat.ordinarytinker.fluid_escape.consumption_multiplier.description": "基于总消耗量会额外×这个数值,这会是最终的消耗量",
+  "tool_stat.ordinarytinker.damage_reduction": "伤害减免",
+  "tool_stat.ordinarytinker.fluid_escape.damage_reduction.description": "单件对应的伤害减免",
+  "tool_stat.ordinarytinker.fluid_capability": "流体存储",
+  "tool_stat.ordinarytinker.fluid_escape.fluid_capability.description": "能存储的流体的量",
 
   "item.ordinarytinker.trident_head_cast": "三叉戟头金质铸膜",
   "item.ordinarytinker.trident_head_red_sand_cast": "三叉戟头红沙铸膜",

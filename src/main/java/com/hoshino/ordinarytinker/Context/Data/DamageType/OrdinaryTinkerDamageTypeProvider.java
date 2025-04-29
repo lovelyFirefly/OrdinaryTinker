@@ -17,5 +17,6 @@ public class OrdinaryTinkerDamageTypeProvider implements RegistrySetBuilder.Regi
     public void run(@NotNull BootstapContext<DamageType> context) {
         context.register(OTDamageTypes.MERCURYPOISONING, new DamageType("mercurypoisoning", 0.1f, DamageEffects.THORNS));
         context.register(OTDamageTypes.PlayerSoulgeAttack, new DamageType("playersoulgeattack", 0.1f));
+        context.register(OTDamageTypes.SpecialReflect, new DamageType("specialreflect", 0.1f,DamageEffects.BURNING));
     }
 }

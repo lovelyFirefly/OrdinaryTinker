@@ -63,7 +63,25 @@
     {
       "path": "ordinarytinker:item/tool/soulge/handle",
       "stat_type": "tconstruct:handle"
-    }
+    },
+    { "path": "ordinarytinker:item/tool/fluid_plate/head1","stat_type": "tconstruct:plating_helmet" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/head2","stat_type": "tconstruct:plating_helmet" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/head3","stat_type": "tconstruct:plating_helmet" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/che1","stat_type": "tconstruct:plating_chestplate" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/che2","stat_type": "tconstruct:plating_chestplate" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/che3","stat_type": "tconstruct:plating_chestplate" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/leg1","stat_type": "tconstruct:plating_leggings" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/leg2","stat_type": "tconstruct:plating_leggings" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/leg3","stat_type": "tconstruct:plating_leggings" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/boot1","stat_type": "tconstruct:plating_boots" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/boot2","stat_type": "tconstruct:plating_boots" },
+    { "path": "ordinarytinker:item/tool/fluid_plate/boot3","stat_type": "tconstruct:plating_boots" },
+    { "path": "ordinarytinker:tinker_armor/maid/upper_armor",    "stat_type": "tconstruct:armor_plating", "allow_animated": false },
+    { "path": "ordinarytinker:tinker_armor/maid/upper_leggings", "stat_type": "tconstruct:armor_plating", "allow_animated": false },
+    { "path": "ordinarytinker:tinker_armor/maid/lower_armor",    "stat_type": "tconstruct:armor_plating", "allow_animated": false },
+    { "path": "ordinarytinker:tinker_armor/maid/lower_leggings", "stat_type": "tconstruct:armor_plating", "allow_animated": false },
+    { "path": "ordinarytinker:tinker_armor/maid/wood_armor",     "stat_type": "tconstruct:shield_core",   "allow_animated": false },
+    { "path": "ordinarytinker:tinker_armor/maid/wood_leggings",  "stat_type": "tconstruct:shield_core",   "allow_animated": false }
   ],
   "replace": false
 }

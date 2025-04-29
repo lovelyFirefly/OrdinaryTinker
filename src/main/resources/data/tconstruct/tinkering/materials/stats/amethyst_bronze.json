@@ -5,6 +5,11 @@
       "exert_times": 4,
       "attack_frequency": 5,
       "kill_threshold": 0.05
+    },"ordinarytinker:fluid_escape": {
+      "base_consumption": 19,
+      "consumption_multiplier": 1.8,
+      "damage_reduction": 0.08,
+      "fluid_capability": 100000
     }
   }
 }

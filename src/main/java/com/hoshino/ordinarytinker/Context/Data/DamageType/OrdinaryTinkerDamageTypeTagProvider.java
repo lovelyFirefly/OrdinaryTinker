@@ -19,8 +19,8 @@ public class OrdinaryTinkerDamageTypeTagProvider extends DamageTypeTagsProvider 
     }
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        tag(DamageTypeTags.BYPASSES_ARMOR).add(OTDamageTypes.MERCURYPOISONING);
-        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.MERCURYPOISONING);
+        tag(DamageTypeTags.BYPASSES_ARMOR).add(OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect);
+        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect);
         tag(DamageTypeTags.NO_IMPACT).add(OTDamageTypes.MERCURYPOISONING);
     }
 }

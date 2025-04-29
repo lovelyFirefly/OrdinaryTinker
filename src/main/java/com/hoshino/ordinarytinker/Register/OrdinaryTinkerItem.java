@@ -21,7 +21,6 @@ import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.ModifiableArmorItem;
-import slimeknights.tconstruct.library.tools.item.armor.MultilayerArmorItem;
 import slimeknights.tconstruct.library.tools.part.ToolPartItem;
 import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
@@ -35,7 +34,7 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 public class OrdinaryTinkerItem {
     public static final ItemDeferredRegisterExtension OTHER_ITEM = new ItemDeferredRegisterExtension(MODID);
     public static final DeferredRegister<Item> ITEM=DeferredRegister.create(Registries.ITEM,MODID);
-    protected static final ItemDeferredRegisterExtension ModifiableItem = new ItemDeferredRegisterExtension(OrdinaryTinker.MODID);
+    protected static final ItemDeferredRegisterExtension ModifiableArmor = new ItemDeferredRegisterExtension(OrdinaryTinker.MODID);
 
     private static final Item.Properties TOOL = (new Item.Properties()).stacksTo(1);
     private static final Item.Properties PART = (new Item.Properties()).stacksTo(64);
@@ -64,13 +63,13 @@ public class OrdinaryTinkerItem {
     public static final RegistryObject<ModifiableItem> mekatool = ITEM.register("mekatool", () -> new MekaTool(TOOL, OrdinaryTinkerToolDefinitions.MEKATOOL));
     public static final RegistryObject<ModifiableItem> trident = ITEM.register("trident", () -> new Trident(TOOL, OrdinaryTinkerToolDefinitions.TRIDENT));
     public static final RegistryObject<ModifiableItem> soulge = ITEM.register("soulge", () -> new SoulGe(TOOL, OrdinaryTinkerToolDefinitions.Soulge));
-    public static final EnumObject<ArmorItem.Type, ModifiableArmorItem> fluid_plate = ModifiableItem.registerEnum("fluid_plate", ArmorItem.Type.values(), type -> new FluidShieldArmor(OrdinaryTinkerArmorDefinitions.FLUID_PLATE, type, TOOL));
+    public static final EnumObject<ArmorItem.Type, ModifiableArmorItem> fluid_plate = ModifiableArmor.registerEnum("fluid_plate", ArmorItem.Type.values(), type -> new FluidShieldArmor(OrdinaryTinkerArmorDefinitions.FLUID_PLATE, type, TOOL));
     public OrdinaryTinkerItem(){
     }
 
     public static void register(IEventBus bus){
         ITEM.register(bus);
         OTHER_ITEM.register(bus);
-        ModifiableItem.register(bus);
+        ModifiableArmor.register(bus);
     }
 }

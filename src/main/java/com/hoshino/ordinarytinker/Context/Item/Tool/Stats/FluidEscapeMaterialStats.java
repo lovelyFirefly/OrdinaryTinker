@@ -74,9 +74,9 @@ public record FluidEscapeMaterialStats(float base_consumption,float consumption_
 
     @Override
     public void apply(@NotNull ModifierStatsBuilder builder, float scale) {
-        OrdinaryTinkerToolStat.RESIST_MULTIPLIER.update(builder, this.base_consumption);
+        OrdinaryTinkerToolStat.BASE_CONSUMPTION.update(builder, this.base_consumption);
         OrdinaryTinkerToolStat.CONSUMPTION_MULTIPLIER.update(builder, this.consumption_multiplier);
-        OrdinaryTinkerToolStat.DAMAGE_REDUCTION.update(builder, this.consumption_multiplier);
+        OrdinaryTinkerToolStat.DAMAGE_REDUCTION.update(builder, this.damage_reduction);
         ToolTankHelper.CAPACITY_STAT.update(builder,this.fluid_capability);
     }
 }

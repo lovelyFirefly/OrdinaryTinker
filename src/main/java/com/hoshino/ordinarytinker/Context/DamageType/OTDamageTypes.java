@@ -36,4 +36,5 @@ public class OTDamageTypes {
     public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
 
     public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
+    public static final ResourceKey<DamageType> SpecialReflect = create("specialreflect");
 }

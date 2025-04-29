@@ -41,6 +41,15 @@
         "defense": 3,
         "upgrades": 2
       }
+    },
+    {
+      "type": "tconstruct:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct:tank"
+        }
+      ]
     }
   ]
 }
