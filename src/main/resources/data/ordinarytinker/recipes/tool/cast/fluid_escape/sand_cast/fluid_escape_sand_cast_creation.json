@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:molding_table",
+  "material": {
+    "item": "tconstruct:blank_red_sand_cast"
+  },
+  "pattern": {
+    "type": "tconstruct:material",
+    "item": "ordinarytinker:fluid_escape"
+  },
+  "result": "ordinarytinker:fluid_escape_red_sand_cast"
+}

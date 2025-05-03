@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "tconstruct:bow_grip",
+  "pattern_item": {
+    "tag": "tconstruct:casts/sand"
+  },
+  "result": "ordinarytinker:fluid_escape_sand_cast"
+}

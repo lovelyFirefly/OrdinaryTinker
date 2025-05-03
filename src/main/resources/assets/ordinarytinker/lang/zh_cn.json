@@ -5,6 +5,9 @@
   "key.category.ordinarytinker": "平凡工匠按键映射",
   "key.ordinarytinker.digging_speed": "开拓者工具调速按键",
 
+  "death.attack.specialcatattack": "%1$s 被爱死了",
+  "death.attack.specialcatattack.player": "%1$s 被 %2$s 爱死了",
+
   "fluid.ordinarytinker.molten_armorsteel": "熔融装甲钢",
   "fluid.ordinarytinker.molten_leadamalgamation": "熔融铅汞齐",
   "item.ordinarytinker.molten_armorsteel_bucket": "熔融装甲钢桶",
@@ -24,11 +27,15 @@
   "gui.ordinarytinker.fluid_plate.description": "流能装甲套装是可以储存液体的装甲,存储水时可以减免伤害,存储熔岩时候可以减伤的同时将一部分伤害以火焰的形式返还,四件会一同计算免伤和效果",
 
   "item.ordinarytinker.trident_head": "三叉戟头",
+  "pattern.ordinarytinker.trident_head": "三叉戟头",
   "item.ordinarytinker.mining_core": "挖掘核心",
+  "pattern.ordinarytinker.mining_core": "挖掘核心",
   "item.ordinarytinker.soulge_heart": "魂珠",
   "stat.ordinarytinker.soulge_heart": "魂珠",
+  "pattern.ordinarytinker.soulge_heart": "魂珠",
   "item.ordinarytinker.fluid_escape": "流体逸散器",
   "stat.ordinarytinker.fluid_escape": "流体逸散器",
+  "pattern.ordinarytinker.fluid_escape": "流体逸散器",
 
   "tool_stat.ordinarytinker.detection_range": "索敌范围",
   "tool_stat.ordinarytinker.soulge_heart.detection_range.description": "索敌的范围，在这个范围可以标记并且伤害你的目标,至高100格",
@@ -51,6 +58,9 @@
   "item.ordinarytinker.trident_head_cast": "三叉戟头金质铸膜",
   "item.ordinarytinker.trident_head_red_sand_cast": "三叉戟头红沙铸膜",
   "item.ordinarytinker.trident_head_sand_cast": "三叉戟头沙子铸膜",
+  "item.ordinarytinker.fluid_escape_cast": "流体逸散器金质铸膜",
+  "item.ordinarytinker.fluid_escape_red_sand_cast": "流体逸散器红沙铸膜",
+  "item.ordinarytinker.fluid_escape_sand_cast": "流体逸散器沙子铸膜",
 
   "modifier.ordinarytinker.crawl": "扼杀",
   "modifier.ordinarytinker.crawl.description": "在你的魂戈即将斩杀目标之时将其抓取至你的身前斩杀",
@@ -78,7 +88,14 @@
 
   "modifier.ordinarytinker.sophisticated": "精工细作",
   "modifier.ordinarytinker.sophisticated.description": "提升工具400点基础耐久，如果工具是近战工具则额外增加8%攻速每级，如果为护甲则每级增加1点韧性和护甲",
-  "modifier.ordinarytinker.sophisticated.flavor": "独具匠心的锻造"
+  "modifier.ordinarytinker.sophisticated.flavor": "独具匠心的锻造",
 
 
+  "fluid_plate.tooltip1": "当前存储的流体",
+  "fluid_plate.water.tooltip": "减免你受到的伤害",
+  "fluid_plate.lava.tooltip": "减免你受到的伤害并且返还部分伤害给攻击者,并使目标着火",
+  "fluid_plate.error.tooltip": "无效流体",
+  "fluid_plate.empty.tooltip": "OMG他是空的,或许你需要尝试加点水或者熔岩?",
+
+  "entity.ordinarytinker.hajimi": "哈基米"
 }

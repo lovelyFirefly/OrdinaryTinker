@@ -1,7 +1,8 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
-import com.hoshino.ordinarytinker.Context.DamageType.OTDamageTypes;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.FluidShieldArmor;
+import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
+import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.FluidShieldArmor;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +21,10 @@ import java.util.List;
 public class FluidShieldArmorProtect {
     @SubscribeEvent()
     public static void onModifyDamage(LivingHurtEvent event) {
+        boolean isProtectBypass= OrdinaryTinkerConfig.isProtectBypassMagic.get();
+        if(event.getSource()==null)return;
         if (!(event.getEntity() instanceof Player player)) return;
+        if (!isProtectBypass && (event.getSource().is(DamageTypeTags.BYPASSES_RESISTANCE) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))) return;
         List<ItemStack> armors = player.getInventory().armor;
         float totalModify = 0, totalReflect = 0;
         int canModifyEquip = 0;

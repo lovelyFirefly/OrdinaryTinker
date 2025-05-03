@@ -1,8 +1,8 @@
 package com.hoshino.ordinarytinker.Register;
 
 
-import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.FluidEscapeMaterialStats;
-import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.SoulGeHeartMaterialStats;
+import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialStats;
+import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialStats;
 import slimeknights.tconstruct.library.materials.IMaterialRegistry;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 

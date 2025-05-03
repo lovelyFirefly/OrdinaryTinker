@@ -1,4 +1,5 @@
-// 1.20.1	2025-04-29T01:30:57.7241366	Registries
+// 1.20.1	2025-05-01T14:46:25.6454944	Registries
 502412d0a0c6f4bf39bdea03bf0e98b29a1045cb data/ordinarytinker/damage_type/mercurypoisoning.json
 3d1a3c0f43f40c7d1c434685c0f04e32fe3024f7 data/ordinarytinker/damage_type/playersoulgeattack.json
+4ecaff44a05ee076980f7819e552bcd16cad4113 data/ordinarytinker/damage_type/specialcatattack.json
 c16b14fc3539e5856baed71811a7661f25d66b47 data/ordinarytinker/damage_type/specialreflect.json

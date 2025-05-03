@@ -4,7 +4,6 @@ import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
 import com.hoshino.ordinarytinker.Network.OTChannel;
 import com.hoshino.ordinarytinker.Register.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,12 +25,14 @@ public class OrdinaryTinker {
     public OrdinaryTinker() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(EventPriority.NORMAL, false, FMLCommonSetupEvent.class, this::commonSetup);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, OrdinaryTinkerConfig.Toolspec, "ordinarytinkert.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, OrdinaryTinkerConfig.Toolspec, "ordinarytinkertool.toml");
         OrdinaryTinkerTab.register(bus);
         OrdinaryTinkerItem.register(bus);
         OrdinaryTinkerFluid.register(bus);
         OrdinaryTinkerModifier.register(bus);
         OrdinaryTinkerEffect.register(bus);
+        OrdinaryTinkerLivingEntity.register(bus);
+        OrdinaryTinkerTags.init();
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
@@ -43,8 +44,8 @@ public class OrdinaryTinker {
         return MODID + "." + name.toLowerCase(Locale.CHINA);
     }
 
-    public static ResourceLocation getResource(String name) {
-        return new ResourceLocation(MODID, name);
+    public static ResourceLocation getResource(String path) {
+        return new ResourceLocation(MODID, path);
     }
 
     public static <T> TinkerDataCapability.ComputableDataKey<T> createKey(String name, Supplier<T> constructor) {

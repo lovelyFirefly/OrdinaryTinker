@@ -1,0 +1,8 @@
+{
+  "type": "tconstruct:table_casting_material",
+  "cast": {
+    "tag": "tconstruct:casts/multi_use/fluid_escape"
+  },
+  "item_cost": 6,
+  "result": "ordinarytinker:fluid_escape"
+}

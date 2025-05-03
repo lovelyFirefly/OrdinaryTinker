@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "ordinarytinker:item/tool/casts/fluid_escape/fluid_escape_cast"
+  }
+}

@@ -1,13 +1,13 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Context.Item.Tool.OrdinaryTinkerArmorDefinitions;
-import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.FluidEscapeMaterialStats;
-import com.hoshino.ordinarytinker.Context.Item.Tool.Stats.SoulGeHeartMaterialStats;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.FluidShieldArmor;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.MekaTool;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.SoulGe;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.Trident;
-import com.hoshino.ordinarytinker.Context.Item.Tool.OrdinaryTinkerToolDefinitions;
+import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerArmorDefinitions;
+import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialStats;
+import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialStats;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.FluidShieldArmor;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.MekaTool;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.SoulGe;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.Trident;
+import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerToolDefinitions;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ArmorItem;
@@ -59,6 +59,7 @@ public class OrdinaryTinkerItem {
     public static final ItemObject<ToolPartItem> fluid_escape = OTHER_ITEM.register("fluid_escape", () -> new ToolPartItem(PART, FluidEscapeMaterialStats.ID));
 
     public static final CastItemObject tridentHeadCast = OTHER_ITEM.registerCast(trident_head, CASTS);
+    public static final CastItemObject fluidEscapeCast = OTHER_ITEM.registerCast(fluid_escape, CASTS);
 
     public static final RegistryObject<ModifiableItem> mekatool = ITEM.register("mekatool", () -> new MekaTool(TOOL, OrdinaryTinkerToolDefinitions.MEKATOOL));
     public static final RegistryObject<ModifiableItem> trident = ITEM.register("trident", () -> new Trident(TOOL, OrdinaryTinkerToolDefinitions.TRIDENT));
