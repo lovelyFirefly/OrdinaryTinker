@@ -1,7 +1,0 @@
-// 1.20.1	2025-05-01T14:46:25.6444938	Tags for minecraft:damage_type mod id ordinarytinker
-b729ee37f2ffd72f4c8b283314ecd99d3f5707c1 data/minecraft/tags/damage_type/bypasses_armor.json
-258ad3221d7716df17bf78f2c8825c0ed09abec8 data/minecraft/tags/damage_type/bypasses_cooldown.json
-b2e5ae0c8c5d1748f4bac1a9f4b89be5a08864d6 data/minecraft/tags/damage_type/bypasses_enchantments.json
-f455b72e9854d88257fcfd89b6d15cbbc752d0ef data/minecraft/tags/damage_type/bypasses_invulnerability.json
-b2e5ae0c8c5d1748f4bac1a9f4b89be5a08864d6 data/minecraft/tags/damage_type/bypasses_resistance.json
-026cc39f91e99fdc3c72e929fe5ea746bc966705 data/minecraft/tags/damage_type/no_impact.json

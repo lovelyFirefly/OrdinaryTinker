@@ -65,31 +65,24 @@
   "modifier.ordinarytinker.crawl": "扼杀",
   "modifier.ordinarytinker.crawl.description": "在你的魂戈即将斩杀目标之时将其抓取至你的身前斩杀",
   "modifier.ordinarytinker.crawl.flavor": "你逃不出去的",
-
   "modifier.ordinarytinker.riptide": "激流",
   "modifier.ordinarytinker.riptide.description": "强化版的激流,相较于原版使你非水环境可以正常使用三叉戟,雨天和水中则会进入激流模式,提升词条等级以提升激流冲刺距离",
   "modifier.ordinarytinker.riptide.flavor": "激流勇进！",
-
   "modifier.ordinarytinker.seabless": "海神赐福",
   "modifier.ordinarytinker.seabless.description": "在水中或者下雨耐久消耗降低50%",
   "modifier.ordinarytinker.seabless.flavor": "不是海王",
-
   "modifier.ordinarytinker.loyal": "忠诚",
   "modifier.ordinarytinker.loyal.description": "工具丢出后会返回你的手中！",
   "modifier.ordinarytinker.loyal.flavor": "美妙的谎言",
-
   "modifier.ordinarytinker.lightningbolt": "引雷",
   "modifier.ordinarytinker.lightningbolt.description": "在雨天可以触发雷击效果",
   "modifier.ordinarytinker.lightningbolt.flavor": "同原版",
-
   "modifier.ordinarytinker.crcs": "风雨无阻",
   "modifier.ordinarytinker.crcs.description": "让你不再依赖于水,可以自由冲刺,并且助手持有时完全免疫摔落伤害",
   "modifier.ordinarytinker.crcs.flavor": "海神祝我！",
-
   "modifier.ordinarytinker.sophisticated": "精工细作",
   "modifier.ordinarytinker.sophisticated.description": "提升工具400点基础耐久，如果工具是近战工具则额外增加8%攻速每级，如果为护甲则每级增加1点韧性和护甲",
   "modifier.ordinarytinker.sophisticated.flavor": "独具匠心的锻造",
-
 
   "fluid_plate.tooltip1": "当前存储的流体",
   "fluid_plate.water.tooltip": "减免你受到的伤害",

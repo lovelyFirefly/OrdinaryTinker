@@ -30,6 +30,6 @@ public class OrdinaryTinkerConfig {
     //流能装甲
     public static final ForgeConfigSpec.BooleanValue isProtectBypassMagic = ToolBuilder.comment("层流护甲是否对穿魔等伤害起效,默认对穿魔无效")
             .define("fluidPlateProtectAll",false);
-//    public static final ForgeConfigSpec Materialspec = MaterialBuilder.pop().build();
+//  public static final ForgeConfigSpec Materialspec = MaterialBuilder.pop().build();
     public static final ForgeConfigSpec Toolspec = ToolBuilder.pop().build();
 }
