@@ -8,7 +8,7 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public class SoulGeAttackPacket extends BasePacket{
+public class SoulGeAttackPacket extends BasePacket {
     public final UUID mobUUID;
     public final int targetedTimes;
     public SoulGeAttackPacket(UUID UUID, int targetedTimes){

@@ -10,10 +10,7 @@ import java.util.function.Supplier;
 public class BasePacket {
     public BasePacket() {
     }
-
-    public BasePacket(FriendlyByteBuf buf) {
-    }
-
+    public BasePacket(FriendlyByteBuf buf){}
     public void ToByte(FriendlyByteBuf buf) {
     }
 

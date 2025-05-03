@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Network.Packet;
 
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.MekaTool;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.MekaTool;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

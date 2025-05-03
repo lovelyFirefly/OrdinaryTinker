@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Context.Modifier.*;
-import com.hoshino.ordinarytinker.Context.Modifier.Tool.*;
+import com.hoshino.ordinarytinker.Content.Modifier.*;
+import com.hoshino.ordinarytinker.Content.Modifier.Tool.*;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraftforge.eventbus.api.IEventBus;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
@@ -14,7 +14,6 @@ public class OrdinaryTinkerModifier {
     private static final ModifierDeferredRegister ThermalModifiers = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
     public static final StaticModifier<ArmorCoating> Armorcoating = MODIFIERS.register("armorcoating", ArmorCoating::new);
     public static final StaticModifier<Sophisticated> Sophisticated = MODIFIERS.register("sophisticated", Sophisticated::new);
-    public static final StaticModifier<HighCa> HighCa = MODIFIERS.register("highca", HighCa::new);
     public static final StaticModifier<MercuryPoisoning> MercuryPoisoning = ThermalModifiers.register("mercurypoisoning", MercuryPoisoning::new);
     //工具专属类词条
     public static final StaticModifier<Riptide> Riptide = MODIFIERS.register("riptide", Riptide::new);   //激流

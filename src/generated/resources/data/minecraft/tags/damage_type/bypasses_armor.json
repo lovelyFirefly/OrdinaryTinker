@@ -1,6 +1,8 @@
 {
   "values": [
     "ordinarytinker:mercurypoisoning",
-    "ordinarytinker:specialreflect"
+    "ordinarytinker:specialreflect",
+    "ordinarytinker:specialcatattack",
+    "ordinarytinker:playersoulgeattack"
   ]
 }

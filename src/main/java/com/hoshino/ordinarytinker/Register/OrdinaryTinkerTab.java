@@ -19,8 +19,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
-import static slimeknights.tconstruct.smeltery.TinkerSmeltery.blankRedSandCast;
-import static slimeknights.tconstruct.smeltery.TinkerSmeltery.blankSandCast;
 
 public class OrdinaryTinkerTab {
     public static final DeferredRegister<CreativeModeTab> creative_mode_tab= DeferredRegister.create(Registries.CREATIVE_MODE_TAB,MODID);
@@ -42,6 +40,7 @@ public class OrdinaryTinkerTab {
     }
     private static void addCasts(CreativeModeTab.Output output, Function<CastItemObject,ItemLike> getter) {
         accept(output, getter, OrdinaryTinkerItem.tridentHeadCast);
+        accept(output, getter, OrdinaryTinkerItem.fluidEscapeCast);
     }
 
     private static void addToolItems(CreativeModeTab.ItemDisplayParameters itemDisplayParameters, CreativeModeTab.Output tab) {

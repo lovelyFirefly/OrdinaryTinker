@@ -1,7 +1,8 @@
 package com.hoshino.ordinarytinker.Event.Client;
 
-import com.hoshino.ordinarytinker.Context.Client.KeyBroad.KeyBinding;
-import com.hoshino.ordinarytinker.Context.Item.Tool.tinkeritem.MekaTool;
+import com.hoshino.ordinarytinker.Content.Client.KeyBroad.KeyBinding;
+
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.MekaTool;
 import com.hoshino.ordinarytinker.Network.OTChannel;
 import com.hoshino.ordinarytinker.Network.Packet.MekaKeyBoardPacket;
 import com.hoshino.ordinarytinker.OrdinaryTinker;

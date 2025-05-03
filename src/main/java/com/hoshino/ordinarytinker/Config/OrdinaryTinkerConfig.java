@@ -24,7 +24,12 @@ public class OrdinaryTinkerConfig {
             .defineInRange("TridentDamage", 0.8D, 0.01, 1000D);
     public static final ForgeConfigSpec.IntValue TridentRipSpeed = ToolBuilder.comment("三叉戟冲刺的速度倍率,默认1 ")
             .defineInRange("TridentRipSpeed", 1, 0, Integer.MAX_VALUE);
-
+    //魂戈相关
+    public static final ForgeConfigSpec.BooleanValue inDirectKill = ToolBuilder.comment("魂戈斩杀是否穿魔,默认不穿")
+            .define("SoulgeDirectKill",false);
+    //流能装甲
+    public static final ForgeConfigSpec.BooleanValue isProtectBypassMagic = ToolBuilder.comment("层流护甲是否对穿魔等伤害起效,默认对穿魔无效")
+            .define("fluidPlateProtectAll",false);
 //    public static final ForgeConfigSpec Materialspec = MaterialBuilder.pop().build();
     public static final ForgeConfigSpec Toolspec = ToolBuilder.pop().build();
 }

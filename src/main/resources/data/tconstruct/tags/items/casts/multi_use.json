@@ -1,6 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "#tconstruct:casts/multi_use/trident_head"
+    "#tconstruct:casts/multi_use/fluid_escape"
   ]
 }

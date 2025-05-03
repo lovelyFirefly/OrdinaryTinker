@@ -1,0 +1,16 @@
+{
+  "type": "tconstruct:part_builder",
+  "pattern": "ordinarytinker:fluid_escape",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "ordinarytinker:fluid_escape"
+    }
+  ],
+  "cost": 6,
+  "result": {
+    "item": "ordinarytinker:fluid_escape"
+  }
+}
