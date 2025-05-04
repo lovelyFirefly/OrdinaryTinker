@@ -60,16 +60,17 @@ public class SoulGe extends ModifiableItem {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, Player playerIn, @NotNull InteractionHand hand) {
         ItemStack itemstack = playerIn.getItemInHand(hand);
-        if (itemstack.getDamageValue() >= itemstack.getMaxDamage() - 1||hand==InteractionHand.OFF_HAND) {
+        if (itemstack.getDamageValue() >= itemstack.getMaxDamage() - 1 || hand == InteractionHand.OFF_HAND) {
             return InteractionResultHolder.fail(itemstack);
         } else {
             playerIn.startUsingItem(hand);
             return InteractionResultHolder.consume(itemstack);
         }
     }
+
     @Override
     public @NotNull List<Component> getStatInformation(@NotNull IToolStackView tool, @Nullable Player player, @NotNull List<Component> tooltips, @NotNull TooltipKey key, @NotNull TooltipFlag tooltipFlag) {
-        int[] color=new int[]{0xffea95,0xffaaff,0x55c4ff};
+        int[] color = new int[]{0xffea95, 0xffaaff, 0x55c4ff};
         TooltipBuilder builder = new TooltipBuilder(tool, tooltips);
         if (tool.hasTag(TinkerTags.Items.DURABILITY)) {
             builder.addDurability();
@@ -80,16 +81,16 @@ public class SoulGe extends ModifiableItem {
         }
         builder.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText(
                 "tool_stat.ordinarytinker.detection_range",
-                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.DETECTION_RANGE).intValue()),color,20,20,true));
+                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.DETECTION_RANGE).intValue()), color, 20, 20, true));
         builder.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText(
                 "tool_stat.ordinarytinker.exert_times",
-                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.EXERT_TIMES).intValue()),color,20,20,true));
+                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.EXERT_TIMES).intValue()), color, 20, 20, true));
         builder.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText(
                 "tool_stat.ordinarytinker.attack_frequency",
-                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.ATTACK_FREQUENCY).intValue()),color,20,20,true));
+                ":" + String.format("%d", tool.getStats().get(OrdinaryTinkerToolStat.ATTACK_FREQUENCY).intValue()), color, 20, 20, true));
         builder.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText(
                 "tool_stat.ordinarytinker.kill_threshold",
-                ":" + String.format("%d", Math.round(tool.getStats().get(OrdinaryTinkerToolStat.KILLTHRESHOLD) * 100)) + "%",color,20,20,true));
+                ":" + String.format("%d", Math.round(tool.getStats().get(OrdinaryTinkerToolStat.KILLTHRESHOLD) * 100)) + "%", color, 20, 20, true));
         builder.addAllFreeSlots();
         for (ModifierEntry entry : tool.getModifierList()) {
             entry.getHook(ModifierHooks.TOOLTIP).addTooltip(tool, entry, player, tooltips, key, tooltipFlag);
@@ -165,52 +166,35 @@ public class SoulGe extends ModifiableItem {
         }
     }
 
-    private void attackTargets(LivingEntity livingEntity, IToolStackView view, int dist) {
-        float killThreshold = view.getStats().get(OrdinaryTinkerToolStat.KILLTHRESHOLD);
-        double x = livingEntity.getX();
-        double y = livingEntity.getY();
-        double z = livingEntity.getZ();
-        List<Mob> targetedMob = new ArrayList<>();
-        List<Mob> mobList = livingEntity.level().getEntitiesOfClass(Mob.class, new AABB(x + dist, y + dist, z + dist, x - dist, y - dist, z - dist));
-        for (Mob mob : mobList) {
-            if (targetedMob.size() < 11&&mob.getPersistentData().contains("targeted")) {
-                targetedMob.add(mob);
+    private void attackTargets(LivingEntity entity, IToolStackView tool, int radius) {
+        if (!(entity instanceof Player player)) return;
+        float killThreshold = tool.getStats().get(OrdinaryTinkerToolStat.KILLTHRESHOLD);
+        List<Mob> mobs = player.level().getEntitiesOfClass(Mob.class, new AABB(player.blockPosition()).inflate(radius));
+        mobs.stream().filter(mob -> mob.getPersistentData().contains("targeted")).limit(10).forEach(mob -> {
+            var tag = mob.getPersistentData();
+            int mark = tag.getInt("targeted");
+            if (mark <= 0 || tag.contains("ready_to_die")) return;
+            mob.invulnerableTime = 0;
+            ToolAttackUtil.attackEntity(tool, player, mob);
+            ToolDamageUtil.damageAnimated(tool, 1, player);
+            tag.putInt("targeted", --mark);
+            if (mob.level().isClientSide()) {
+                OTChannel.SendToServer(new SoulGeAttackPacket(mob.getUUID(), mark));
             }
-        }
-        for (Mob mob : mobList) {
-            var persistentData = mob.getPersistentData();
-            var targetedTimes = persistentData.getInt("targeted");
-            if (targetedTimes > 0 && livingEntity instanceof Player player && !persistentData.contains("ready_to_die")){
-                mob.invulnerableTime=view.getStats().getInt(OrdinaryTinkerToolStat.ATTACK_FREQUENCY);
-                ToolAttackUtil.attackEntity(view, player,mob);
-                ToolDamageUtil.damageAnimated(view, 1, player);
-                if(mob.level().isClientSide()){
-                    var clientTargetedTimes = mob.getPersistentData().getInt("targeted");
-                    var uuid = mob.getUUID();
-                    OTChannel.SendToServer(new SoulGeAttackPacket(uuid, clientTargetedTimes));
-                }
-                persistentData.putInt("targeted", targetedTimes - 1);
-                if (mob.getHealth() < mob.getMaxHealth() * killThreshold && mob.isAlive() && !persistentData.contains("ready_to_die")) {
-                    if(ModifierUtil.getModifierLevel(player.getMainHandItem(), OrdinaryTinkerModifier.Crawl.getId())>0){
-                        var mobPos=mob.position();
-                        var playerPos=player.position();
-                        var direction=mobPos.subtract(playerPos);
-                        double distance=mobPos.distanceTo(playerPos);
-                        Vec3 finalPos=playerPos.add(direction.scale(1.0/distance).scale(4));
-                        if(distance>=4){
-                            mob.moveTo(finalPos);
-                        }
+            if (mob.getHealth() < mob.getMaxHealth() * killThreshold && mob.isAlive()) {
+                if (ModifierUtil.getModifierLevel(player.getMainHandItem(), OrdinaryTinkerModifier.crawlStaticModifier.getId()) > 0) {
+                    Vec3 delta = mob.position().subtract(player.position());
+                    if (delta.length() >= 4) {
+                        mob.moveTo(player.position().add(delta.normalize().scale(4)));
                     }
-                    mob.getActiveEffects().removeAll(mob.getActiveEffects());
-                    mob.setNoGravity(false);
-                    mob.setDeltaMovement(new Vec3(0, 2.5, 0));
-                    persistentData.putInt("ready_to_die", 9);
                 }
-                this.drawParticleBeam(player,mob);
-                if (!mob.isAlive()) {
-                    persistentData.remove("targeted");
-                }
+                mob.getActiveEffects().clear();
+                mob.setDeltaMovement(new Vec3(0, 2.5, 0));
+                mob.setNoGravity(false);
+                tag.putInt("ready_to_die", 9);
             }
-        }
+            drawParticleBeam(player, mob);
+            if (!mob.isAlive()) tag.remove("targeted");
+        });
     }
 }

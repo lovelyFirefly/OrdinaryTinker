@@ -1,6 +1,5 @@
 package com.hoshino.ordinarytinker.Network;
 
-import com.hoshino.ordinarytinker.Network.Packet.HaloStatusPacket;
 import com.hoshino.ordinarytinker.Network.Packet.KeyBoardPacket;
 import com.hoshino.ordinarytinker.Network.Packet.MekaKeyBoardPacket;
 import com.hoshino.ordinarytinker.Network.Packet.SoulGeAttackPacket;
@@ -41,12 +40,6 @@ public class OTChannel {
                 .decoder(SoulGeAttackPacket::new)
                 .encoder(SoulGeAttackPacket::ToByte)
                 .consumerMainThread(SoulGeAttackPacket::handle)
-                .add();
-        //光环
-        net.messageBuilder(HaloStatusPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(HaloStatusPacket::new)
-                .encoder(HaloStatusPacket::ToByte)
-                .consumerMainThread(HaloStatusPacket::handle)
                 .add();
     }
     public static <MSG> void SendToServer(MSG msg){

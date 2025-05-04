@@ -1,4 +1,4 @@
-package com.hoshino.ordinarytinker.Content.Modifier.Tool;
+package com.hoshino.ordinarytinker.Content.Modifier.Tool.Exclusive;
 
 import slimeknights.tconstruct.library.modifiers.Modifier;
 

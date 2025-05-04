@@ -48,7 +48,7 @@ public class TinkerTrident extends AbstractArrow {
         }
         Entity entity = this.getOwner();
         if (entity instanceof Player player) {
-            int i = ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.Loyal.getId());
+            int i = ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.loyalStaticModifier.getId());
             if (i > 0 && (this.dealtDamage || this.isNoPhysics())) {
                 if (!this.isAcceptibleReturnOwner()) {
                     if (!this.level().isClientSide && this.pickup == Pickup.ALLOWED) {
@@ -131,7 +131,7 @@ public class TinkerTrident extends AbstractArrow {
     }
 
     public boolean canSummon() {
-        return ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.LightningBolt.getId()) > 0;
+        return ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.lightningBoltStaticModifier.getId()) > 0;
     }
 
     protected boolean tryPickup(Player player) {

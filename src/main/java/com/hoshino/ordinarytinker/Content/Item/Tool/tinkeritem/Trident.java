@@ -57,8 +57,8 @@ public class Trident extends ModifiableItem {
             int i = this.getUseDuration(stack) - duration;
             if (i >= 10) {
                 ToolStack tool = ToolStack.from(stack);
-                int j = ModifierUtil.getModifierLevel(stack, OrdinaryTinkerModifier.Riptide.getId());
-                int k = ModifierUtil.getModifierLevel(stack, OrdinaryTinkerModifier.Crcs.getId());
+                int j = ModifierUtil.getModifierLevel(stack, OrdinaryTinkerModifier.riptideStaticModifier.getId());
+                int k = ModifierUtil.getModifierLevel(stack, OrdinaryTinkerModifier.crcsStaticModifier.getId());
                 if (!level.isClientSide) {
                     stack.hurtAndBreak(1, player, (player1) -> {
                         player1.broadcastBreakEvent(livingEntity.getUsedItemHand());

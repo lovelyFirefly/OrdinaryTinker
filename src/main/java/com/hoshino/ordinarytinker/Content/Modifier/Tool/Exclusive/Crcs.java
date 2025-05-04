@@ -1,4 +1,4 @@
-package com.hoshino.ordinarytinker.Content.Modifier.Tool;
+package com.hoshino.ordinarytinker.Content.Modifier.Tool.Exclusive;
 
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;

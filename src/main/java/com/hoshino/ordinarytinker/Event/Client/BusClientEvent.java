@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Event.Client;
 
 import com.hoshino.ordinarytinker.Content.Client.KeyBroad.KeyBinding;
-import com.hoshino.ordinarytinker.Content.Entity.Renderer.HajimiRender;
+import com.hoshino.ordinarytinker.Content.Client.Renderer.HajimiRender;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerLivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;

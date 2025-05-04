@@ -28,7 +28,7 @@ public class OrdinaryTinkerConfig {
     public static final ForgeConfigSpec.BooleanValue inDirectKill = ToolBuilder.comment("魂戈斩杀是否穿魔,默认不穿")
             .define("SoulgeDirectKill",false);
     //流能装甲
-    public static final ForgeConfigSpec.BooleanValue isProtectBypassMagic = ToolBuilder.comment("层流护甲是否对穿魔等伤害起效,默认对穿魔无效")
+    public static final ForgeConfigSpec.BooleanValue isProtectBypassEnchantment = ToolBuilder.comment("层流护甲是否对穿附魔等伤害起效,默认对穿附魔无效")
             .define("fluidPlateProtectAll",false);
 //  public static final ForgeConfigSpec Materialspec = MaterialBuilder.pop().build();
     public static final ForgeConfigSpec Toolspec = ToolBuilder.pop().build();

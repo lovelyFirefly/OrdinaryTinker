@@ -21,10 +21,10 @@ import java.util.List;
 public class FluidShieldArmorProtect {
     @SubscribeEvent()
     public static void onModifyDamage(LivingHurtEvent event) {
-        boolean isProtectBypass= OrdinaryTinkerConfig.isProtectBypassMagic.get();
+        boolean isProtectBypass= OrdinaryTinkerConfig.isProtectBypassEnchantment.get();
         if(event.getSource()==null)return;
         if (!(event.getEntity() instanceof Player player)) return;
-        if (!isProtectBypass && (event.getSource().is(DamageTypeTags.BYPASSES_RESISTANCE) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))) return;
+        if (!isProtectBypass && (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))) return;
         List<ItemStack> armors = player.getInventory().armor;
         float totalModify = 0, totalReflect = 0;
         int canModifyEquip = 0;

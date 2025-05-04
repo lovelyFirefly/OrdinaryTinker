@@ -1,0 +1,20 @@
+{
+  "type": "tconstruct:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "item": "minecraft:lilac"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:orange_dye"
+    }
+  ],
+  "level": 1,
+  "result": "ordinarytinker:marihalo",
+  "tools": {
+    "tag": "tconstruct:modifiable/armor/helmets"
+  }
+}

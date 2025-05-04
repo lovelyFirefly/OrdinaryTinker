@@ -3,10 +3,14 @@ package com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem;
 import com.c2h6s.etstlib.util.DynamicComponentUtil;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerToolStat;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
@@ -27,6 +31,25 @@ public class FluidShieldArmor extends MultilayerArmorItem {
     public FluidShieldArmor(ModifiableArmorMaterial material, Type slot, Properties properties) {
         super(material, slot, properties);
     }
+
+    @Override
+    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        if(player.tickCount%10==0&&player.getRemainingFireTicks()>10){
+            if(slotIndex>36){
+                var view=ToolStack.from(stack);
+                var ordinaryFluidStack=ToolTankHelper.TANK_HELPER.getFluid(view);
+                if(ordinaryFluidStack.getFluid()==Fluids.WATER&&ordinaryFluidStack.getAmount()>10){
+                    player.level().playSound(null,player.getOnPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS,1f,1);
+                    player.clearFire();
+                    var finalFluid=new FluidStack(ordinaryFluidStack.getFluid(),ordinaryFluidStack.getAmount()-10);
+                    if(!level.isClientSide()){
+                        ToolTankHelper.TANK_HELPER.setFluid(view,finalFluid);
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public @NotNull List<Component> getStatInformation(@NotNull IToolStackView tool, @Nullable Player player, @NotNull List<Component> tooltips, @NotNull TooltipKey key, @NotNull TooltipFlag tooltipFlag) {
         int[] entryColor=new int[]{0xffaaff,0xa347ff,0x1eedff};
@@ -76,7 +99,7 @@ public class FluidShieldArmor extends MultilayerArmorItem {
                     null,0xebafff,50,2000,true));
 
         } else builder.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText(
-                    "fluid_plate.error.tooltip",null,errorColor,3,80,true
+                    "fluid_plate.ordinary.tooltip",null,errorColor,3,80,true
         ));
         builder.addAllFreeSlots();
         for (ModifierEntry entry : tool.getModifierList()) {

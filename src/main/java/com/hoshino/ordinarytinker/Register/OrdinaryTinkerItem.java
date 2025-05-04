@@ -10,6 +10,10 @@ import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.Trident;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerToolDefinitions;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -41,7 +45,6 @@ public class OrdinaryTinkerItem {
     private static final Item.Properties CASTS = (new Item.Properties()).stacksTo(64);
 
     public static List<RegistryObject<Item>> commonItem =new ArrayList<>(List.of());
-    public static List<RegistryObject<Item>> toolsAndParts =new ArrayList<>(List.of());
 
     public static RegistryObject<Item> registerCommonMaterials(DeferredRegister<Item> register,String name, Supplier<? extends Item> sup){
         RegistryObject<Item> object = register.register(name,sup);
@@ -50,7 +53,12 @@ public class OrdinaryTinkerItem {
     }
 
     public static final Supplier<Item> ArmorSteel_ingot=registerCommonMaterials(ITEM,"armorsteel_ingot",()->new Item(new Item.Properties()));
-    public static final Supplier<Item> CheeseAlloy_ingot=registerCommonMaterials(ITEM,"cheesealloy_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> SoulcheeseAlloy_ingot=registerCommonMaterials(ITEM,"soulcheese_ingot",()->new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(6)
+                    .saturationMod(0.6F)
+                    .fast()
+                    .effect(()->new MobEffectInstance(MobEffects.BLINDNESS,100,0),1)
+                    .build())));
     public static final Supplier<Item> LeadAmalgamation_ingot=registerCommonMaterials(ITEM,"leadamalgamation_ingot",()->new Item(new Item.Properties()));
 
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));

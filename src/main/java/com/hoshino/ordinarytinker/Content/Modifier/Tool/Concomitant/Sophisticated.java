@@ -1,4 +1,4 @@
-package com.hoshino.ordinarytinker.Content.Modifier;
+package com.hoshino.ordinarytinker.Content.Modifier.Tool.Concomitant;
 
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -15,8 +15,6 @@ public class Sophisticated extends Modifier implements  ToolStatsModifierHook {
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOL_STATS);
     }
-
-
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
         ToolStats.DURABILITY.add(builder,400* modifier.getLevel());
