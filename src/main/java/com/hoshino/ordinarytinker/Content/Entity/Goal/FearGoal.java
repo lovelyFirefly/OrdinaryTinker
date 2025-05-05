@@ -1,57 +1,69 @@
 package com.hoshino.ordinarytinker.Content.Entity.Goal;
 
-import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 
-public class FearGoal extends Goal {
-    private final Mob mob;
-    private final float detectionRange;
-    private final double speedModifier;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-    public FearGoal(Mob mob, float range, double speed) {
-        this.mob = mob;
-        this.detectionRange = range;
-        this.speedModifier = speed;
+public class FearGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
+    private final Supplier<T> targetSupplier;
+    private final Predicate<T> condition;
+    private final double sprintSpeedModifier;
+
+    private float shakeIntensity = 30.0f;
+    private float shakeSpeed = 0.2f;
+    private float maxIntensity = 80.0f;
+
+    public FearGoal(PathfinderMob mob, Class<T> avoidClass, float maxDist, double walkSpeed, double sprintSpeed, double sprintSpeedModifier, Supplier<T> targetSupplier, Predicate<T> condition) {
+        super(mob, avoidClass, maxDist, walkSpeed, sprintSpeed);
+        this.targetSupplier = targetSupplier;
+        this.condition = condition;
+        this.sprintSpeedModifier = sprintSpeedModifier;
     }
 
     @Override
     public boolean canUse() {
-        Player player = mob.level().getNearestPlayer(mob, detectionRange);
-        if(player==null)return false;
-        return isFearSource(player);
-    }
-    private boolean isFearSource(Player player) {
-        return ModifierLevel.EquipHasModifierlevel(player, OrdinaryTinkerModifier.hoshinoHaloStaticModifier.getId());
+        T potentialTarget = targetSupplier.get();
+        if (potentialTarget != null && potentialTarget.isAlive() && condition.test(potentialTarget)) {
+            this.toAvoid = potentialTarget;
+            return super.canUse();
+        }
+        return false;
     }
 
     @Override
-    public void start() {
-        Player target = mob.level().getNearestPlayer(mob, detectionRange);
-        if (target == null) return;
-        Vec3 fleePos = calculateFleePosition(target.position());
-        mob.getNavigation().moveTo(mob.getNavigation().createPath(BlockPos.containing(fleePos), 1), speedModifier);
-        mob.setTarget(null);
-        mob.setAggressive(false);
-    }
-    private Vec3 calculateFleePosition(Vec3 sourcePos) {
-        Mob mob = this.mob;
-        Vec3 fleeDirection = mob.position().subtract(sourcePos).normalize();
-        int maxAttempts = 5;
-        for (int i = 0; i < maxAttempts; i++) {
-            double offsetX = fleeDirection.x * 8 + (mob.getRandom().nextDouble() - 0.5) * 4;
-            double offsetZ = fleeDirection.z * 8 + (mob.getRandom().nextDouble() - 0.5) * 4;
-            BlockPos targetPos = mob.blockPosition().offset((int) offsetX, 0, (int) offsetZ);
-            Path path = mob.getNavigation().createPath(targetPos, 1);
-            if (path != null && path.canReach()) {
-                return Vec3.atBottomCenterOf(targetPos);
-            }
+    public void tick() {
+        if(toAvoid==null)return;
+        if (toAvoid.isSprinting()) {
+            mob.getNavigation().setSpeedModifier(this.sprintSpeedModifier * 1.2);
+        } else {
+            super.tick();
         }
-        return mob.position().add(fleeDirection.scale(8));
+        updateHeadShaking();
+    }
+
+    private void updateHeadShaking() {
+        if (canUse() && toAvoid != null) {
+            long gameTime = mob.level().getGameTime();
+            float wave1 = (float) Math.sin(gameTime * shakeSpeed) * shakeIntensity;
+            float wave2 = (float) Math.cos(gameTime * shakeSpeed * 0.7f) * (shakeIntensity * 0.6f);
+            float combinedWave = (wave1 + wave2) * 0.8f;
+            float distanceFactor = (float) (1.0 - mob.distanceTo(toAvoid)/15.0);
+            float dynamicIntensity = Math.min(maxIntensity, shakeIntensity + 30.0f * distanceFactor);
+            mob.yHeadRot = mob.yBodyRot + combinedWave * dynamicIntensity;
+            if (mob.getRandom().nextFloat() < 0.3f) {
+                mob.yHeadRot += (mob.getRandom().nextFloat() - 0.5f) * 15.0f;
+            }
+        } else {
+            mob.yHeadRot = mob.yBodyRot;
+        }
+    }
+    public FearGoal<T> setShakeParams(float baseIntensity, float speed, float max) {
+        this.shakeIntensity = baseIntensity;
+        this.shakeSpeed = speed;
+        this.maxIntensity = max;
+        return this;
     }
 }

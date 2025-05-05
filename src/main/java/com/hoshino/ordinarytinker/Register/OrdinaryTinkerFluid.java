@@ -38,6 +38,10 @@ public class OrdinaryTinkerFluid {
 
     public static final FluidObject<ForgeFlowingFluid> molten_armorsteel = registerHotBurning(FLUIDS,"molten_armorsteel",770,1,4,0.5f);
     public static final FluidObject<ForgeFlowingFluid> molten_leadamalgamation = registerHotBurning(FLUIDS,"molten_leadamalgamation",210,2,5,1f);
+    public static final FluidObject<ForgeFlowingFluid> molten_experiencesteel = registerHotBurning(FLUIDS,"molten_experiencesteel",210,2,5,1f);
+    public static final FluidObject<ForgeFlowingFluid> molten_kemomimi = registerHotBurning(FLUIDS,"molten_kemomimi",210,2,5,1f);
+    public static final FluidObject<ForgeFlowingFluid> molten_whitedwarf = registerHotBurning(FLUIDS,"molten_whitedwarf",210,2,5,1f);
+    public static final FluidObject<ForgeFlowingFluid> molten_takeru = registerHotBurning(FLUIDS,"molten_takeru",210,2,5,1f);
     public static void register(IEventBus bus){
         FLUIDS.register(bus);
     }

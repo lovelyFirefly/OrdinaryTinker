@@ -28,7 +28,7 @@
   "item.ordinarytinker.fluid_plate_leggings": "fluid plate leggings",
   "item.ordinarytinker.fluid_plate_boots": "fluid plate boots",
   "gui.ordinarytinker.fluid_plate": "fluid plate armor",
-  "gui.ordinarytinker.fluid_plate.description": "流能装甲套装是可以储存液体的装甲,存储水时可以减免伤害,存储熔岩时候可以减伤的同时将一部分伤害以火焰的形式返还,四件会一同计算免伤和效果",
+  "gui.ordinarytinker.fluid_plate.description": "流能装甲套装是可以储存液体的装甲,存储液体时可以减免伤害,存储水会周期性灭火,存储熔岩时候可以减伤的同时将一部分伤害以火焰的形式返还,四件会一同计算免伤和效果",
 
   "item.ordinarytinker.trident_head": "trident head",
   "pattern.ordinarytinker.trident_head": "trident head",
@@ -105,12 +105,23 @@
   "modifier.ordinarytinker.al1shalo": "Halo Style - Tendou Arisu",
   "modifier.ordinarytinker.al1shalo.description": "Grants Alice's halo visual effect when equipped. Increases magic damage dealt by 12% but increases magic damage taken by 3%.",
   "modifier.ordinarytinker.al1shalo.flavor": "Behold the light!",
+  "modifier.ordinarytinker.armorcoating": "护甲镀层",
+  "modifier.ordinarytinker.armorcoating.description": "格挡掉全身词条总等级x护甲值x0.1的伤害,当这个数值超过受到的伤害时,你会完全免疫此次伤害,作为护甲还会增加10%基础护甲值",
+  "modifier.ordinarytinker.armorcoating.flavor": "未能击穿目标装甲",
+  "modifier.ordinarytinker.dementors": "摄魂",
+  "modifier.ordinarytinker.dementors.description": "每次攻击/每次受有来源的伤有3%概率汲取目标灵魂至工具中,受到致命伤害会消耗灵魂10层来抵挡此次死亡,至多存储20 x 词条等级层",
+  "modifier.ordinarytinker.dementors.flavor": "摄魂夺魄",
+  "modifier.ordinarytinker.fear": "恐惧",
+  "modifier.ordinarytinker.fear.description": "当你穿戴有此装备时候会恐吓最大生命小于10的所有生物,使其远离你20格并且不停摇头",
+  "modifier.ordinarytinker.fear.flavor": "于是转身向山里走去",
 
   "fluid_plate.tooltip1": "当前存储的流体",
   "fluid_plate.water.tooltip": "减免你受到的伤害,着火时候每隔0.5秒尝试熄灭身上的火焰,每次熄灭消耗10mb水",
   "fluid_plate.lava.tooltip": "减免你受到的伤害并且返还部分伤害给攻击者,并使目标着火",
   "fluid_plate.ordinary.tooltip": "无特殊效果流体",
   "fluid_plate.empty.tooltip": "OMG他是空的,或许你需要尝试加点水或者熔岩?",
+
+  "tooltip.modifier.demetors": "存储魂魄层数",
 
   "entity.ordinarytinker.hajimi": "Fierce cats"
 }

@@ -27,7 +27,7 @@ public class HaloRender {
             Player player = event.player;
             if (player.isSleeping()) return;
             Arrays.stream(HaloRendererEnum.values()).parallel().forEach(strategy -> {
-                int level = ModifierUtil.getModifierLevel(player.getItemBySlot(EquipmentSlot.HEAD), strategy.getModifierId());
+                int level = ModifierUtil.getModifierLevel(player.getMainHandItem(), strategy.getModifierId());
                 HaloRendererUtil.HALO_STATES.put(strategy.getModifierId(), level > 0);
             });
         }

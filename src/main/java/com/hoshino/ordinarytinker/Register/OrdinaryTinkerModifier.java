@@ -2,6 +2,8 @@ package com.hoshino.ordinarytinker.Register;
 
 import com.hoshino.ordinarytinker.Content.Modifier.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Armor.*;
+import com.hoshino.ordinarytinker.Content.Modifier.General.Dementors;
+import com.hoshino.ordinarytinker.Content.Modifier.General.Fear;
 import com.hoshino.ordinarytinker.Content.Modifier.Halo.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Tool.Concomitant.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Tool.Exclusive.*;
@@ -32,7 +34,9 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<MariHalo> mariHaloStaticModifier = MODIFIERS.register("marihalo", MariHalo::new);
     public static final StaticModifier<ReisaHalo> reisaHaloStaticModifier = MODIFIERS.register("reisahalo", ReisaHalo::new);
     public static final StaticModifier<NatsuHalo> natsuHaloStaticModifier = MODIFIERS.register("natsuhalo", NatsuHalo::new);
-
+    //材料词条
+    public static final StaticModifier<Dementors> dementorsStaticModifier = MODIFIERS.register("dementors", Dementors::new);
+    public static final StaticModifier<Fear> fearStaticModifier = MODIFIERS.register("fear", Fear::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);
     }

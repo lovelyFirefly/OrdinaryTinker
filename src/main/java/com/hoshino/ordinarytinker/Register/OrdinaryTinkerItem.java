@@ -60,6 +60,10 @@ public class OrdinaryTinkerItem {
                     .effect(()->new MobEffectInstance(MobEffects.BLINDNESS,100,0),1)
                     .build())));
     public static final Supplier<Item> LeadAmalgamation_ingot=registerCommonMaterials(ITEM,"leadamalgamation_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> whitedwarf_ingot=registerCommonMaterials(ITEM,"whitedwarf_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> experiencesteel_ingot=registerCommonMaterials(ITEM,"experiencesteel_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> kemomimi_ingot=registerCommonMaterials(ITEM,"kemomimi_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> takeru_ingot=registerCommonMaterials(ITEM,"takeru_ingot",()->new Item(new Item.Properties()));
 
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));
     public static final ItemObject<ToolPartItem> soulge_heart = OTHER_ITEM.register("soulge_heart", () -> new ToolPartItem(PART,SoulGeHeartMaterialStats.ID));

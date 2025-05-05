@@ -33,14 +33,15 @@ public class FluidShieldArmorProtect {
             if (!(armor.getItem() instanceof FluidShieldArmor)) continue;
             var fluidStack = ToolTankHelper.TANK_HELPER.getFluid(ToolStack.from(armor));
             float modify = FluidShieldArmor.getModifyScale(armor);
-            if (fluidStack.getFluid() == Fluids.WATER) {
-                totalModify += modify;
-                canModifyEquip++;
-            } else if (fluidStack.getFluid() == Fluids.LAVA) {
+            if (fluidStack.getFluid() == Fluids.LAVA) {
                 totalReflect += modify;
                 totalModify += modify;
                 canModifyEquip++;
                 reflect = true;
+            }
+            else{
+                totalModify += modify;
+                canModifyEquip++;
             }
         }
         float damagePrevented = event.getAmount() * Math.min(totalModify, 1);
