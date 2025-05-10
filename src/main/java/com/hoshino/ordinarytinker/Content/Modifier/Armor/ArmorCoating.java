@@ -43,7 +43,7 @@ public class ArmorCoating extends Modifier implements DamageBlockModifierHook, M
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        var attributeModifier=new AttributeModifier(UUID.fromString("ec7b7fb9-baaf-483a-926b-45deff60f97c"), Attributes.ARMOR.getDescriptionId(),0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
+        var attributeModifier=new AttributeModifier(UUID.randomUUID(), Attributes.ARMOR.getDescriptionId(),0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
         consumer.accept(Attributes.ARMOR,attributeModifier);
     }
 }

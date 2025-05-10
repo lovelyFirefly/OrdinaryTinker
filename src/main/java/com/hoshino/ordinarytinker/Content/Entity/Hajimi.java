@@ -68,6 +68,10 @@ public class Hajimi extends Cat {
         super.tick();
     }
 
+    public TemptGoal getTemptGoal() {
+        return temptGoal;
+    }
+
     static class HajimiAttackGoal extends MeleeAttackGoal {
         public HajimiAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(mob, speedModifier, followingTargetEvenIfNotSeen);

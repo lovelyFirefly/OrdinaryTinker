@@ -64,6 +64,7 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> experiencesteel_ingot=registerCommonMaterials(ITEM,"experiencesteel_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> kemomimi_ingot=registerCommonMaterials(ITEM,"kemomimi_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> takeru_ingot=registerCommonMaterials(ITEM,"takeru_ingot",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> jd_heart=registerCommonMaterials(ITEM,"jd_heart",()->new Item(new Item.Properties()));
 
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));
     public static final ItemObject<ToolPartItem> soulge_heart = OTHER_ITEM.register("soulge_heart", () -> new ToolPartItem(PART,SoulGeHeartMaterialStats.ID));

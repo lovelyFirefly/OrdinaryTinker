@@ -2,6 +2,7 @@ package com.hoshino.ordinarytinker.Register;
 
 import com.hoshino.ordinarytinker.Content.Modifier.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Armor.*;
+import com.hoshino.ordinarytinker.Content.Modifier.Combat.UncannyValley;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Dementors;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Fear;
 import com.hoshino.ordinarytinker.Content.Modifier.Halo.*;
@@ -15,11 +16,9 @@ import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
 public class OrdinaryTinkerModifier {
 
-    private static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
+    public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
     private static final ModifierDeferredRegister ThermalModifiers = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
-    public static final StaticModifier<ArmorCoating> armorCoatingStaticModifier = MODIFIERS.register("armorcoating", ArmorCoating::new);
-    public static final StaticModifier<Sophisticated> sophisticatedStaticModifier = MODIFIERS.register("sophisticated", Sophisticated::new);
-    public static final StaticModifier<MercuryPoisoning> mercuryPoisoningStaticModifier = ThermalModifiers.register("mercurypoisoning", MercuryPoisoning::new);
+
     //工具专属类词条
     public static final StaticModifier<Riptide> riptideStaticModifier = MODIFIERS.register("riptide", Riptide::new);   //激流
     public static final StaticModifier<Crcs> crcsStaticModifier = MODIFIERS.register("crcs", Crcs::new);   //风雨无阻
@@ -35,8 +34,14 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<ReisaHalo> reisaHaloStaticModifier = MODIFIERS.register("reisahalo", ReisaHalo::new);
     public static final StaticModifier<NatsuHalo> natsuHaloStaticModifier = MODIFIERS.register("natsuhalo", NatsuHalo::new);
     //材料词条
+    public static final StaticModifier<Sophisticated> sophisticatedStaticModifier = MODIFIERS.register("sophisticated", Sophisticated::new);
+    public static final StaticModifier<ArmorCoating> armorCoatingStaticModifier = MODIFIERS.register("armorcoating", ArmorCoating::new);
+    public static final StaticModifier<MercuryPoisoning> mercuryPoisoningStaticModifier = MODIFIERS.register("mercurypoisoning", MercuryPoisoning::new);
     public static final StaticModifier<Dementors> dementorsStaticModifier = MODIFIERS.register("dementors", Dementors::new);
     public static final StaticModifier<Fear> fearStaticModifier = MODIFIERS.register("fear", Fear::new);
+    public static final StaticModifier<UncannyValley> uncannyValleyStaticModifier = MODIFIERS.register("uncannyvalley", UncannyValley::new);
+    public static final StaticModifier<Disguise> disguiseStaticModifier = MODIFIERS.register("disguise", Disguise::new);
+    public static final StaticModifier<Test> testStaticModifier = MODIFIERS.register("test", Test::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);
     }
