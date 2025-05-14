@@ -13,7 +13,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class Hajimi extends Cat {
-    private TemptGoal temptGoal;
     public Hajimi(EntityType<? extends Cat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -62,21 +61,10 @@ public class Hajimi extends Cat {
         this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8D, 1.0000001E-5F));
         this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
     }
-
-    @Override
-    public void tick() {
-        super.tick();
-    }
-
-    public TemptGoal getTemptGoal() {
-        return temptGoal;
-    }
-
     static class HajimiAttackGoal extends MeleeAttackGoal {
         public HajimiAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(mob, speedModifier, followingTargetEvenIfNotSeen);
         }
-
         @Override
         protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
             double attackRange = this.mob.getBbWidth() * 2.0F * this.mob.getBbWidth() * 2.0F + enemy.getBbWidth();

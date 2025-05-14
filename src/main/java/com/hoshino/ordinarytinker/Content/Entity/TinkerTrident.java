@@ -86,7 +86,7 @@ public class TinkerTrident extends AbstractArrow {
         }
     }
 
-    protected ItemStack getPickupItem() {
+    protected @NotNull ItemStack getPickupItem() {
         return this.tridentItem.copy();
     }
 

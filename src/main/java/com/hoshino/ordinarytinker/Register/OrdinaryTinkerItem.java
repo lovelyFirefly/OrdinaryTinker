@@ -1,5 +1,7 @@
 package com.hoshino.ordinarytinker.Register;
 
+import com.hoshino.ordinarytinker.Content.Entity.SpecialArrow;
+import com.hoshino.ordinarytinker.Content.Item.SpecialArrowItem;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerArmorDefinitions;
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialStats;
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialStats;
@@ -15,6 +17,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -65,7 +68,7 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> kemomimi_ingot=registerCommonMaterials(ITEM,"kemomimi_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> takeru_ingot=registerCommonMaterials(ITEM,"takeru_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> jd_heart=registerCommonMaterials(ITEM,"jd_heart",()->new Item(new Item.Properties()));
-
+    public static final RegistryObject<Item> special_arrow = ITEM.register("special_arrow", () -> new SpecialArrowItem(new Item.Properties()));
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));
     public static final ItemObject<ToolPartItem> soulge_heart = OTHER_ITEM.register("soulge_heart", () -> new ToolPartItem(PART,SoulGeHeartMaterialStats.ID));
     public static final ItemObject<ToolPartItem> trident_head = OTHER_ITEM.register("trident_head", () -> new ToolPartItem(PART, HeadMaterialStats.ID));

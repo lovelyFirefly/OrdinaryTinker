@@ -22,9 +22,8 @@ public class OrdinaryTinkerDamageTypeTagProvider extends DamageTypeTagsProvider 
         tag(DamageTypeTags.BYPASSES_ARMOR).add(OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect,OTDamageTypes.SpecailCatAttack,OTDamageTypes.PlayerSoulgeAttack);
         tag(DamageTypeTags.BYPASSES_RESISTANCE).add(OTDamageTypes.PlayerSoulgeAttack);
         tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.PlayerSoulgeAttack);
+        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.PlayerSoulgeAttack,OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect);
         tag(DamageTypeTags.BYPASSES_INVULNERABILITY).add(OTDamageTypes.SpecailCatAttack,OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect);
         tag(DamageTypeTags.NO_IMPACT).add(OTDamageTypes.MERCURYPOISONING);
     }
 }
