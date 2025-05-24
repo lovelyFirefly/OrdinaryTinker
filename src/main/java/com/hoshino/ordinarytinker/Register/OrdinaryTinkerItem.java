@@ -1,24 +1,23 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Content.Entity.SpecialArrow;
 import com.hoshino.ordinarytinker.Content.Item.SpecialArrowItem;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerArmorDefinitions;
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialStats;
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialStats;
-import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.FluidShieldArmor;
-import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.MekaTool;
-import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.SoulGe;
-import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.Trident;
+import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.*;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerToolDefinitions;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -34,14 +33,15 @@ import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 public class OrdinaryTinkerItem {
-    public static final ItemDeferredRegisterExtension OTHER_ITEM = new ItemDeferredRegisterExtension(MODID);
-    public static final DeferredRegister<Item> ITEM=DeferredRegister.create(Registries.ITEM,MODID);
-    protected static final ItemDeferredRegisterExtension ModifiableArmor = new ItemDeferredRegisterExtension(OrdinaryTinker.MODID);
+    private static final ItemDeferredRegisterExtension OTHER_ITEM = new ItemDeferredRegisterExtension(MODID);
+    private static final ItemDeferredRegisterExtension ModifiableArmor = new ItemDeferredRegisterExtension(OrdinaryTinker.MODID);
+    private static final DeferredRegister<Item> ITEM=DeferredRegister.create(Registries.ITEM,MODID);
 
     private static final Item.Properties TOOL = (new Item.Properties()).stacksTo(1);
     private static final Item.Properties PART = (new Item.Properties()).stacksTo(64);

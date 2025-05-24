@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
+import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.armor.DamageBlockModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.armor.ModifyDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.behavior.AttributesModifierHook;
@@ -17,6 +18,7 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
@@ -35,15 +37,19 @@ public class ArmorCoating extends Modifier implements DamageBlockModifierHook, M
         return value > amount;
     }
 
+
     @Override
     public float modifyDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
         float value = context.getEntity().getArmorValue() *0.1f * totalModifierLevel(context.getEntity());
         return amount - value * modifier.getLevel();
     }
+    public UUID UUIDFromSlot(EquipmentSlot slot, ModifierId modifierId){
+        return UUID.nameUUIDFromBytes((slot.getName() +modifierId.toString()).getBytes(StandardCharsets.UTF_8));
+    }
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        var attributeModifier=new AttributeModifier(UUID.randomUUID(), Attributes.ARMOR.getDescriptionId(),0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
+        var attributeModifier=new AttributeModifier(UUIDFromSlot(slot,modifier.getId()), Attributes.ARMOR.getDescriptionId(),0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
         consumer.accept(Attributes.ARMOR,attributeModifier);
     }
 }

@@ -33,4 +33,7 @@ public class OrdinaryTinkerTags {
         public static final TagKey<Item> armorSteel_ingot = forge("armorsteel_ingot");
         public static void init(){}
     }
+    public static class BlockTag{
+
+    }
 }

@@ -127,6 +127,12 @@
   "modifier.ordinarytinker.disguise": "伪猫",
   "modifier.ordinarytinker.disguise.description": "穿戴该装备会让周围20格内猫不再对玩家表现惊慌",
   "modifier.ordinarytinker.disguise.flavor": "传奇爱猫人",
+  "modifier.ordinarytinker.angler": "钓鱼佬",
+  "modifier.ordinarytinker.angler.description": "穿戴该装备时候鱼咬钩将会自动收杆",
+  "modifier.ordinarytinker.angler.flavor": "钓鱼佬天天空军",
+  "modifier.ordinarytinker.potionmaster": "酿造大师",
+  "modifier.ordinarytinker.potionmaster.description": "穿戴在盔甲时候,受到负面药水和中性药水的施加时长随机降低10%每级\n同时使用咕噜强化/药水瓶饮用药水时有8% * 全身总等级概率不消耗药水,当全身总等级大于2时候还会额外延长正面药水效果30%,并且20%概率额外提升一级",
+  "modifier.ordinarytinker.potionmaster.flavor": "我是酿药糕糕糕糕糕糕手",
 
   "fluid_plate.tooltip1": "当前存储的流体",
   "fluid_plate.water.tooltip": "减免你受到的伤害,着火时候每隔0.5秒尝试熄灭身上的火焰,每次熄灭消耗10mb水",

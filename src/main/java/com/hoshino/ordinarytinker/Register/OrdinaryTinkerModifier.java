@@ -41,6 +41,7 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<Fear> fearStaticModifier = MODIFIERS.register("fear", Fear::new);
     public static final StaticModifier<UncannyValley> uncannyValleyStaticModifier = MODIFIERS.register("uncannyvalley", UncannyValley::new);
     public static final StaticModifier<Disguise> disguiseStaticModifier = MODIFIERS.register("disguise", Disguise::new);
+    public static final StaticModifier<PotionMaster> potionMasterStaticModifier = MODIFIERS.register("potionmaster", PotionMaster::new);
     public static final StaticModifier<Test> testStaticModifier = MODIFIERS.register("test", Test::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);

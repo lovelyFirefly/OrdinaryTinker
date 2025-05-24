@@ -1,6 +1,7 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
 import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import net.minecraft.client.model.CatModel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -16,7 +17,6 @@ public class Hajimi extends Cat {
     public Hajimi(EntityType<? extends Cat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Cat.createAttributes().add(Attributes.ATTACK_DAMAGE,16F);
     }

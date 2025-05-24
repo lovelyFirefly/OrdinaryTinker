@@ -4,9 +4,9 @@ import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRenderLogic;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRendererUtil;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRendererEnum;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,15 +20,14 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 public class HaloRender {
-    // 统一事件处理
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END && event.side == LogicalSide.CLIENT) {
             Player player = event.player;
             if (player.isSleeping()) return;
-            Arrays.stream(HaloRendererEnum.values()).parallel().forEach(strategy -> {
-                int level = ModifierUtil.getModifierLevel(player.getMainHandItem(), strategy.getModifierId());
-                HaloRendererUtil.HALO_STATES.put(strategy.getModifierId(), level > 0);
+            Arrays.stream(HaloRendererEnum.values()).parallel().forEach(halo -> {
+                int level = ModifierUtil.getModifierLevel(player.getMainHandItem(), halo.getModifierId());
+                HaloRendererUtil.HALO_STATES.put(halo.getModifierId(), level > 0);
             });
         }
     }
@@ -39,7 +38,7 @@ public class HaloRender {
         PoseStack poseStack = event.getPoseStack();
         float partialTick = event.getPartialTick();
         Arrays.stream(HaloRendererEnum.values())
-                .filter(strategy -> strategy.checkCondition(player))
-                .forEach(strategy -> HaloRenderLogic.renderCompleteDynamicHaloHorizontal(poseStack, player, partialTick, strategy.getTexture()));
+                .filter(halo -> halo.checkCondition(player))
+                .forEach(halo -> HaloRenderLogic.renderCompleteDynamicHaloHorizontal(poseStack, player, partialTick, halo.getTexture()));
     }
 }

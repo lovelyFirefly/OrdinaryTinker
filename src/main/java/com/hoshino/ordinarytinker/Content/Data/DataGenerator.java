@@ -8,6 +8,7 @@ import com.hoshino.ordinarytinker.Content.Data.Language.ENLanguageProvider;
 import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerBucketModelProvider;
 import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerModelProvider;
 import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerItemTagProvider;
+import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialDefinitionData;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
@@ -46,6 +47,9 @@ public final class DataGenerator {
         generator.addProvider(server, new CNLanguageProvider(output, MODID, "zh_cn"));
         generator.addProvider(server, new ENLanguageProvider(output, MODID, "en_us"));
         generator.addProvider(server, new OrdinaryTinkerBucketModelProvider(output, MODID));
+
+        OrdinaryTinkerMaterialDefinitionData materials = new OrdinaryTinkerMaterialDefinitionData(output);
+        generator.addProvider(server,materials);
 
         OrdinaryTinkerBlockTagProvider blockTags = new OrdinaryTinkerBlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(server, blockTags);

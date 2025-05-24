@@ -7,6 +7,7 @@
   "mixins": [
     "CatMixin",
     "CreeperGoalMixin",
+    "FishingHookMixin",
     "MobMixin",
     "SlurpingModifierMixin"
   ],

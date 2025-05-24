@@ -33,6 +33,7 @@ public class OrdinaryTinker {
         OrdinaryTinkerEffect.register(bus);
         OrdinaryTinkerLivingEntity.register(bus);
         OrdinaryTinkerTags.init();
+        OrdinaryTinkerMaterialIDs.init();
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {

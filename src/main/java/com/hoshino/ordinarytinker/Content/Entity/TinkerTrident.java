@@ -105,32 +105,34 @@ public class TinkerTrident extends AbstractArrow {
         float i = (float) Mth.clamp((double) f * this.baseDamage, 0.0D, Float.MAX_VALUE);
         Entity entity1 = this.getOwner();
         this.dealtDamage = true;
+
+
+
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
-        if(entity1 instanceof LivingEntity lv){
-            DamageSource damagesource = lv.level().damageSources().trident(this,lv);
-            if (entity.hurt(damagesource, i)) {
-                return;
-            }
-            this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
-            float f1 = 1.0F;
-            if (this.level() instanceof ServerLevel && this.level().isRaining() && this.canSummon()) {
-                BlockPos blockpos = entity.blockPosition();
-                if (this.level().canSeeSky(blockpos)) {
-                    LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
-                    if (lightningbolt != null) {
-                        lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
-                        lightningbolt.setCause(lv instanceof ServerPlayer ? (ServerPlayer) lv : null);
-                        this.level().addFreshEntity(lightningbolt);
-                    }
-                    soundevent = SoundEvents.TRIDENT_THUNDER;
-                    f1 = 5.0F;
+        if(!(entity1 instanceof Player player))return;
+        ToolAttackUtil.attackEntity(tridentItem,player,entity);
+        DamageSource damagesource = player.level().damageSources().trident(this, player);
+        if (entity.hurt(damagesource, i)) {
+            return;
+        }
+        this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01D, -0.1D, -0.01D));
+        float f1 = 1.0F;
+        if (this.level() instanceof ServerLevel && this.level().isRaining() && this.canSummon()) {
+            BlockPos blockpos = entity.blockPosition();
+            if (this.level().canSeeSky(blockpos)) {
+                LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
+                if (lightningbolt != null) {
+                    lightningbolt.moveTo(Vec3.atBottomCenterOf(blockpos));
+                    lightningbolt.setCause(player instanceof ServerPlayer ? (ServerPlayer) player : null);
+                    this.level().addFreshEntity(lightningbolt);
                 }
-                this.playSound(soundevent, f1, 1.0F);
+                soundevent = SoundEvents.TRIDENT_THUNDER;
+                f1 = 5.0F;
             }
+            this.playSound(soundevent, f1, 1.0F);
         }
 
     }
-
     public boolean canSummon() {
         return ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.lightningBoltStaticModifier.getId()) > 0;
     }

@@ -3,6 +3,8 @@ package com.hoshino.ordinarytinker.Event.Common;
 import com.hoshino.ordinarytinker.Content.Util.EquipmentHelper;
 import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.hoshino.ordinarytinker.Event.CompletelyNewEvent.FluidConsumedEvent;
+import com.hoshino.ordinarytinker.Network.OTChannel;
+import com.hoshino.ordinarytinker.Network.Packet.TestPacket;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEffect;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
@@ -17,8 +19,10 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.tconstruct.fluids.TinkerFluids;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.tools.modifiers.effect.NoMilkEffect;
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID)
 public class CommonLivingEvent {
@@ -47,6 +51,41 @@ public class CommonLivingEvent {
             event.setConsumed(Math.round(event.getConsumed() * 0.1f));
             event.getPlayer().heal(event.getPlayer().getMaxHealth() * 0.23F);
         }
+    }
+    @SubscribeEvent
+    public static void conservePotion(FluidConsumedEvent event) {
+        int modifierLevel=ModifierLevel.getTotalArmorModifierlevel(event.getPlayer(),OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
+        if(modifierLevel==0)return;
+        if (event.getOriginalFluid().getFluid() == TinkerFluids.potion.get()) {
+            boolean shouldSave=event.getPlayer().level().random.nextInt(100) * modifierLevel>8;
+            if(shouldSave){
+                event.setConsumed(0);
+            }
+        }
+    }
+    @SubscribeEvent
+    public static void extensionMobEffectEvent(MobEffectEvent.Applicable event) {
+        var entity=event.getEntity();
+        int modifierLevel=ModifierLevel.getTotalArmorModifierlevel(entity,OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
+        var instance=event.getEffectInstance();
+        var effect=instance.getEffect();
+        if(instance.getEffect() instanceof NoMilkEffect)return;
+        if(instance.isInfiniteDuration()||effect.isInstantenous())return;
+        boolean shouldAdd=entity.level().random.nextInt(11)==5;
+        if(entity instanceof Player&&modifierLevel>0){
+            instance.duration= instance.mapDuration(duration-> Math.round(duration * (1-0.1f * modifierLevel)));
+            if(shouldAdd&&modifierLevel>1&&instance.isInfiniteDuration()){
+                instance.mapDuration(duration->{
+                    instance.amplifier=instance.amplifier+1;
+                    return Math.round(duration * (1+0.3f));
+                });
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void emptyClickEvent(PlayerInteractEvent.LeftClickEmpty event) {
+        OTChannel.SendToServer(new TestPacket(event.getEntity().getUUID()));
     }
 
     @SubscribeEvent

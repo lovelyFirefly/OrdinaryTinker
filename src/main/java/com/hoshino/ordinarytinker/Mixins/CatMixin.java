@@ -16,12 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Cat.CatAvoidEntityGoal.class)
 public abstract class CatMixin <T extends LivingEntity> extends AvoidEntityGoal<T> {
     @Shadow @Final private Cat cat;
-    @Unique
-    private final int experienceLevel;
-
-    public CatMixin(PathfinderMob pMob, Class<T> pEntityClassToAvoid, float pMaxDistance, double pWalkSpeedModifier, double pSprintSpeedModifier, int experienceLevel) {
+    public CatMixin(PathfinderMob pMob, Class<T> pEntityClassToAvoid, float pMaxDistance, double pWalkSpeedModifier, double pSprintSpeedModifier) {
         super(pMob, pEntityClassToAvoid, pMaxDistance, pWalkSpeedModifier, pSprintSpeedModifier);
-        this.experienceLevel = experienceLevel;
     }
 
     @Inject(method = "canUse",at = @At("HEAD"), cancellable = true)
@@ -31,9 +27,5 @@ public abstract class CatMixin <T extends LivingEntity> extends AvoidEntityGoal<
         if (potentialTarget != null && potentialTarget.isAlive() && ModifierLevel.EquipHasModifierlevel(potentialTarget, OrdinaryTinkerModifier.disguiseStaticModifier.getId())) {
             cir.setReturnValue(false);
         }
-    }
-    @Unique
-    public int getExperienceLevel() {
-        return experienceLevel;
     }
 }
