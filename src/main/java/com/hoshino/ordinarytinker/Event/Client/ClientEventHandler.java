@@ -11,17 +11,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID, value = Dist.CLIENT)
 public class ClientEventHandler {
-    @SubscribeEvent
-    public static void clientSetupEvent(FMLClientSetupEvent event) {
-    }
     @SubscribeEvent
     public static void onKeyPressed(InputEvent.Key event) {
         Player player = Minecraft.getInstance().player;
@@ -48,5 +47,9 @@ public class ClientEventHandler {
                 }
             }
         }
+    }
+    @SubscribeEvent
+    public static void onFOVSet(ComputeFovModifierEvent event){
+       var player= event.getPlayer();
     }
 }

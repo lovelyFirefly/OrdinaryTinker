@@ -31,6 +31,8 @@ public class OrdinaryTinkerTags {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
         public static final TagKey<Item> armorSteel_ingot = forge("armorsteel_ingot");
+
+        private static final TagKey<Item> bottle=TagKey.create(Registries.ITEM,new ResourceLocation("forge","water_bottles"));
         public static void init(){}
     }
     public static class BlockTag{

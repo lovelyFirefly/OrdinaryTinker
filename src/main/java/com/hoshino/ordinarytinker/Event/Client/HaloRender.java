@@ -3,16 +3,15 @@ package com.hoshino.ordinarytinker.Event.Client;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRenderLogic;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRendererUtil;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.Halo.HaloRendererEnum;
+import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 import java.util.Arrays;
 
@@ -26,7 +25,7 @@ public class HaloRender {
             Player player = event.player;
             if (player.isSleeping()) return;
             Arrays.stream(HaloRendererEnum.values()).parallel().forEach(halo -> {
-                int level = ModifierUtil.getModifierLevel(player.getMainHandItem(), halo.getModifierId());
+                int level = ModifierLevel.getAllSlotModifierlevel(player,halo.getModifierId());
                 HaloRendererUtil.HALO_STATES.put(halo.getModifierId(), level > 0);
             });
         }

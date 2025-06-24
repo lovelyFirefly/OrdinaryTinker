@@ -9,6 +9,8 @@ import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerBucketModelPr
 import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerModelProvider;
 import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerItemTagProvider;
 import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialDefinitionData;
+import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialStatsData;
+import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialTraitsData;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
@@ -49,7 +51,11 @@ public final class DataGenerator {
         generator.addProvider(server, new OrdinaryTinkerBucketModelProvider(output, MODID));
 
         OrdinaryTinkerMaterialDefinitionData materials = new OrdinaryTinkerMaterialDefinitionData(output);
+        OrdinaryTinkerMaterialStatsData statsData=new OrdinaryTinkerMaterialStatsData(output,materials);
+        OrdinaryTinkerMaterialTraitsData traitsData=new OrdinaryTinkerMaterialTraitsData(output,materials);
         generator.addProvider(server,materials);
+        generator.addProvider(server,statsData);
+        generator.addProvider(server,traitsData);
 
         OrdinaryTinkerBlockTagProvider blockTags = new OrdinaryTinkerBlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(server, blockTags);

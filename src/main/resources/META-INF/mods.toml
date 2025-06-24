@@ -25,7 +25,7 @@ updateJSONURL = "" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL = "" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="untitled1.png" #optional
+logoFile="reisa.png" #optional
 # A text field displayed in the mod UI
 #credits="Thanks for this example mod goes to Java" #optional
 # A text field displayed in the mod UI
@@ -46,7 +46,7 @@ versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies."ordinarytinker"]]
+[[dependencies.ordinarytinker]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version_range}"

@@ -31,7 +31,8 @@ public class OrdinaryTinker {
         OrdinaryTinkerFluid.register(bus);
         OrdinaryTinkerModifier.register(bus);
         OrdinaryTinkerEffect.register(bus);
-        OrdinaryTinkerLivingEntity.register(bus);
+        OrdinaryTinkerEntity.register(bus);
+        OrdinaryTinkerParticle.register(bus);
         OrdinaryTinkerTags.init();
         OrdinaryTinkerMaterialIDs.init();
     }

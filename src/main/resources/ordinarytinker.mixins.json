@@ -7,9 +7,13 @@
   "mixins": [
     "CatMixin",
     "CreeperGoalMixin",
+    "DamageSourceMixin",
+    "EnderManMixin",
     "FishingHookMixin",
+    "FoodDataMixin",
+    "LivingEntityMixin",
     "MobMixin",
-    "SlurpingModifierMixin"
+    "PlayerMixin",
   ],
   "client": [
   ],

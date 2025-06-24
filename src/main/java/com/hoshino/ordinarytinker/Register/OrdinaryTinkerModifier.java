@@ -5,11 +5,13 @@ import com.hoshino.ordinarytinker.Content.Modifier.Armor.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.UncannyValley;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Dementors;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Fear;
+import com.hoshino.ordinarytinker.Content.Modifier.General.FlashOfInspiration;
 import com.hoshino.ordinarytinker.Content.Modifier.Halo.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Tool.Concomitant.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Tool.Exclusive.*;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraftforge.eventbus.api.IEventBus;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -42,6 +44,10 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<UncannyValley> uncannyValleyStaticModifier = MODIFIERS.register("uncannyvalley", UncannyValley::new);
     public static final StaticModifier<Disguise> disguiseStaticModifier = MODIFIERS.register("disguise", Disguise::new);
     public static final StaticModifier<PotionMaster> potionMasterStaticModifier = MODIFIERS.register("potionmaster", PotionMaster::new);
+    public static final StaticModifier<DeadlyPoison> deadlyPoisonStaticModifier = MODIFIERS.register("deadlypoison", DeadlyPoison::new);
+    public static final StaticModifier<FlashOfInspiration> flashOfInspirationStaticModifier = MODIFIERS.register("flashofinspiration", FlashOfInspiration::new);
+    public static final StaticModifier<IceBlood> iceBloodStaticModifier = MODIFIERS.register("iceblood", IceBlood::new);
+    public static final StaticModifier<IronHeart> ironHeartStaticModifier = MODIFIERS.register("ironheart", IronHeart::new);
     public static final StaticModifier<Test> testStaticModifier = MODIFIERS.register("test", Test::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);

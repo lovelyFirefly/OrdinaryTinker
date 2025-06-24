@@ -1,6 +1,7 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
+import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -105,13 +106,10 @@ public class TinkerTrident extends AbstractArrow {
         float i = (float) Mth.clamp((double) f * this.baseDamage, 0.0D, Float.MAX_VALUE);
         Entity entity1 = this.getOwner();
         this.dealtDamage = true;
-
-
-
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
         if(!(entity1 instanceof Player player))return;
         ToolAttackUtil.attackEntity(tridentItem,player,entity);
-        DamageSource damagesource = player.level().damageSources().trident(this, player);
+        DamageSource damagesource = OTDamageTypes.source(player.level(),OTDamageTypes.PlayerSoulgeAttack);
         if (entity.hurt(damagesource, i)) {
             return;
         }

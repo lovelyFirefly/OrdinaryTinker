@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerItem;
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerLivingEntity;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -14,7 +14,7 @@ public class SpecialArrow extends Arrow {
         super(pEntityType, pLevel);
     }
     public SpecialArrow(Level pLevel, LivingEntity pShooter) {
-        this(OrdinaryTinkerLivingEntity.special_arrow.get(),pLevel);
+        this(OrdinaryTinkerEntity.special_arrow.get(),pLevel);
         this.setPos(pShooter.getX(),pShooter.getEyeY() - 0.1,pShooter.getZ());
         this.setYRot(pShooter.getYRot());
         this.setXRot(pShooter.getXRot());

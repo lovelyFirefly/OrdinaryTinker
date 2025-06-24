@@ -1,5 +1,6 @@
 package com.hoshino.ordinarytinker.Register;
 
+import com.hoshino.ordinarytinker.Content.Item.HugeArrowItem;
 import com.hoshino.ordinarytinker.Content.Item.SpecialArrowItem;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerArmorDefinitions;
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialStats;
@@ -7,17 +8,12 @@ import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialSta
 import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.*;
 import com.hoshino.ordinarytinker.Content.Item.Tool.OrdinaryTinkerToolDefinitions;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -33,7 +29,6 @@ import slimeknights.tconstruct.tools.stats.StatlessMaterialStats;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
@@ -69,6 +64,7 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> takeru_ingot=registerCommonMaterials(ITEM,"takeru_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> jd_heart=registerCommonMaterials(ITEM,"jd_heart",()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> special_arrow = ITEM.register("special_arrow", () -> new SpecialArrowItem(new Item.Properties()));
+    public static final RegistryObject<Item> huge_arrow = ITEM.register("huge_arrow", () -> new HugeArrowItem(new Item.Properties()));
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));
     public static final ItemObject<ToolPartItem> soulge_heart = OTHER_ITEM.register("soulge_heart", () -> new ToolPartItem(PART,SoulGeHeartMaterialStats.ID));
     public static final ItemObject<ToolPartItem> trident_head = OTHER_ITEM.register("trident_head", () -> new ToolPartItem(PART, HeadMaterialStats.ID));
