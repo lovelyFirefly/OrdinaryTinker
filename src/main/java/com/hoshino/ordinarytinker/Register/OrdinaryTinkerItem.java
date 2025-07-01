@@ -49,13 +49,12 @@ public class OrdinaryTinkerItem {
         commonItem.add(object);
         return object;
     }
-
     public static final Supplier<Item> ArmorSteel_ingot=registerCommonMaterials(ITEM,"armorsteel_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> SoulcheeseAlloy_ingot=registerCommonMaterials(ITEM,"soulcheese_ingot",()->new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(6)
                     .saturationMod(0.6F)
                     .fast()
-                    .effect(()->new MobEffectInstance(MobEffects.BLINDNESS,100,0),1)
+                    .effect(()-> new MobEffectInstance(MobEffects.BLINDNESS,100,0),1)
                     .build())));
     public static final Supplier<Item> LeadAmalgamation_ingot=registerCommonMaterials(ITEM,"leadamalgamation_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> whitedwarf_ingot=registerCommonMaterials(ITEM,"whitedwarf_ingot",()->new Item(new Item.Properties()));
@@ -63,6 +62,8 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> kemomimi_ingot=registerCommonMaterials(ITEM,"kemomimi_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> takeru_ingot=registerCommonMaterials(ITEM,"takeru_ingot",()->new Item(new Item.Properties()));
     public static final Supplier<Item> jd_heart=registerCommonMaterials(ITEM,"jd_heart",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> star_debris=ITEM.register("star_debris",()->new Item(new Item.Properties()));
+    public static final Supplier<Item> eagle_ammo=ITEM.register("eagle_ammo",()->new Item(new Item.Properties()));
     public static final RegistryObject<Item> special_arrow = ITEM.register("special_arrow", () -> new SpecialArrowItem(new Item.Properties()));
     public static final RegistryObject<Item> huge_arrow = ITEM.register("huge_arrow", () -> new HugeArrowItem(new Item.Properties()));
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));

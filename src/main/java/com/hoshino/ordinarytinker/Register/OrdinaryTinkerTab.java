@@ -22,8 +22,8 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 public class OrdinaryTinkerTab {
     public static final DeferredRegister<CreativeModeTab> creative_mode_tab= DeferredRegister.create(Registries.CREATIVE_MODE_TAB,MODID);
-    public static final String OrdinaryTinkerMaterials="tab.ordinarytinker.materials";
-    public static final String OrdinaryTinkerTools="tab.ordinarytinker.tools";
+    public static final String ordinaryTinkerMaterials="tab.ordinarytinker.materials";
+    public static final String ordinaryTinkerTools="tab.ordinarytinker.tools";
 
     private static void acceptTool(Consumer<ItemStack> output, Supplier<? extends IModifiable> tool) {
         ToolBuildHandler.addVariants(output, tool.get(), "");
@@ -58,11 +58,12 @@ public class OrdinaryTinkerTab {
         addCasts(tab, CastItemObject::getSand);
         addCasts(tab, CastItemObject::getRedSand);
     }
+    public static final int[] color = new int[]{0xffea95, 0xffaaff, 0x55c4ff};
     public static final Supplier<CreativeModeTab> materials=creative_mode_tab.register("materials",()-> CreativeModeTab.builder()
             //槽位位置
             .withTabsBefore(CreativeModeTabs.COMBAT)
             //物品栏名称
-            .title(Component.translatable(OrdinaryTinkerMaterials))
+            .title(Component.translatable(ordinaryTinkerMaterials))
             //图标
             .icon(OrdinaryTinkerItem.ArmorSteel_ingot.get()::getDefaultInstance)
             .displayItems((itemDisplayParameters, output) -> {
@@ -80,7 +81,7 @@ public class OrdinaryTinkerTab {
             //槽位位置
             .withTabsBefore(CreativeModeTabs.COMBAT)
             //物品栏名称
-            .title(Component.translatable(OrdinaryTinkerTools))
+            .title(Component.translatable(ordinaryTinkerTools))
             //图标
             .icon(OrdinaryTinkerItem.tridentHeadCast.get()::getDefaultInstance)
             .displayItems(OrdinaryTinkerTab::addToolItems)

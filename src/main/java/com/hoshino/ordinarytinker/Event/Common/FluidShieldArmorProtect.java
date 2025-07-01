@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
-import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.FluidShieldArmor;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.tags.DamageTypeTags;
@@ -58,7 +58,7 @@ public class FluidShieldArmorProtect {
             });
         }
         if (reflect && event.getSource().getEntity() instanceof LivingEntity enemy && !event.getSource().is(DamageTypeTags.AVOIDS_GUARDIAN_THORNS)) {
-            enemy.hurt(OTDamageTypes.source(player.level(), OTDamageTypes.SpecialReflect, player, player),totalReflect * damagePrevented);
+            enemy.hurt(OrdinaryTinkerDamageTypes.source(player.level(), OrdinaryTinkerDamageTypes.SpecialReflect, player, player),totalReflect * damagePrevented);
             enemy.setRemainingFireTicks(Math.round(totalReflect * damagePrevented * 20));
         }
     }

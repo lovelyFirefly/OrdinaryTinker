@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Content.Data.Tag;
 
-import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.DamageTypeTagsProvider;
@@ -19,11 +19,11 @@ public class OrdinaryTinkerDamageTypeTagProvider extends DamageTypeTagsProvider 
     }
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
-        tag(DamageTypeTags.BYPASSES_ARMOR).add(OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect,OTDamageTypes.SpecailCatAttack,OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.BYPASSES_RESISTANCE).add(OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OTDamageTypes.PlayerSoulgeAttack,OTDamageTypes.MERCURYPOISONING,OTDamageTypes.SpecialReflect);
-        tag(DamageTypeTags.BYPASSES_INVULNERABILITY).add(OTDamageTypes.SpecailCatAttack,OTDamageTypes.PlayerSoulgeAttack);
-        tag(DamageTypeTags.NO_IMPACT).add(OTDamageTypes.MERCURYPOISONING);
+        tag(DamageTypeTags.BYPASSES_ARMOR).add(OrdinaryTinkerDamageTypes.MERCURYPOISONING, OrdinaryTinkerDamageTypes.SpecialReflect, OrdinaryTinkerDamageTypes.SpecailCatAttack, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
+        tag(DamageTypeTags.BYPASSES_RESISTANCE).add(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
+        tag(DamageTypeTags.BYPASSES_ENCHANTMENTS).add(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
+        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, OrdinaryTinkerDamageTypes.MERCURYPOISONING, OrdinaryTinkerDamageTypes.SpecialReflect);
+        tag(DamageTypeTags.BYPASSES_INVULNERABILITY).add(OrdinaryTinkerDamageTypes.SpecailCatAttack, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
+        tag(DamageTypeTags.NO_IMPACT).add(OrdinaryTinkerDamageTypes.MERCURYPOISONING);
     }
 }

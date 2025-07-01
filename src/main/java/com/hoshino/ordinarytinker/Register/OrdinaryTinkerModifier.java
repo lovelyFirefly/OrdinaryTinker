@@ -48,6 +48,8 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<FlashOfInspiration> flashOfInspirationStaticModifier = MODIFIERS.register("flashofinspiration", FlashOfInspiration::new);
     public static final StaticModifier<IceBlood> iceBloodStaticModifier = MODIFIERS.register("iceblood", IceBlood::new);
     public static final StaticModifier<IronHeart> ironHeartStaticModifier = MODIFIERS.register("ironheart", IronHeart::new);
+    public static final StaticModifier<StarFall> starFallStaticModifier = MODIFIERS.register("starfall", StarFall::new);
+    public static final StaticModifier<Covert> covertStaticModifier = MODIFIERS.register("covert", Covert::new);
     public static final StaticModifier<Test> testStaticModifier = MODIFIERS.register("test", Test::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);

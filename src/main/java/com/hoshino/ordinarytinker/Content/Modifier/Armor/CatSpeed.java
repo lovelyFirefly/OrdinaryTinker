@@ -5,6 +5,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -42,6 +44,12 @@ public class CatSpeed extends Modifier implements DamageBlockModifierHook , Tool
             ToolStats.VELOCITY.multiply(builder,1+0.7f * modifier.getLevel());
         }
     }
+    public static final Attribute[] attributes=new Attribute[]{
+            Attributes.ATTACK_SPEED,
+            Attributes.FLYING_SPEED,
+            Attributes.ARMOR_TOUGHNESS,
+            Attributes.FOLLOW_RANGE,
+    };
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {

@@ -1,8 +1,6 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Content.Entity.HugeArrow;
-import com.hoshino.ordinarytinker.Content.Entity.Hajimi;
-import com.hoshino.ordinarytinker.Content.Entity.SpecialArrow;
+import com.hoshino.ordinarytinker.Content.Entity.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -36,6 +34,22 @@ public class OrdinaryTinkerEntity {
                     .clientTrackingRange(4)
                     .updateInterval(20)
                     .build("huge_arrow")
+    );
+    public static final RegistryObject<EntityType<FallenStar>> fallen_star = ENTITIES.register(
+            "fallen_star",
+            () -> EntityType.Builder.<FallenStar>of(FallenStar::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("fallen_star")
+    );
+    public static final RegistryObject<EntityType<EagleAmmo>> eagle_ammo = ENTITIES.register(
+            "eagle_ammo",
+            () -> EntityType.Builder.<EagleAmmo>of(EagleAmmo::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("eagle_ammo")
     );
     public static void register(IEventBus bus){
         ENTITIES.register(bus);

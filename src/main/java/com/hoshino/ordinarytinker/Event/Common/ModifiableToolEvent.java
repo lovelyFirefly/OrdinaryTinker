@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
-import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -20,9 +20,9 @@ public class ModifiableToolEvent {
         if (!should) return;
         DamageSource source;
         if (attacker instanceof Player player) {
-            source = shouldDirectKill ? OTDamageTypes.source(player.level(), OTDamageTypes.PlayerSoulgeAttack, player) : player.damageSources().playerAttack(player);
+            source = shouldDirectKill ? OrdinaryTinkerDamageTypes.source(player.level(), OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, player) : player.damageSources().playerAttack(player);
         } else {
-            source = shouldDirectKill ? OTDamageTypes.source(entity.level(), OTDamageTypes.PlayerSoulgeAttack) : OTDamageTypes.source(entity.level(), DamageTypes.GENERIC);
+            source = shouldDirectKill ? OrdinaryTinkerDamageTypes.source(entity.level(), OrdinaryTinkerDamageTypes.PlayerSoulgeAttack) : OrdinaryTinkerDamageTypes.source(entity.level(), DamageTypes.GENERIC);
         }
         entity.hurt(source, Float.MAX_VALUE);
         data.remove("ready_to_die");

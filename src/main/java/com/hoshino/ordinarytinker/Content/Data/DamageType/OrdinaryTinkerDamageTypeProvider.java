@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Content.Data.DamageType;
 
-import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -15,9 +15,9 @@ public class OrdinaryTinkerDamageTypeProvider implements RegistrySetBuilder.Regi
 
     @Override
     public void run(@NotNull BootstapContext<DamageType> context) {
-        context.register(OTDamageTypes.MERCURYPOISONING, new DamageType("mercurypoisoning", 0.1f, DamageEffects.THORNS));
-        context.register(OTDamageTypes.PlayerSoulgeAttack, new DamageType("playersoulgeattack", 0.1f));
-        context.register(OTDamageTypes.SpecialReflect, new DamageType("specialreflect", 0.1f,DamageEffects.BURNING));
-        context.register(OTDamageTypes.SpecailCatAttack, new DamageType("specialcatattack", 0.1f,DamageEffects.POKING));
+        context.register(OrdinaryTinkerDamageTypes.MERCURYPOISONING, new DamageType("mercurypoisoning", 0.1f, DamageEffects.THORNS));
+        context.register(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, new DamageType("playersoulgeattack", 0.1f));
+        context.register(OrdinaryTinkerDamageTypes.SpecialReflect, new DamageType("specialreflect", 0.1f,DamageEffects.BURNING));
+        context.register(OrdinaryTinkerDamageTypes.SpecailCatAttack, new DamageType("specialcatattack", 0.1f,DamageEffects.POKING));
     }
 }

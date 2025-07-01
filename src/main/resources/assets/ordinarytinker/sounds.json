@@ -1,0 +1,22 @@
+{
+  "star_hit": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.star_hit",
+    "sounds": [
+      {
+        "name": "ordinarytinker:star_hit",
+        "stream": "true"
+      }
+    ]
+  },
+  "eagle_shoot_sound": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.eagle_shoot_sound",
+    "sounds": [
+      {
+        "name": "ordinarytinker:eagle_shoot_sound",
+        "stream": "true"
+      }
+    ]
+  }
+}

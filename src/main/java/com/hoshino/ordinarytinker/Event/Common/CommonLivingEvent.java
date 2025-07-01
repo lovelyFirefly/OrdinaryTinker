@@ -10,7 +10,9 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -26,6 +28,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.fluids.TinkerFluids;
+import slimeknights.tconstruct.library.modifiers.hook.behavior.ProcessLootModifierHook;
+import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tables.TinkerTables;
@@ -35,26 +39,23 @@ import slimeknights.tconstruct.tools.modifiers.effect.NoMilkEffect;
 public class CommonLivingEvent {
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void commonLivingAttack(LivingAttackEvent event) {
-        if(event.getSource() instanceof AddDamageTag tag){
-            tag.ordinarytinker$addDamageTag(a->a.add(DamageTypeTags.IS_FIRE));
-            if(event.getSource().is(DamageTypeTags.IS_FIRE)){
-                if(event.getSource().getEntity()!=null){
-                    event.getSource().getEntity().sendSystemMessage(Component.literal("是火焰伤害"));
-                }
-            }
-        }
+//        if(event.getSource() instanceof AddDamageTag tag){
+//            tag.ordinarytinker$addDamageTag(a->a.add(DamageTypeTags.IS_FIRE));
+//            if(event.getSource().is(DamageTypeTags.IS_FIRE)){
+//                if(event.getSource().getEntity()!=null){
+//                    event.getSource().getEntity().sendSystemMessage(Component.literal("是火焰伤害"));
+//                }
+//            }
+//        }
     }
     @SubscribeEvent
     public static void commonLivingHurt(LivingHurtEvent event){
-        if(event.getSource().is(DamageTypeTags.IS_PROJECTILE)){
-            event.getEntity().sendSystemMessage(Component.literal("是弹射物伤害"));
+
+
+        if(event.getEntity().getMaxHealth()>20){
+            event.getEntity().kill();
         }
     }
-    @SubscribeEvent
-    public static void criticalHitEvent(CriticalHitEvent event){
-
-    }
-
     @SubscribeEvent
     public static void costHealEvent(LivingHealEvent event) {
         var entity=event.getEntity();

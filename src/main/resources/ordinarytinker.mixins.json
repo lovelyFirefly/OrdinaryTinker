@@ -13,7 +13,8 @@
     "FoodDataMixin",
     "LivingEntityMixin",
     "MobMixin",
-    "PlayerMixin",
+    "NearestAttackableTargetGoalMixin",
+    "PlayerMixin"
   ],
   "client": [
   ],

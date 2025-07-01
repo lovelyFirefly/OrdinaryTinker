@@ -1,16 +1,25 @@
 package com.hoshino.ordinarytinker.Event.Client;
 
 import com.hoshino.ordinarytinker.Content.Client.KeyBroad.KeyBinding;
+import com.hoshino.ordinarytinker.Content.Client.Renderer.EagleAmmoRenderer;
+import com.hoshino.ordinarytinker.Content.Client.Renderer.FallenStarRenderer;
 import com.hoshino.ordinarytinker.Content.Client.Renderer.HugeArrowRenderer;
+import com.hoshino.ordinarytinker.Content.Entity.EagleAmmo;
+import com.hoshino.ordinarytinker.Content.Entity.FallenStar;
 import com.hoshino.ordinarytinker.Content.Entity.HugeArrow;
 import com.hoshino.ordinarytinker.Content.Entity.SpecialArrow;
 import com.hoshino.ordinarytinker.Content.Particle.ParticleType.StarFallParticleProvider;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEntity;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerParticle;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
-import net.minecraft.client.renderer.entity.CatRenderer;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.projectile.Fireball;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -22,6 +31,8 @@ import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.data.ModifierIds;
+
+import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class BusClientEvent {
@@ -57,6 +68,24 @@ public class BusClientEvent {
                     @Override
                     public @NotNull ResourceLocation getTextureLocation(@NotNull HugeArrow pEntity) {
                         return new ResourceLocation("textures/entity/cat/tabby.png");
+                    }
+                }
+        );
+        event.registerEntityRenderer(
+                OrdinaryTinkerEntity.fallen_star.get(),
+                context->new FallenStarRenderer(context) {
+                    @Override
+                    public @NotNull ResourceLocation getTextureLocation(@NotNull FallenStar pEntity) {
+                        return new ResourceLocation(MODID,"textures/item/fallen_star.png");
+                    }
+                }
+        );
+        event.registerEntityRenderer(
+                OrdinaryTinkerEntity.eagle_ammo.get(),
+                pContext -> new EagleAmmoRenderer(pContext) {
+                    @Override
+                    public ResourceLocation getTextureLocation(EagleAmmo pEntity) {
+                        return new ResourceLocation(MODID,"textures/entity/fallen_star.png");
                     }
                 }
         );

@@ -18,6 +18,7 @@ import java.util.Locale;
 import java.util.function.Supplier;
 
 
+
 @Mod(OrdinaryTinker.MODID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD,modid = OrdinaryTinker.MODID)
 public class OrdinaryTinker {
@@ -33,8 +34,10 @@ public class OrdinaryTinker {
         OrdinaryTinkerEffect.register(bus);
         OrdinaryTinkerEntity.register(bus);
         OrdinaryTinkerParticle.register(bus);
+        OrdinaryTinkerSound.register(bus);
         OrdinaryTinkerTags.init();
         OrdinaryTinkerMaterialIDs.init();
+        OrdinaryTinkerEntityData.init();
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {

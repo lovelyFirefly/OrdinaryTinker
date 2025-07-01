@@ -1,4 +1,4 @@
-package com.hoshino.ordinarytinker.Content.DamageType;
+package com.hoshino.ordinarytinker.Register;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
-public class OTDamageTypes {
+public class OrdinaryTinkerDamageTypes {
     //Source的Create方法
     private static ResourceKey<DamageType> create(String name) {
         return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MODID,name));
     }
-    public OTDamageTypes(){}
+    public OrdinaryTinkerDamageTypes(){}
 
     //生成Source
     public static DamageSource source(Level level, ResourceKey<DamageType> type, @Nullable Entity direct, @Nullable Entity causing) {
@@ -34,8 +34,9 @@ public class OTDamageTypes {
     }
     //DamageType项
     public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
-
     public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
     public static final ResourceKey<DamageType> SpecialReflect = create("specialreflect");
     public static final ResourceKey<DamageType> SpecailCatAttack = create("specialcatattack");
+    public static final ResourceKey<DamageType> eagleAmmoHurt = create("eagleammohurt");
+    public static final ResourceKey<DamageType> shockwaveHurt = create("shockwavehurt");
 }

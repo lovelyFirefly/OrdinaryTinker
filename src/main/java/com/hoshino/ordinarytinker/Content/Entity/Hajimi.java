@@ -1,7 +1,6 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
-import com.hoshino.ordinarytinker.Content.DamageType.OTDamageTypes;
-import net.minecraft.client.model.CatModel;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -26,7 +25,7 @@ public class Hajimi extends Cat {
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        boolean flag = pEntity.hurt(OTDamageTypes.source(this.level(),OTDamageTypes.SpecailCatAttack,this), this.getAttackDamage());
+        boolean flag = pEntity.hurt(OrdinaryTinkerDamageTypes.source(this.level(), OrdinaryTinkerDamageTypes.SpecailCatAttack,this), this.getAttackDamage());
         if (flag) {
             this.playSound(SoundEvents.FOX_BITE, 1.0F, this.getVoicePitch());
         }

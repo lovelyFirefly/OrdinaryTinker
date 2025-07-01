@@ -7,6 +7,16 @@
 
   "death.attack.specialcatattack": "%1$s 被爱死了",
   "death.attack.specialcatattack.player": "%1$s 被 %2$s 爱死了",
+  "death.attack.eagleammohurt": "%1$s 被天鹰火炮轰成了齑粉",
+  "death.attack.eagleammohurt.player": "%1$s 被 %2$s 用天鹰火炮轰为了齑粉",
+  "death.attack.shockwavehurt": "%1$s 被冲击波当减速带了",
+  "death.attack.shockwavehurt.player": "%1$s 被 %2$s 释放的的冲击波当减速带了",
+  "death.attack.mercurypoisoning": "%1$s 体内重金属含量超标",
+  "death.attack.mercurypoisoning.player": "%1$s 被 %2$s 往体内注入了大量重金属",
+  "death.attack.playersoulgeattack": "%1$s 被魂戈斩杀了",
+  "death.attack.playersoulgeattack.player": "%1$s 被 %2$s 用魂戈斩杀了",
+  "death.attack.specialreflect": "%1$s 被岩浆冷却后的碎片崩死了",
+  "death.attack.specialreflect.player": "%1$s 被 %2$s 用岩浆冷却后的碎片崩死了",
 
   "fluid.ordinarytinker.molten_armorsteel": "熔融装甲钢",
   "fluid.ordinarytinker.molten_leadamalgamation": "熔融铅汞齐",
@@ -178,9 +188,21 @@
   "modifier.ordinarytinker.ironheart": "钢铁之心",
   "modifier.ordinarytinker.ironheart.description": "穿戴时护甲值的免伤上限超限至90%",
   "modifier.ordinarytinker.ironheart.flavor": "V",
+  "modifier.ordinarytinker.starfall": "星落/天瀑",
+  "modifier.ordinarytinker.starfall.description": "弓箭射中的位置会引发一颗流星砸去,对范围内5格敌人造成等同于125%原箭矢伤害的魔法伤害并且让被命中的敌人宕机一秒,每击中一个目标增加5星尘,当收集足够75星尘转而造成一次天瀑打击,范围增加至10格，击飞敌人，生成一道半径50格的冲击波,被冲击波波及到的单位还会被施加缓慢3和高额伤害",
+  "modifier.ordinarytinker.starfall.flavor": "无人可以践踏群星",
+
+  "modifier.ordinarytinker.eagleshoot": "支援-天鹰",
+  "modifier.ordinarytinker.eagleshoot.description": "在射出箭矢时如果落点生物周围10格内生物总血量超过200将会触发天鹰火炮,会发射三发汹涌的炮弹对一个4格范围造成350%碰撞伤害并且引发冲击波,冲击波会蔓延至40格开外并且附带80%冲击伤害,并且击飞敌人",
+  "modifier.ordinarytinker.eagleshoot.flavor": "想你了牢鹰",
+
+  "modifier.ordinarytinker.covert": "隐蔽",
+  "modifier.ordinarytinker.covert.description": "常规寻敌逻辑的怪不会在3格以外主动发现你",
+  "modifier.ordinarytinker.covert.flavor": "这是滚木吗",
 
 
-
+  "subtitles.ordinarytinker.star_hit": "天鹰火炮:宣泄怒火",
+  "subtitles.ordinarytinker.eagle_shoot_sound": "天鹰火炮:瞄准并发射",
   "fluid_plate.tooltip1": "当前存储的流体",
   "fluid_plate.water.tooltip": "减免你受到的伤害,着火时候每隔0.5秒尝试熄灭身上的火焰,每次熄灭消耗10mb水",
   "fluid_plate.lava.tooltip": "减免你受到的伤害并且返还部分伤害给攻击者,并使目标着火",
