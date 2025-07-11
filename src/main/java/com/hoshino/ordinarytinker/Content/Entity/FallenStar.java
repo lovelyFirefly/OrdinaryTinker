@@ -56,7 +56,7 @@ public class FallenStar extends Projectile implements ItemSupplier {
         if (this.tickCount > 500) {
             this.discard();
         }
-        if(this.isArrived){
+        if (this.isArrived) {
             arrivedTime++;
         }
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
@@ -99,7 +99,7 @@ public class FallenStar extends Projectile implements ItemSupplier {
             this.setDeltaMovement(vec31.x, vec31.y, vec31.z);
         }
         this.setPos(d2, d0, d1);
-        if(this.level().isClientSide)return;
+        if (this.level().isClientSide) return;
         if (this.getOwner() instanceof ServerPlayer player) {
             for (int i = 0; i < 4; ++i) {
                 double x = vec3.x;
@@ -110,7 +110,7 @@ public class FallenStar extends Projectile implements ItemSupplier {
             if (this.level().getBlockState(this.blockPosition()).isSolid() && !isArrived) {
                 onArrived(player);
             }
-            if (isArrived&&arrivedTime<40){
+            if (isArrived && arrivedTime < 40) {
                 var pos = new BlockPos((int) targetPosition.x, (int) targetPosition.y, (int) targetPosition.z);
                 AABB aabb = new AABB(pos).inflate(50);
                 List<Mob> mobList = this.level().getEntitiesOfClass(Mob.class, aabb, LivingEntity::isAlive);
@@ -125,18 +125,18 @@ public class FallenStar extends Projectile implements ItemSupplier {
 
     private void onArrived(ServerPlayer player) {
         if (targetPosition == null) return;
-        this.isArrived=true;
-        this.setDeltaMovement(new Vec3(0,0,0));
+        this.isArrived = true;
+        this.setDeltaMovement(new Vec3(0, 0, 0));
         this.level().explode(this, targetPosition.x, targetPosition.y, targetPosition.z, 5, false, Level.ExplosionInteraction.BLOCK);
         if (!this.level().isClientSide) {
             var particle = new StarFallParticleType(true, 20, 0x5555ff, 1, 1, 10, targetPosition);
             player.serverLevel().sendParticles(particle, targetPosition.x(), targetPosition.y() + 0.05, targetPosition.z(), 1, 0, 0, 0, 0.25);
-            level().playSound(null,player.getOnPos(), OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT,0.5f,1);
+            level().playSound(null, player.getOnPos(), OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT, 0.5f, 1);
         }
     }
 
     private void shockWaveHurt(Mob victims, Player attacker) {
-        victims.hurt(OrdinaryTinkerDamageTypes.source(this.level(), OrdinaryTinkerDamageTypes.PlayerSoulgeAttack,attacker),20);
+        victims.hurt(OrdinaryTinkerDamageTypes.source(this.level(), OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, attacker), 20);
     }
 
     @Override

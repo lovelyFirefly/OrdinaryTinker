@@ -8,5 +8,5 @@ import java.util.function.Consumer;
 
 @FunctionalInterface
 public interface AddDamageTag {
-   void ordinarytinker$addDamageTag(Consumer <List<TagKey<DamageType>>> list);
+    void ordinarytinker$addDamageTag(Consumer<List<TagKey<DamageType>>> list);
 }

@@ -21,10 +21,11 @@ import java.util.List;
 public class FluidShieldArmorProtect {
     @SubscribeEvent()
     public static void onModifyDamage(LivingHurtEvent event) {
-        boolean isProtectBypass= OrdinaryTinkerConfig.isProtectBypassEnchantment.get();
-        if(event.getSource()==null)return;
+        boolean isProtectBypass = OrdinaryTinkerConfig.isProtectBypassEnchantment.get();
+        if (event.getSource() == null) return;
         if (!(event.getEntity() instanceof Player player)) return;
-        if (!isProtectBypass && (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))) return;
+        if (!isProtectBypass && (event.getSource().is(DamageTypeTags.BYPASSES_ENCHANTMENTS) || event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY)))
+            return;
         List<ItemStack> armors = player.getInventory().armor;
         float totalModify = 0, totalReflect = 0;
         int canModifyEquip = 0;
@@ -38,8 +39,7 @@ public class FluidShieldArmorProtect {
                 totalModify += modify;
                 canModifyEquip++;
                 reflect = true;
-            }
-            else{
+            } else {
                 totalModify += modify;
                 canModifyEquip++;
             }
@@ -58,7 +58,7 @@ public class FluidShieldArmorProtect {
             });
         }
         if (reflect && event.getSource().getEntity() instanceof LivingEntity enemy && !event.getSource().is(DamageTypeTags.AVOIDS_GUARDIAN_THORNS)) {
-            enemy.hurt(OrdinaryTinkerDamageTypes.source(player.level(), OrdinaryTinkerDamageTypes.SpecialReflect, player, player),totalReflect * damagePrevented);
+            enemy.hurt(OrdinaryTinkerDamageTypes.source(player.level(), OrdinaryTinkerDamageTypes.SpecialReflect, player, player), totalReflect * damagePrevented);
             enemy.setRemainingFireTicks(Math.round(totalReflect * damagePrevented * 20));
         }
     }

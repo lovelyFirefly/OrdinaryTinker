@@ -190,12 +190,13 @@ public final class HaloRenderLogic {
         poseStack.popPose();
         buffer.endBatch();
     }
+
     public static void renderRotationHaloHorizontal(PoseStack poseStack, Player player, float partialTick, ResourceLocation haloTexture) {
         poseStack.pushPose();
         poseStack.translate(0, player.getBbHeight() + 0.35f, 0);
         float yaw = player.getViewYRot(partialTick);
-        float rotationAngle=player.tickCount;
-        Quaternionf rotation = new Quaternionf().rotateY(rotationAngle *(float) Math.PI/180);
+        float rotationAngle = player.tickCount;
+        Quaternionf rotation = new Quaternionf().rotateY(rotationAngle * (float) Math.PI / 180);
         poseStack.mulPose(rotation);
         MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
         VertexConsumer vertexBuilder = buffer.getBuffer(RenderType.entityTranslucent(haloTexture));

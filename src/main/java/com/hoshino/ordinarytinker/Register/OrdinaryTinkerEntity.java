@@ -51,7 +51,8 @@ public class OrdinaryTinkerEntity {
                     .updateInterval(20)
                     .build("eagle_ammo")
     );
-    public static void register(IEventBus bus){
+
+    public static void register(IEventBus bus) {
         ENTITIES.register(bus);
     }
 }

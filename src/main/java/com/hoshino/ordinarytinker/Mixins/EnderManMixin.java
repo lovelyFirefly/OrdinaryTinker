@@ -17,7 +17,8 @@ public abstract class EnderManMixin extends Monster {
     protected EnderManMixin(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    @Inject(method = "hurt",at= @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/EnderMan;teleport()Z"))
-    public void prevent(DamageSource pSource, float pAmount, CallbackInfoReturnable<Boolean> cir){
+
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/EnderMan;teleport()Z"))
+    public void prevent(DamageSource pSource, float pAmount, CallbackInfoReturnable<Boolean> cir) {
     }
 }

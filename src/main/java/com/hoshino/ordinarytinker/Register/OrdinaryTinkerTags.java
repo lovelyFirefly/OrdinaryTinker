@@ -16,26 +16,33 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 public class OrdinaryTinkerTags {
     public static boolean tagsLoaded;
 
-    public static void init(){
+    public static void init() {
         ItemTag.init();
         MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, TagsUpdatedEvent.class, event -> tagsLoaded = true);
     }
-    public static class ItemTag{
+
+    public static class ItemTag {
         private static TagKey<Item> local(String name) {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
+
         private static TagKey<Item> forge(String name) {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
+
         private static TagKey<Item> vanilla(String name) {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
+
         public static final TagKey<Item> armorSteel_ingot = forge("armorsteel_ingot");
 
-        private static final TagKey<Item> bottle=TagKey.create(Registries.ITEM,new ResourceLocation("forge","water_bottles"));
-        public static void init(){}
+        private static final TagKey<Item> bottle = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "water_bottles"));
+
+        public static void init() {
+        }
     }
-    public static class BlockTag{
+
+    public static class BlockTag {
 
     }
 }

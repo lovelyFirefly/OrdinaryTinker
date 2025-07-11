@@ -18,8 +18,8 @@ public class MercuryPoisoning extends Modifier implements MeleeDamageModifierHoo
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float baseDamage, float damage) {
-        if(context.getLivingTarget()!=null){
-            context.getLivingTarget().addEffect(new MobEffectInstance(OrdinaryTinkerEffect.mercurypoisoning.get(),100,1,true,true));
+        if (context.getLivingTarget() != null) {
+            context.getLivingTarget().addEffect(new MobEffectInstance(OrdinaryTinkerEffect.mercurypoisoning.get(), 100, 1, true, true));
         }
         return damage;
     }

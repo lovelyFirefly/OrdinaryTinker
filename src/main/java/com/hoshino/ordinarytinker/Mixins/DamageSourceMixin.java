@@ -19,13 +19,16 @@ import java.util.function.Consumer;
 
 @Mixin(DamageSource.class)
 public abstract class DamageSourceMixin implements AddDamageTag {
-    @Shadow @Final private Holder<DamageType> type;
-    @Unique List<TagKey<DamageType>> ordinarytinker$tagKeyList =new ArrayList<>();
+    @Shadow
+    @Final
+    private Holder<DamageType> type;
+    @Unique
+    List<TagKey<DamageType>> ordinarytinker$tagKeyList = new ArrayList<>();
 
-    @Inject(method = "is(Lnet/minecraft/tags/TagKey;)Z",at = @At("HEAD"), cancellable = true)
-    private void addTag(TagKey<DamageType> pDamageTypeKey, CallbackInfoReturnable<Boolean> cir){
-        if(ordinarytinker$tagKeyList ==null)return;
-        cir.setReturnValue(this.type.is(pDamageTypeKey)|| ordinarytinker$tagKeyList.contains(pDamageTypeKey));
+    @Inject(method = "is(Lnet/minecraft/tags/TagKey;)Z", at = @At("HEAD"), cancellable = true)
+    private void addTag(TagKey<DamageType> pDamageTypeKey, CallbackInfoReturnable<Boolean> cir) {
+        if (ordinarytinker$tagKeyList == null) return;
+        cir.setReturnValue(this.type.is(pDamageTypeKey) || ordinarytinker$tagKeyList.contains(pDamageTypeKey));
     }
 
     @Override

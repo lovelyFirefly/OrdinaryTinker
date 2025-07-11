@@ -21,10 +21,10 @@ public class MikaMiss extends Modifier implements DamageBlockModifierHook {
 
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount) {
-       int a= RANDOM.nextInt(10);
-       var living=context.getEntity();
-        if(a>5){
-            living.level().playSound(null,living,OrdinaryTinkerSound.mika_miss.get(),SoundSource.NEUTRAL,1,1);
+        int a = RANDOM.nextInt(10);
+        var living = context.getEntity();
+        if (a > 5) {
+            living.level().playSound(null, living, OrdinaryTinkerSound.mika_miss.get(), SoundSource.NEUTRAL, 1, 1);
             return true;
         }
         return false;

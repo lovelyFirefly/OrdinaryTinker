@@ -13,7 +13,7 @@ import java.util.List;
 public class LootOutBreak extends Modifier implements ProcessLootModifierHook {
     @Override
     public void processLoot(IToolStackView tool, ModifierEntry modifier, List<ItemStack> generatedLoot, LootContext context) {
-        if(context.getParamOrNull(LootContextParams.BLOCK_STATE)!=null){
+        if (context.getParamOrNull(LootContextParams.BLOCK_STATE) != null) {
 
         }
     }

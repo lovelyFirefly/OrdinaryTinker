@@ -73,10 +73,10 @@ public class BusClientEvent {
         );
         event.registerEntityRenderer(
                 OrdinaryTinkerEntity.fallen_star.get(),
-                context->new FallenStarRenderer(context) {
+                context -> new FallenStarRenderer(context) {
                     @Override
                     public @NotNull ResourceLocation getTextureLocation(@NotNull FallenStar pEntity) {
-                        return new ResourceLocation(MODID,"textures/item/fallen_star.png");
+                        return new ResourceLocation(MODID, "textures/item/fallen_star.png");
                     }
                 }
         );
@@ -85,7 +85,7 @@ public class BusClientEvent {
                 pContext -> new EagleAmmoRenderer(pContext) {
                     @Override
                     public ResourceLocation getTextureLocation(EagleAmmo pEntity) {
-                        return new ResourceLocation(MODID,"textures/entity/fallen_star.png");
+                        return new ResourceLocation(MODID, "textures/entity/fallen_star.png");
                     }
                 }
         );

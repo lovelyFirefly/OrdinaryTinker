@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 
-public enum HaloRendererEnum implements HaloRendererUtil{
+public enum HaloRendererEnum implements HaloRendererUtil {
     HOSHINO(OrdinaryTinkerModifier.hoshinoHaloStaticModifier.get(), "hoshino"),
     AZUSA(OrdinaryTinkerModifier.azusaHaloStaticModifier.get(), "azusa"),
     REISA(OrdinaryTinkerModifier.reisaHaloStaticModifier.get(), "reisa"),
@@ -15,14 +15,17 @@ public enum HaloRendererEnum implements HaloRendererUtil{
     MARI(OrdinaryTinkerModifier.mariHaloStaticModifier.get(), "mari");
     private final Modifier modifier;
     private final ResourceLocation texture;
+
     HaloRendererEnum(Modifier modifierSupplier, String textureName) {
         this.modifier = modifierSupplier;
         this.texture = OrdinaryTinker.getResource("textures/halo/" + textureName + ".png");
     }
+
     @Override
     public ResourceLocation getTexture() {
         return texture;
     }
+
     @Override
     public ModifierId getModifierId() {
         return modifier.getId();

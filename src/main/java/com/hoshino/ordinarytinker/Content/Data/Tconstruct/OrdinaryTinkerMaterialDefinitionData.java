@@ -9,10 +9,11 @@ public class OrdinaryTinkerMaterialDefinitionData extends AbstractMaterialDataPr
     public OrdinaryTinkerMaterialDefinitionData(PackOutput packOutput) {
         super(packOutput);
     }
+
     @Override
     protected void addMaterials() {
-        addMaterial(OrdinaryTinkerMaterialIDs.armorSteel,   4, ORDER_GENERAL, false);
-        addMaterial(OrdinaryTinkerMaterialIDs.soulCheese,   2, ORDER_GENERAL, true);
+        addMaterial(OrdinaryTinkerMaterialIDs.armorSteel, 4, ORDER_GENERAL, false);
+        addMaterial(OrdinaryTinkerMaterialIDs.soulCheese, 2, ORDER_GENERAL, true);
 
 //        addMaterial(OrdinaryTinkerMaterialIDs.whiteDwarf,   4, ORDER_GENERAL, true);
 //        addMaterial(OrdinaryTinkerMaterialIDs.takeru,   3, ORDER_GENERAL, true);

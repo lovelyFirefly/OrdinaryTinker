@@ -59,7 +59,8 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<BladedWaltz> bladedWaltzStaticModifier = MODIFIERS.register("bladedwaltz", BladedWaltz::new);
     public static final StaticModifier<CatSpeed> catSpeedStaticModifier = MODIFIERS.register("catspeed", CatSpeed::new);
     public static final StaticModifier<MikaMiss> mikaMissStaticModifier = MODIFIERS.register("mikamiss", MikaMiss::new);
-    public static void register(IEventBus bus){
+
+    public static void register(IEventBus bus) {
         MODIFIERS.register(bus);
     }
 }

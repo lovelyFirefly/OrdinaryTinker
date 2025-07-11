@@ -16,9 +16,11 @@ public class MekaKeyBoardPacket extends BasePacket {
     public MekaKeyBoardPacket(int ToolLevel) {
         this.ToolLevel = ToolLevel;
     }
+
     public MekaKeyBoardPacket(FriendlyByteBuf buf) {
         ToolLevel = buf.readInt();
     }
+
     @Override
     public void ToByte(FriendlyByteBuf buf) {
         buf.writeInt(ToolLevel);

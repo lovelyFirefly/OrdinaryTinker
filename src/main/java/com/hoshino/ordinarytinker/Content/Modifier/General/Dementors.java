@@ -25,29 +25,31 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.util.List;
 
 
-public class Dementors extends Modifier implements MeleeHitModifierHook , OnAttackedModifierHook , TooltipModifierHook {
-    private static final ResourceLocation SOUL= OrdinaryTinker.getResource("soul");
+public class Dementors extends Modifier implements MeleeHitModifierHook, OnAttackedModifierHook, TooltipModifierHook {
+    private static final ResourceLocation SOUL = OrdinaryTinker.getResource("soul");
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.ON_ATTACKED,ModifierHooks.TOOLTIP);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT, ModifierHooks.ON_ATTACKED, ModifierHooks.TOOLTIP);
     }
+
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        int soulAmount=tool.getPersistentData().getInt(SOUL);
-        tool.getPersistentData().putInt(SOUL,Math.min(10+soulAmount,20 * modifier.getLevel()));
+        int soulAmount = tool.getPersistentData().getInt(SOUL);
+        tool.getPersistentData().putInt(SOUL, Math.min(10 + soulAmount, 20 * modifier.getLevel()));
     }
 
     @Override
     public void onAttacked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        if(source.getEntity()!=null){
-            int soulAmount=tool.getPersistentData().getInt(SOUL);
-            tool.getPersistentData().putInt(SOUL,Math.min(10+soulAmount,20 * ModifierLevel.getTotalArmorModifierlevel(context.getEntity(), this.getId())));
+        if (source.getEntity() != null) {
+            int soulAmount = tool.getPersistentData().getInt(SOUL);
+            tool.getPersistentData().putInt(SOUL, Math.min(10 + soulAmount, 20 * ModifierLevel.getTotalArmorModifierlevel(context.getEntity(), this.getId())));
         }
     }
 
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        int soulAmount=tool.getPersistentData().getInt(SOUL);
-        tooltip.add(DynamicComponentUtil.BreathColorfulText.getColorfulText("tooltip.modifier.demetors", String.valueOf(soulAmount),0x906738,20,4000,true));
+        int soulAmount = tool.getPersistentData().getInt(SOUL);
+        tooltip.add(DynamicComponentUtil.BreathColorfulText.getColorfulText("tooltip.modifier.demetors", String.valueOf(soulAmount), 0x906738, 20, 4000, true));
     }
 }

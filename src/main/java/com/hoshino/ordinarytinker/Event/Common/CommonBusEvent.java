@@ -8,10 +8,10 @@ import net.minecraftforge.fml.common.Mod;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
-@Mod.EventBusSubscriber(modid = MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CommonBusEvent {
     @SubscribeEvent
-    public static void createAttributes(EntityAttributeCreationEvent event){
+    public static void createAttributes(EntityAttributeCreationEvent event) {
         event.put(OrdinaryTinkerEntity.HAJIMI.get(), Hajimi.createAttributes().build());
     }
 }

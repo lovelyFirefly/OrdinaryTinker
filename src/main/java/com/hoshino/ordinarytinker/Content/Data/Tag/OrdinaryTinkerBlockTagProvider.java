@@ -13,6 +13,7 @@ public class OrdinaryTinkerBlockTagProvider extends BlockTagsProvider {
     public OrdinaryTinkerBlockTagProvider(PackOutput output, CompletableFuture<Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, OrdinaryTinker.MODID, existingFileHelper);
     }
+
     @Override
     protected void addTags(Provider pProvider) {
     }

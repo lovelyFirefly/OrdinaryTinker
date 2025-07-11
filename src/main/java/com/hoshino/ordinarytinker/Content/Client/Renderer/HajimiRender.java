@@ -10,6 +10,7 @@ public class HajimiRender extends CatRenderer {
     public HajimiRender(EntityRendererProvider.Context context) {
         super(context);
     }
+
     @Override
     public @NotNull ResourceLocation getTextureLocation(Cat pEntity) {
         return new ResourceLocation("textures/entity/cat/tabby.png");

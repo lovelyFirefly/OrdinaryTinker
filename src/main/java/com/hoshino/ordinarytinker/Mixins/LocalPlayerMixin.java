@@ -23,18 +23,23 @@ import javax.annotation.Nullable;
 
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin extends AbstractClientPlayer {
-    @Shadow public Input input;
-    @Shadow @Final protected Minecraft minecraft;
+    @Shadow
+    public Input input;
+    @Shadow
+    @Final
+    protected Minecraft minecraft;
 
-    @Shadow @Final public ClientPacketListener connection;
+    @Shadow
+    @Final
+    public ClientPacketListener connection;
 
     public LocalPlayerMixin(ClientLevel pClientLevel, GameProfile pGameProfile) {
         super(pClientLevel, pGameProfile);
     }
 
-    @Inject(method = "aiStep",at = @At("HEAD"))
-    private void holdingFly(CallbackInfo ci){
-        if(ModifierLevel.EquipHasModifierlevel(this, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())){
+    @Inject(method = "aiStep", at = @At("HEAD"))
+    private void holdingFly(CallbackInfo ci) {
+        if (ModifierLevel.EquipHasModifierlevel(this, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())) {
             int j = 0;
             if (this.input.shiftKeyDown) {
                 --j;
@@ -43,13 +48,14 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
                 ++j;
             }
             if (j != 0) {
-                this.setDeltaMovement(this.getDeltaMovement().add(0.0D, (float)j * this.getAbilities().getFlyingSpeed() * 3.0F, 0.0D));
+                this.setDeltaMovement(this.getDeltaMovement().add(0.0D, (float) j * this.getAbilities().getFlyingSpeed() * 3.0F, 0.0D));
             }
         }
     }
-    @Inject(method = "aiStep",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V"), cancellable = true)
-    private void prevent(CallbackInfo ci){
-        if(ModifierLevel.EquipHasModifierlevel(this, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())){
+
+    @Inject(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V"), cancellable = true)
+    private void prevent(CallbackInfo ci) {
+        if (ModifierLevel.EquipHasModifierlevel(this, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())) {
             super.aiStep();
             ci.cancel();
         }

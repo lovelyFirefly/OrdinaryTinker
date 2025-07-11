@@ -27,28 +27,33 @@ import java.util.Optional;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    @Shadow public abstract int getArmorValue();
+    @Shadow
+    public abstract int getArmorValue();
 
-    @Shadow public abstract double getAttributeValue(Attribute pAttribute);
+    @Shadow
+    public abstract double getAttributeValue(Attribute pAttribute);
 
     public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    @Inject(method = "getMaxHealth",at = @At("HEAD"), cancellable = true)
-    private void getMaxHealth(CallbackInfoReturnable<Float> cir){
+
+    @Inject(method = "getMaxHealth", at = @At("HEAD"), cancellable = true)
+    private void getMaxHealth(CallbackInfoReturnable<Float> cir) {
         this.getCapability(TinkerDataCapability.CAPABILITY).resolve()
-                .flatMap(holder-> Optional.ofNullable(holder.get(OrdinaryTinkerDataKeys.extraHealth)))
+                .flatMap(holder -> Optional.ofNullable(holder.get(OrdinaryTinkerDataKeys.extraHealth)))
                 .ifPresent(cir::setReturnValue);
     }
-    @Inject(method = "getDamageAfterArmorAbsorb",at = @At("HEAD"), cancellable = true)
-    private void setDamageAfterArmor(DamageSource pDamageSource, float pDamageAmount, CallbackInfoReturnable<Float> cir){
-        var LivingEntity=(LivingEntity)(Object)this;
-        if(!(LivingEntity instanceof Player player))return;
-        int level=ModifierLevel.getTotalArmorModifierlevel(player, OrdinaryTinkerModifier.ironHeartStaticModifier.getId());
-        if(level>0){
-            cir.setReturnValue(ordinarytinker$getDamageAfterAbsorb(pDamageAmount,this.getArmorValue(),(float)this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
+
+    @Inject(method = "getDamageAfterArmorAbsorb", at = @At("HEAD"), cancellable = true)
+    private void setDamageAfterArmor(DamageSource pDamageSource, float pDamageAmount, CallbackInfoReturnable<Float> cir) {
+        var LivingEntity = (LivingEntity) (Object) this;
+        if (!(LivingEntity instanceof Player player)) return;
+        int level = ModifierLevel.getTotalArmorModifierlevel(player, OrdinaryTinkerModifier.ironHeartStaticModifier.getId());
+        if (level > 0) {
+            cir.setReturnValue(ordinarytinker$getDamageAfterAbsorb(pDamageAmount, this.getArmorValue(), (float) this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
         }
     }
+
     @Unique
     private static float ordinarytinker$getDamageAfterAbsorb(float pDamage, float pTotalArmor, float pToughnessAttribute) {
         float f = 2.0F + pToughnessAttribute / 4.0F;

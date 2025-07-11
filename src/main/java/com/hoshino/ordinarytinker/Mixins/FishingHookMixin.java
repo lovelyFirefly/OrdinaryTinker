@@ -20,18 +20,23 @@ import javax.annotation.Nullable;
 @Mixin(FishingHook.class)
 public abstract class FishingHookMixin extends Projectile {
 
-    @Shadow @Nullable public abstract Player getPlayerOwner();
+    @Shadow
+    @Nullable
+    public abstract Player getPlayerOwner();
 
-    @Shadow @Final private static EntityDataAccessor<Boolean> DATA_BITING;
+    @Shadow
+    @Final
+    private static EntityDataAccessor<Boolean> DATA_BITING;
 
     protected FishingHookMixin(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    @Inject(method = "tick",at = @At("HEAD"))
-    private void on(CallbackInfo ci){
-        if(this.entityData.get(DATA_BITING)){
-            if(this.getPlayerOwner()!=null&&this.getPlayerOwner().getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof FishingRodItem item){
-                item.use(getPlayerOwner().level(),getPlayerOwner(),InteractionHand.MAIN_HAND);
+
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void on(CallbackInfo ci) {
+        if (this.entityData.get(DATA_BITING)) {
+            if (this.getPlayerOwner() != null && this.getPlayerOwner().getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof FishingRodItem item) {
+                item.use(getPlayerOwner().level(), getPlayerOwner(), InteractionHand.MAIN_HAND);
             }
         }
     }

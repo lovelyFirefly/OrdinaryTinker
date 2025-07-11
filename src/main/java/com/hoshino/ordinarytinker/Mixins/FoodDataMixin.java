@@ -18,11 +18,13 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import java.util.Optional;
 
 @Mixin(FoodData.class)
-public abstract class FoodDataMixin{
+public abstract class FoodDataMixin {
     @Shadow
     private int tickTimer;
+
     @Shadow
     public abstract void addExhaustion(float pExhaustion);
+
     @Shadow
     private int foodLevel;
     @Unique
@@ -37,10 +39,11 @@ public abstract class FoodDataMixin{
                 .map(p -> p + 20)
                 .orElse(a);
     }
-    @Inject(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/world/food/FoodData;saturationLevel:F",ordinal = 3), cancellable = true)
+
+    @Inject(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/world/food/FoodData;saturationLevel:F", ordinal = 3), cancellable = true)
     private void tick(Player pPlayer, CallbackInfo ci) {
         boolean flag = pPlayer.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION);
-        if (flag && pPlayer.isHurt() && this.foodLevel >= 6&& ModifierLevel.EquipHasModifierlevel(pPlayer, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())) {
+        if (flag && pPlayer.isHurt() && this.foodLevel >= 6 && ModifierLevel.EquipHasModifierlevel(pPlayer, OrdinaryTinkerModifier.iceBloodStaticModifier.getId())) {
             ++this.tickTimer;
             if (this.tickTimer >= 10) {
                 float f = Math.min(this.foodLevel, 6.0F);

@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-public class ExperienceKiller extends Modifier implements MeleeDamageModifierHook , ArrowDamageModifierHook {
+public class ExperienceKiller extends Modifier implements MeleeDamageModifierHook, ArrowDamageModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, EtSTLibHooks.ARROW_DAMAGE);

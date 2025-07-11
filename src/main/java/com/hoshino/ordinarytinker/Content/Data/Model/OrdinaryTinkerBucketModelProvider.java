@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class OrdinaryTinkerBucketModelProvider extends GenericDataProvider {
     private final String modId;
+
     public OrdinaryTinkerBucketModelProvider(PackOutput packOutput, String modId) {
         super(packOutput, Target.RESOURCE_PACK, "models/item");
         this.modId = modId;
@@ -32,7 +33,7 @@ public class OrdinaryTinkerBucketModelProvider extends GenericDataProvider {
         return allOf(
                 BuiltInRegistries.ITEM.entrySet().stream()
                         .filter(entry -> entry.getKey().location().getNamespace().equals(modId) && entry.getValue() instanceof BucketItem)
-                        .map(entry -> saveJson(cache, entry.getKey().location(), makeJson((BucketItem)entry.getValue()))));
+                        .map(entry -> saveJson(cache, entry.getKey().location(), makeJson((BucketItem) entry.getValue()))));
     }
 
     @Override

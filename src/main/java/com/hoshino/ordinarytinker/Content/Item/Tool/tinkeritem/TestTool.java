@@ -18,9 +18,9 @@ public class TestTool extends ModifiableItem {
 
     @Override
     public void onUseTick(Level pLevel, LivingEntity entityLiving, ItemStack stack, int timeLeft) {
-        if(entityLiving instanceof Player player){
-            ItemStack bulletEquip =entityLiving.getOffhandItem();
-            Bullet bullet=new Bullet(pLevel,bulletEquip,player);
+        if (entityLiving instanceof Player player) {
+            ItemStack bulletEquip = entityLiving.getOffhandItem();
+            Bullet bullet = new Bullet(pLevel, bulletEquip, player);
         }
     }
 }

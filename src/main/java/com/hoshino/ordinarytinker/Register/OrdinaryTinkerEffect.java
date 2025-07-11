@@ -12,7 +12,8 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 public class OrdinaryTinkerEffect {
     public static final DeferredRegister<MobEffect> EFFECT = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MODID);
     public static final RegistryObject<MobEffect> mercurypoisoning = EFFECT.register("mercurypoisoning", MercuryPoisoning::new);
-    public static void register(IEventBus bus){
+
+    public static void register(IEventBus bus) {
         EFFECT.register(bus);
     }
 }

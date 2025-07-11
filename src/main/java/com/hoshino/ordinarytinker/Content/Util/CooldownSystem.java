@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CooldownSystem {
     private static final ConcurrentHashMap<UUID, Long> cooldownMap = new ConcurrentHashMap<>();
+
     public static boolean checkAndResetCooldown(UUID id, long cooldownMillis) {
         long now = System.currentTimeMillis();
         Long result = cooldownMap.compute(id, (k, oldTime) ->

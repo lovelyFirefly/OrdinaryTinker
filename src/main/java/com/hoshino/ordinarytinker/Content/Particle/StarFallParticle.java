@@ -18,33 +18,34 @@ public class StarFallParticle extends TextureSheetParticle {
     private final float speed;
     private final float maxRadius;
     private final float currentRadius;
-    public StarFallParticle(ClientLevel pLevel, double pX, double pY, double pZ, int alpha,int color, float speed, float size,float maxRadius,Vec3 origin) {
+
+    public StarFallParticle(ClientLevel pLevel, double pX, double pY, double pZ, int alpha, int color, float speed, float size, float maxRadius, Vec3 origin) {
         super(pLevel, pX, pY, pZ);
-        this.lifetime=30;
+        this.lifetime = 30;
         float r = (color >> 16) & 0xFF;
         float g = (color >> 8) & 0xFF;
         float b = color & 0xFF;
-        this.setColor(r/255f,g/255f,b/255f);
-        this.hasPhysics=false;
-        this.origin=origin;
-        this.speed=speed;
-        this.maxRadius=maxRadius;
-        this.currentRadius=0;
-        this.quadSize=size;
+        this.setColor(r / 255f, g / 255f, b / 255f);
+        this.hasPhysics = false;
+        this.origin = origin;
+        this.speed = speed;
+        this.maxRadius = maxRadius;
+        this.currentRadius = 0;
+        this.quadSize = size;
     }
 
     @Override
     public void tick() {
         super.tick();
-        this.quadSize= this.quadSize * 1.15f;
+        this.quadSize = this.quadSize * 1.15f;
     }
 
     @Override
     public void render(@NotNull VertexConsumer pBuffer, Camera pRenderInfo, float pPartialTicks) {
         Vec3 vec3 = pRenderInfo.getPosition();
-        float f = (float)(Mth.lerp(pPartialTicks, this.xo, this.x) - vec3.x());
-        float f1 = (float)(Mth.lerp(pPartialTicks, this.yo, this.y) - vec3.y());
-        float f2 = (float)(Mth.lerp(pPartialTicks, this.zo, this.z) - vec3.z());
+        float f = (float) (Mth.lerp(pPartialTicks, this.xo, this.x) - vec3.x());
+        float f1 = (float) (Mth.lerp(pPartialTicks, this.yo, this.y) - vec3.y());
+        float f2 = (float) (Mth.lerp(pPartialTicks, this.zo, this.z) - vec3.z());
         Quaternionf quaternionf = new Quaternionf();
         quaternionf.rotateY((float) Math.toRadians(90));
         if (this.roll != 0.0F) {

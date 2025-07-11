@@ -17,15 +17,15 @@ public class OrdinaryTinkerMaterialTraitsData extends AbstractMaterialTraitDataP
     @Override
     protected void addMaterialTraits() {
         addDefaultTraits(OrdinaryTinkerMaterialIDs.armorSteel, OrdinaryTinkerModifier.armorCoatingStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, MaterialRegistry.RANGED,OrdinaryTinkerModifier.armorCoatingStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, MaterialRegistry.ARMOR, OrdinaryTinkerModifier.armorCoatingStaticModifier,OrdinaryTinkerModifier.ironHeartStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, OrdinaryTinkerMaterialStat.SOULGE_HEART,OrdinaryTinkerModifier.armorCoatingStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, OrdinaryTinkerMaterialStat.FLUID_ESCAPE,OrdinaryTinkerModifier.armorCoatingStaticModifier,OrdinaryTinkerModifier.ironHeartStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, MaterialRegistry.RANGED, OrdinaryTinkerModifier.armorCoatingStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, MaterialRegistry.ARMOR, OrdinaryTinkerModifier.armorCoatingStaticModifier, OrdinaryTinkerModifier.ironHeartStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, OrdinaryTinkerMaterialStat.SOULGE_HEART, OrdinaryTinkerModifier.armorCoatingStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.armorSteel, OrdinaryTinkerMaterialStat.FLUID_ESCAPE, OrdinaryTinkerModifier.armorCoatingStaticModifier, OrdinaryTinkerModifier.ironHeartStaticModifier);
 
         addDefaultTraits(OrdinaryTinkerMaterialIDs.soulCheese, OrdinaryTinkerModifier.dementorsStaticModifier);
         addTraits(OrdinaryTinkerMaterialIDs.soulCheese, MaterialRegistry.ARMOR, OrdinaryTinkerModifier.dementorsStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.soulCheese, OrdinaryTinkerMaterialStat.SOULGE_HEART,OrdinaryTinkerModifier.dementorsStaticModifier);
-        addTraits(OrdinaryTinkerMaterialIDs.soulCheese, OrdinaryTinkerMaterialStat.FLUID_ESCAPE,OrdinaryTinkerModifier.dementorsStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.soulCheese, OrdinaryTinkerMaterialStat.SOULGE_HEART, OrdinaryTinkerModifier.dementorsStaticModifier);
+        addTraits(OrdinaryTinkerMaterialIDs.soulCheese, OrdinaryTinkerMaterialStat.FLUID_ESCAPE, OrdinaryTinkerModifier.dementorsStaticModifier);
     }
 
     @Override

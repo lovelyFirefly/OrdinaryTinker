@@ -13,12 +13,13 @@ public class SpecialArrow extends Arrow {
     public SpecialArrow(EntityType<? extends Arrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
     public SpecialArrow(Level pLevel, LivingEntity pShooter) {
-        this(OrdinaryTinkerEntity.special_arrow.get(),pLevel);
-        this.setPos(pShooter.getX(),pShooter.getEyeY() - 0.1,pShooter.getZ());
+        this(OrdinaryTinkerEntity.special_arrow.get(), pLevel);
+        this.setPos(pShooter.getX(), pShooter.getEyeY() - 0.1, pShooter.getZ());
         this.setYRot(pShooter.getYRot());
         this.setXRot(pShooter.getXRot());
-        this.shootFromRotation(pShooter,pShooter.getXRot(),pShooter.getYRot(),0,3,1);
+        this.shootFromRotation(pShooter, pShooter.getXRot(), pShooter.getYRot(), 0, 3, 1);
         setOwner(pShooter);
         this.pickup = Pickup.CREATIVE_ONLY;
     }

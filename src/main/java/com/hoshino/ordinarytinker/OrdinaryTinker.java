@@ -22,11 +22,11 @@ import java.util.Locale;
 import java.util.function.Supplier;
 
 
-
 @Mod(OrdinaryTinker.MODID)
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD,modid = OrdinaryTinker.MODID)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = OrdinaryTinker.MODID)
 public class OrdinaryTinker {
     public static final String MODID = "ordinarytinker";
+
     public OrdinaryTinker() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(EventPriority.NORMAL, false, FMLCommonSetupEvent.class, this::commonSetup);
@@ -44,6 +44,7 @@ public class OrdinaryTinker {
         OrdinaryTinkerEntityData.init();
         TierSortingRegistry.registerTier(NewNew.instance, getResource("new_new"), List.of(Tiers.NETHERITE), List.of());
     }
+
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(OrdinaryTinkerMaterialStat::setup);
@@ -61,6 +62,7 @@ public class OrdinaryTinker {
     public static <T> TinkerDataCapability.ComputableDataKey<T> createKey(String name, Supplier<T> constructor) {
         return TinkerDataCapability.ComputableDataKey.of(getResource(name), constructor);
     }
+
     public static String makeDescriptionId(String type, String name) {
         return type + "." + MODID + "." + name;
     }

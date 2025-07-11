@@ -34,26 +34,27 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class CatSpeed extends Modifier implements DamageBlockModifierHook , ToolStatsModifierHook, InventoryTickModifierHook, AttributesModifierHook , BreakSpeedModifierHook {
+public class CatSpeed extends Modifier implements DamageBlockModifierHook, ToolStatsModifierHook, InventoryTickModifierHook, AttributesModifierHook, BreakSpeedModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.DAMAGE_BLOCK,ModifierHooks.TOOL_STATS,ModifierHooks.INVENTORY_TICK);
+        hookBuilder.addHook(this, ModifierHooks.DAMAGE_BLOCK, ModifierHooks.TOOL_STATS, ModifierHooks.INVENTORY_TICK);
     }
 
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount) {
-        int rd=new Random().nextInt(10);
+        int rd = new Random().nextInt(10);
         return rd < 3;
     }
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.ATTACK_SPEED.multiply(builder,1+0.7f * modifier.getLevel());
-        if(context.hasTag(TinkerTags.Items.RANGED)){
-            ToolStats.VELOCITY.multiply(builder,1+0.7f * modifier.getLevel());
+        ToolStats.ATTACK_SPEED.multiply(builder, 1 + 0.7f * modifier.getLevel());
+        if (context.hasTag(TinkerTags.Items.RANGED)) {
+            ToolStats.VELOCITY.multiply(builder, 1 + 0.7f * modifier.getLevel());
         }
     }
-    public static final Attribute[] attributes=new Attribute[]{
+
+    public static final Attribute[] attributes = new Attribute[]{
             Attributes.ATTACK_SPEED,
             Attributes.FLYING_SPEED,
             Attributes.ARMOR_TOUGHNESS,
@@ -62,19 +63,20 @@ public class CatSpeed extends Modifier implements DamageBlockModifierHook , Tool
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if(itemSlot>35&&itemSlot<40&&holder.tickCount%200==0){
-            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,400,0,false,false,true));
+        if (itemSlot > 35 && itemSlot < 40 && holder.tickCount % 200 == 0) {
+            holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, false, false, true));
         }
     }
-    private UUID getUUID(Modifier modifier,EquipmentSlot slot,Attribute attribute){
-        String s=modifier.getId().getNamespace()+slot.getName()+attribute.getDescriptionId();
+
+    private UUID getUUID(Modifier modifier, EquipmentSlot slot, Attribute attribute) {
+        String s = modifier.getId().getNamespace() + slot.getName() + attribute.getDescriptionId();
         return UUID.nameUUIDFromBytes(s.getBytes());
     }
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        var attributeModifier=new AttributeModifier(getUUID(this,slot,Attributes.MAX_HEALTH),Attributes.MAX_HEALTH.getDescriptionId(),1.5f, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        consumer.accept(Attributes.MAX_HEALTH,attributeModifier);
+        var attributeModifier = new AttributeModifier(getUUID(this, slot, Attributes.MAX_HEALTH), Attributes.MAX_HEALTH.getDescriptionId(), 1.5f, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        consumer.accept(Attributes.MAX_HEALTH, attributeModifier);
     }
 
     @Override

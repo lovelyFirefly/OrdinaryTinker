@@ -13,12 +13,12 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 public class Test extends Modifier implements ToolStatsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this,ModifierHooks.TOOL_STATS);
+        hookBuilder.addHook(this, ModifierHooks.TOOL_STATS);
     }
 
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-       ToolStats.HARVEST_TIER.update(builder, NewNew.instance);
+        ToolStats.HARVEST_TIER.update(builder, NewNew.instance);
     }
 
 //    @Override

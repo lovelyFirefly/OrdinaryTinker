@@ -17,6 +17,7 @@ public class OrdinaryTinkerDamageTypeTagProvider extends DamageTypeTagsProvider 
     public OrdinaryTinkerDamageTypeTagProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookup, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput, lookup, MODID, existingFileHelper);
     }
+
     @Override
     protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         tag(DamageTypeTags.BYPASSES_ARMOR).add(OrdinaryTinkerDamageTypes.MERCURYPOISONING, OrdinaryTinkerDamageTypes.SpecialReflect, OrdinaryTinkerDamageTypes.SpecailCatAttack, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);

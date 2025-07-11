@@ -11,10 +11,11 @@ public class OrdinaryTinkerModelProvider extends ItemModelProvider {
     public OrdinaryTinkerModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
         super(output, modid, existingFileHelper);
     }
+
     @Override
     protected void registerModels() {
-        for(RegistryObject<Item> itemsDeferredRegister: OrdinaryTinkerItem.commonItem){
-            if(itemsDeferredRegister.isPresent()){
+        for (RegistryObject<Item> itemsDeferredRegister : OrdinaryTinkerItem.commonItem) {
+            if (itemsDeferredRegister.isPresent()) {
                 this.basicItem(itemsDeferredRegister.get());
             }
         }

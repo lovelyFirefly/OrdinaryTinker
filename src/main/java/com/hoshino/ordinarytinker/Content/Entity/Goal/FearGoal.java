@@ -17,6 +17,7 @@ public class FearGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
     private final Supplier<T> targetSupplier;
     private final Predicate<T> condition;
     private final double sprintSpeedModifier;
+
     public FearGoal(PathfinderMob mob, Class<T> avoidClass, float maxDist, double walkSpeed, double sprintSpeed, double sprintSpeedModifier, Supplier<T> targetSupplier, Predicate<T> condition) {
         super(mob, avoidClass, maxDist, walkSpeed, sprintSpeed);
         this.targetSupplier = targetSupplier;
@@ -36,7 +37,7 @@ public class FearGoal<T extends LivingEntity> extends AvoidEntityGoal<T> {
 
     @Override
     public void tick() {
-        if(toAvoid==null)return;
+        if (toAvoid == null) return;
         if (toAvoid.isSprinting()) {
             mob.getNavigation().setSpeedModifier(this.sprintSpeedModifier * 1.2);
         } else {

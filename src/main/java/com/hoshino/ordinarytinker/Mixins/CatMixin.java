@@ -13,15 +13,19 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Cat.CatAvoidEntityGoal.class)
-public abstract class CatMixin <T extends LivingEntity> extends AvoidEntityGoal<T> {
-    @Shadow @Final private Cat cat;
+public abstract class CatMixin<T extends LivingEntity> extends AvoidEntityGoal<T> {
+    @Shadow
+    @Final
+    private Cat cat;
+
     public CatMixin(PathfinderMob pMob, Class<T> pEntityClassToAvoid, float pMaxDistance, double pWalkSpeedModifier, double pSprintSpeedModifier) {
         super(pMob, pEntityClassToAvoid, pMaxDistance, pWalkSpeedModifier, pSprintSpeedModifier);
     }
-    @Inject(method = "canUse",at = @At("HEAD"), cancellable = true)
+
+    @Inject(method = "canUse", at = @At("HEAD"), cancellable = true)
     public void canUse(CallbackInfoReturnable<Boolean> cir) {
-        Cat cat=this.cat;
-        var potentialTarget=cat.level().getNearestPlayer(mob,20);
+        Cat cat = this.cat;
+        var potentialTarget = cat.level().getNearestPlayer(mob, 20);
         if (potentialTarget != null && potentialTarget.isAlive() && ModifierLevel.EquipHasModifierlevel(potentialTarget, OrdinaryTinkerModifier.disguiseStaticModifier.getId())) {
             cir.setReturnValue(false);
         }

@@ -8,7 +8,7 @@ import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageType;
 import org.jetbrains.annotations.NotNull;
 
-public class OrdinaryTinkerDamageTypeProvider implements RegistrySetBuilder.RegistryBootstrap<DamageType>{
+public class OrdinaryTinkerDamageTypeProvider implements RegistrySetBuilder.RegistryBootstrap<DamageType> {
     public static void register(RegistrySetBuilder builder) {
         builder.add(Registries.DAMAGE_TYPE, new OrdinaryTinkerDamageTypeProvider());
     }
@@ -17,7 +17,7 @@ public class OrdinaryTinkerDamageTypeProvider implements RegistrySetBuilder.Regi
     public void run(@NotNull BootstapContext<DamageType> context) {
         context.register(OrdinaryTinkerDamageTypes.MERCURYPOISONING, new DamageType("mercurypoisoning", 0.1f, DamageEffects.THORNS));
         context.register(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, new DamageType("playersoulgeattack", 0.1f));
-        context.register(OrdinaryTinkerDamageTypes.SpecialReflect, new DamageType("specialreflect", 0.1f,DamageEffects.BURNING));
-        context.register(OrdinaryTinkerDamageTypes.SpecailCatAttack, new DamageType("specialcatattack", 0.1f,DamageEffects.POKING));
+        context.register(OrdinaryTinkerDamageTypes.SpecialReflect, new DamageType("specialreflect", 0.1f, DamageEffects.BURNING));
+        context.register(OrdinaryTinkerDamageTypes.SpecailCatAttack, new DamageType("specialcatattack", 0.1f, DamageEffects.POKING));
     }
 }

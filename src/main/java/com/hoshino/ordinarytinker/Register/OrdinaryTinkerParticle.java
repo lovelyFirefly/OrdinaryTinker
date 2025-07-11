@@ -12,8 +12,9 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 public class OrdinaryTinkerParticle {
     public static final DeferredRegister<ParticleType<?>> PARTICLE = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MODID);
-    public static final RegistryObject<ParticleType<StarFallParticleType>> STARFALL=PARTICLE.register("star_fall",()->new StarFallParticleType(true,100,0xffaaff,0,1,5,new Vec3(0,-58,0)));
-    public static void register(IEventBus bus){
+    public static final RegistryObject<ParticleType<StarFallParticleType>> STARFALL = PARTICLE.register("star_fall", () -> new StarFallParticleType(true, 100, 0xffaaff, 0, 1, 5, new Vec3(0, -58, 0)));
+
+    public static void register(IEventBus bus) {
         PARTICLE.register(bus);
     }
 }

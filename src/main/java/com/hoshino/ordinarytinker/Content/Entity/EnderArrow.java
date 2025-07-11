@@ -16,6 +16,7 @@ public class EnderArrow extends AbstractArrow {
     public EnderArrow(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
     public EnderArrow(Level pLevel, LivingEntity pShooter) {
         this(OrdinaryTinkerEntity.huge_arrow.get(), pLevel);
         this.setPos(pShooter.getX(), pShooter.getEyeY() - 0.1, pShooter.getZ());
@@ -41,10 +42,10 @@ public class EnderArrow extends AbstractArrow {
         double d5 = vec3.x;
         double d6 = vec3.y;
         double d1 = vec3.z;
-        for(int i = 0; i < 4; ++i) {
-            this.level().addParticle(ParticleTypes.WITCH, this.getX() + d5 * (double)i / 4.0D, this.getY() + d6 * (double)i / 4.0D, this.getZ() + d1 * (double)i / 4.0D, -d5, -d6 + 0.2D, -d1);
+        for (int i = 0; i < 4; ++i) {
+            this.level().addParticle(ParticleTypes.WITCH, this.getX() + d5 * (double) i / 4.0D, this.getY() + d6 * (double) i / 4.0D, this.getZ() + d1 * (double) i / 4.0D, -d5, -d6 + 0.2D, -d1);
         }
-        if (this.tickCount > 400){
+        if (this.tickCount > 400) {
             this.discard();
         }
     }

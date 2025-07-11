@@ -22,21 +22,22 @@ public class IronHeart extends Modifier implements TooltipModifierHook {
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOLTIP);
     }
-    private final int[] color= new int[]{0x485876, 0xcbc1ff, 0xe1e3ff};
+
+    private final int[] color = new int[]{0x485876, 0xcbc1ff, 0xe1e3ff};
 
     @Override
     public @NotNull List<Component> getDescriptionList() {
         int[] a = new int[]{};
         if (descriptionList == null) {
             descriptionList = Arrays.asList(
-            DynamicComponentUtil.ScrollColorfulText.getColorfulText(getTranslationKey() + ".flavor",null,color,20,20,true),
-            DynamicComponentUtil.ScrollColorfulText.getColorfulText(getTranslationKey() + ".description",null,color,20,20,true));
+                    DynamicComponentUtil.ScrollColorfulText.getColorfulText(getTranslationKey() + ".flavor", null, color, 20, 20, true),
+                    DynamicComponentUtil.ScrollColorfulText.getColorfulText(getTranslationKey() + ".description", null, color, 20, 20, true));
         }
         return descriptionList;
     }
 
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey tooltipKey, TooltipFlag tooltipFlag) {
-        tooltip.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText("我的天呢,它可真硬",null,color,20,20,true));
+        tooltip.add(DynamicComponentUtil.ScrollColorfulText.getColorfulText("我的天呢,它可真硬", null, color, 20, 20, true));
     }
 }

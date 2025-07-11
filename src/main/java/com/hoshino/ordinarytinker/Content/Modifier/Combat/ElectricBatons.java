@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ElectricBatons extends Modifier implements MeleeHitModifierHook , EntityInteractionModifierHook {
+public class ElectricBatons extends Modifier implements MeleeHitModifierHook, EntityInteractionModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT,ModifierHooks.ENTITY_INTERACT);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT, ModifierHooks.ENTITY_INTERACT);
     }
 
     @Override
@@ -38,9 +38,9 @@ public class ElectricBatons extends Modifier implements MeleeHitModifierHook , E
         Mob currentTarget = mob;
         List<Mob> hasBeenAttackedMob = new ArrayList<>();
         hasBeenAttackedMob.add(mob);
-        player.level().playSound(null,player.getOnPos(), OrdinaryTinkerSound.electric_hit.get(), SoundSource.AMBIENT,1,1);
+        player.level().playSound(null, player.getOnPos(), OrdinaryTinkerSound.electric_hit.get(), SoundSource.AMBIENT, 1, 1);
         for (int i = 0; i < 8; i++) {
-            Mob nextMob = getNearestMob(currentTarget, hasBeenAttackedMob,20);
+            Mob nextMob = getNearestMob(currentTarget, hasBeenAttackedMob, 20);
             if (nextMob == null) break;
             nextMob.hurt(OrdinaryTinkerDamageTypes.source(level, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, player), 10);
             drawParticleBeam(currentTarget, nextMob, random, level);
@@ -48,6 +48,7 @@ public class ElectricBatons extends Modifier implements MeleeHitModifierHook , E
             hasBeenAttackedMob.add(nextMob);
         }
     }
+
     private void drawParticleBeam(Mob mob1, Mob mob2, Random random, ServerLevel level) {
         double d0 = mob2.getX() - mob1.getX();
         double d1 = mob2.getY() + (double) (mob2.getBbHeight() * 0.5F)

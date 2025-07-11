@@ -11,12 +11,14 @@ public class DynamicAvoidGoal<T extends LivingEntity> extends AvoidEntityGoal<T>
     private final Supplier<T> targetSupplier;
     private final Predicate<T> condition;
     private final double sprintSpeedModifier;
-    public DynamicAvoidGoal(PathfinderMob mob, Class<T> avoidClass, float maxDist, double walkSpeed, double sprintSpeed,double sprintSpeedModifier,Supplier<T> targetSupplier, Predicate<T> condition) {
+
+    public DynamicAvoidGoal(PathfinderMob mob, Class<T> avoidClass, float maxDist, double walkSpeed, double sprintSpeed, double sprintSpeedModifier, Supplier<T> targetSupplier, Predicate<T> condition) {
         super(mob, avoidClass, maxDist, walkSpeed, sprintSpeed);
         this.targetSupplier = targetSupplier;
         this.condition = condition;
-        this.sprintSpeedModifier=sprintSpeedModifier;
+        this.sprintSpeedModifier = sprintSpeedModifier;
     }
+
     @Override
     public boolean canUse() {
         T potentialTarget = targetSupplier.get();
@@ -26,6 +28,7 @@ public class DynamicAvoidGoal<T extends LivingEntity> extends AvoidEntityGoal<T>
         }
         return false;
     }
+
     @Override
     public void tick() {
         if (toAvoid != null && toAvoid.isSprinting()) {

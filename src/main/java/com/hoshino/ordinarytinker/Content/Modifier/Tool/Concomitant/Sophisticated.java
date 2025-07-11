@@ -10,18 +10,18 @@ import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-public class Sophisticated extends Modifier implements  ToolStatsModifierHook {
+public class Sophisticated extends Modifier implements ToolStatsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOL_STATS);
     }
+
     @Override
     public void addToolStats(IToolContext context, ModifierEntry modifier, ModifierStatsBuilder builder) {
-        ToolStats.DURABILITY.add(builder,400* modifier.getLevel());
-        if(context.hasTag(TinkerTags.Items.ARMOR)){
+        ToolStats.DURABILITY.add(builder, 400 * modifier.getLevel());
+        if (context.hasTag(TinkerTags.Items.ARMOR)) {
             ToolStats.ARMOR.add(builder, modifier.getLevel());
             ToolStats.ARMOR_TOUGHNESS.add(builder, modifier.getLevel());
-        }
-        else ToolStats.ATTACK_SPEED.add(builder,0.08 * modifier.getLevel());
+        } else ToolStats.ATTACK_SPEED.add(builder, 0.08 * modifier.getLevel());
     }
 }

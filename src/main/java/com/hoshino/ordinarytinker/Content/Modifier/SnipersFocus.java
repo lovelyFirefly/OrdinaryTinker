@@ -24,7 +24,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 
-public class SnipersFocus extends Modifier implements GeneralInteractionModifierHook , ProjectileHitModifierHook {
+public class SnipersFocus extends Modifier implements GeneralInteractionModifierHook, ProjectileHitModifierHook {
     @Override
     public InteractionResult onToolUse(IToolStackView tool, ModifierEntry modifier, Player player, InteractionHand hand, InteractionSource source) {
         return InteractionResult.CONSUME;
@@ -32,9 +32,9 @@ public class SnipersFocus extends Modifier implements GeneralInteractionModifier
 
     @Override
     public void onFinishUsing(IToolStackView tool, ModifierEntry modifier, LivingEntity entity) {
-        if(!entity.level().isClientSide() ||entity instanceof ServerPlayer)return;
-        ItemStack a=new ItemStack(tool.getItem());
-        if(Minecraft.getInstance().options.getCameraType().isFirstPerson())return;
+        if (!entity.level().isClientSide() || entity instanceof ServerPlayer) return;
+        ItemStack a = new ItemStack(tool.getItem());
+        if (Minecraft.getInstance().options.getCameraType().isFirstPerson()) return;
 
     }
 

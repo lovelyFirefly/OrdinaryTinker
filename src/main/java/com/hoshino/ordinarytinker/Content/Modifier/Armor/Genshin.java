@@ -19,7 +19,7 @@ import java.util.Random;
 public class Genshin extends Modifier implements MeleeDamageModifierHook, InventoryTickModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE,ModifierHooks.INVENTORY_TICK);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.INVENTORY_TICK);
     }
 
     @Override
@@ -29,9 +29,9 @@ public class Genshin extends Modifier implements MeleeDamageModifierHook, Invent
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if (holder instanceof Player player&&player.tickCount%8==0){
-           var entityList= player.level().getEntitiesOfClass(LivingEntity.class,new AABB(player.getOnPos()).inflate(10));
-           entityList.stream().filter(LivingEntity::isAlive).forEach(entity->entity.hurt(player.damageSources().lightningBolt(),2));
+        if (holder instanceof Player player && player.tickCount % 8 == 0) {
+            var entityList = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(player.getOnPos()).inflate(10));
+            entityList.stream().filter(LivingEntity::isAlive).forEach(entity -> entity.hurt(player.damageSources().lightningBolt(), 2));
         }
     }
 }

@@ -13,8 +13,9 @@ public class HugeArrowItem extends ArrowItem {
     public HugeArrowItem(Properties pProperties) {
         super(pProperties);
     }
+
     @Override
     public @NotNull AbstractArrow createArrow(Level pLevel, ItemStack pStack, LivingEntity pShooter) {
-        return new HugeArrow(pLevel,pShooter);
+        return new HugeArrow(pLevel, pShooter);
     }
 }

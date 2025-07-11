@@ -19,18 +19,20 @@ import java.util.function.DoubleSupplier;
 public class ToolAttackUtilMixin {
     @Unique
     private static LivingEntity ordinarytinker$player;
+
     @ModifyVariable(
             method = "attackEntity(Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Ljava/util/function/DoubleSupplier;ZLnet/minecraft/world/entity/EquipmentSlot;)Z",
-    at = @At(value = "INVOKE", target = "Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;getModifierList()Ljava/util/List;"),
+            at = @At(value = "INVOKE", target = "Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;getModifierList()Ljava/util/List;"),
             index = 13,
             remap = false
     )
 
-    private static boolean a(boolean value){
-        return ModifierUtil.getModifierLevel(ordinarytinker$player.getMainHandItem(), OrdinaryTinkerModifier.covertStaticModifier.getId())>0;
+    private static boolean a(boolean value) {
+        return ModifierUtil.getModifierLevel(ordinarytinker$player.getMainHandItem(), OrdinaryTinkerModifier.covertStaticModifier.getId()) > 0;
     }
-    @Inject(method = "attackEntity(Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Ljava/util/function/DoubleSupplier;ZLnet/minecraft/world/entity/EquipmentSlot;)Z",at = @At("HEAD"),remap = false)
-    private static void cache(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot, CallbackInfoReturnable<Boolean> cir){
-        ordinarytinker$player =attackerLiving;
+
+    @Inject(method = "attackEntity(Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Ljava/util/function/DoubleSupplier;ZLnet/minecraft/world/entity/EquipmentSlot;)Z", at = @At("HEAD"), remap = false)
+    private static void cache(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot, CallbackInfoReturnable<Boolean> cir) {
+        ordinarytinker$player = attackerLiving;
     }
 }

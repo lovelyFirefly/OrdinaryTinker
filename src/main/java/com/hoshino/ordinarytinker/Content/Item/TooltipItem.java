@@ -12,14 +12,15 @@ import java.util.List;
 
 public class TooltipItem extends Item {
     public final List<Component> tooltip;
-    public TooltipItem(Properties pProperties,@NotNull List<Component> tooltip) {
+
+    public TooltipItem(Properties pProperties, @NotNull List<Component> tooltip) {
         super(pProperties);
-        this.tooltip=tooltip;
+        this.tooltip = tooltip;
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         pTooltipComponents.addAll(this.tooltip);
-        super.appendHoverText(pStack,pLevel,pTooltipComponents,pIsAdvanced);
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }

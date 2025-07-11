@@ -9,9 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public interface HaloRendererUtil {
     Map<ModifierId, Boolean> HALO_STATES = new ConcurrentHashMap<>();
+
     ResourceLocation getTexture();
-     default boolean checkCondition(Player player) {
+
+    default boolean checkCondition(Player player) {
         return HALO_STATES.getOrDefault(getModifierId(), false) && !player.isInvisible();
     }
+
     ModifierId getModifierId();
 }

@@ -22,10 +22,10 @@ public class IceBlood extends Modifier implements InventoryTickModifierHook {
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if(!isCorrectSlot)return;
-        holder.getCapability(TinkerDataCapability.CAPABILITY).resolve().ifPresent(entity -> entity.put(OrdinaryTinkerDataKeys.foodLevelAddition,5));
-        holder.getCapability(TinkerDataCapability.CAPABILITY).resolve().ifPresent(entity -> entity.put(OrdinaryTinkerDataKeys.extraHealth,90f));
-        if(!(holder instanceof Player player))return;
+        if (!isCorrectSlot) return;
+        holder.getCapability(TinkerDataCapability.CAPABILITY).resolve().ifPresent(entity -> entity.put(OrdinaryTinkerDataKeys.foodLevelAddition, 5));
+        holder.getCapability(TinkerDataCapability.CAPABILITY).resolve().ifPresent(entity -> entity.put(OrdinaryTinkerDataKeys.extraHealth, 90f));
+        if (!(holder instanceof Player player)) return;
         player.sendSystemMessage(Component.literal(String.valueOf(player.getMaxHealth())));
     }
 }

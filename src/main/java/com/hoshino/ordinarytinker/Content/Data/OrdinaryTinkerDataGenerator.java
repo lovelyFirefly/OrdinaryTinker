@@ -52,14 +52,14 @@ public final class OrdinaryTinkerDataGenerator {
         generator.addProvider(server, new OrdinaryTinkerBucketModelProvider(output, MODID));
 
         OrdinaryTinkerMaterialDefinitionData materials = new OrdinaryTinkerMaterialDefinitionData(output);
-        OrdinaryTinkerMaterialStatsData statsData=new OrdinaryTinkerMaterialStatsData(output,materials);
-        OrdinaryTinkerMaterialTraitsData traitsData=new OrdinaryTinkerMaterialTraitsData(output,materials);
-        generator.addProvider(server,materials);
-        generator.addProvider(server,statsData);
-        generator.addProvider(server,traitsData);
+        OrdinaryTinkerMaterialStatsData statsData = new OrdinaryTinkerMaterialStatsData(output, materials);
+        OrdinaryTinkerMaterialTraitsData traitsData = new OrdinaryTinkerMaterialTraitsData(output, materials);
+        generator.addProvider(server, materials);
+        generator.addProvider(server, statsData);
+        generator.addProvider(server, traitsData);
 
         OrdinaryTinkerBlockTagProvider blockTags = new OrdinaryTinkerBlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(server, blockTags);
-        generator.addProvider(server, new OrdinaryTinkerItemTagProvider(output,lookupProvider,blockTags.contentsGetter(),existingFileHelper));
+        generator.addProvider(server, new OrdinaryTinkerItemTagProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper));
     }
 }

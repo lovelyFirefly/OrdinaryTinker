@@ -1,8 +1,9 @@
 package com.hoshino.ordinarytinker.Config;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class OrdinaryTinkerConfig {
-//    public static final ForgeConfigSpec.Builder MaterialBuilder = new ForgeConfigSpec.Builder()
+    //    public static final ForgeConfigSpec.Builder MaterialBuilder = new ForgeConfigSpec.Builder()
 //            .comment("材料词条部分的配置")//块上面的注解
 //            .push("材料词条");//块配置名称
     public static final ForgeConfigSpec.Builder ToolBuilder = new ForgeConfigSpec.Builder()
@@ -26,9 +27,9 @@ public class OrdinaryTinkerConfig {
             .defineInRange("TridentRipSpeed", 1, 0, Integer.MAX_VALUE);
     //魂戈相关
     public static final ForgeConfigSpec.BooleanValue inDirectKill = ToolBuilder.comment("魂戈斩杀是否穿魔,默认不穿")
-            .define("SoulgeDirectKill",false);
+            .define("SoulgeDirectKill", false);
     //流能装甲
     public static final ForgeConfigSpec.BooleanValue isProtectBypassEnchantment = ToolBuilder.comment("层流护甲是否对穿附魔等伤害起效,默认对穿附魔无效")
-            .define("fluidPlateProtectAll",false);
+            .define("fluidPlateProtectAll", false);
     public static final ForgeConfigSpec Toolspec = ToolBuilder.pop().build();
 }

@@ -13,18 +13,19 @@ public class Bullet extends AbstractArrow {
     private final ItemStack tool;
     private final Player owner;
 
-    public Bullet(Level level,ItemStack tool,Player player){
+    public Bullet(Level level, ItemStack tool, Player player) {
         super(EntityType.ARROW, level);
         this.tool = tool.copy();
         this.owner = player;
     }
+
     @Override
     protected void defineSynchedData() {
     }
 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
-        ToolAttackUtil.attackEntity(tool,owner,pResult.getEntity());
+        ToolAttackUtil.attackEntity(tool, owner, pResult.getEntity());
     }
 
     @Override

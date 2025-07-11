@@ -16,12 +16,13 @@ public abstract class HugeArrowRenderer extends ArrowRenderer<HugeArrow> {
     protected HugeArrowRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
     }
+
     @Override
     public void render(HugeArrow pEntity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         pPoseStack.pushPose();
         pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.yRotO, pEntity.getYRot()) - 90.0F));
         pPoseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.xRotO, pEntity.getXRot())));
-        float f9 = (float)pEntity.shakeTime - pPartialTicks;
+        float f9 = (float) pEntity.shakeTime - pPartialTicks;
         if (f9 > 0.0F) {
             float f10 = -Mth.sin(f9 * 3.0F) * f9;
             pPoseStack.mulPose(Axis.ZP.rotationDegrees(f10));
@@ -42,7 +43,7 @@ public abstract class HugeArrowRenderer extends ArrowRenderer<HugeArrow> {
         this.vertex(matrix4f, matrix3f, vertexconsumer, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, pPackedLight);
         this.vertex(matrix4f, matrix3f, vertexconsumer, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, pPackedLight);
 
-        for(int j = 0; j < 4; ++j) {
+        for (int j = 0; j < 4; ++j) {
             pPoseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
             this.vertex(matrix4f, matrix3f, vertexconsumer, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, pPackedLight);
             this.vertex(matrix4f, matrix3f, vertexconsumer, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, pPackedLight);

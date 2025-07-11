@@ -6,6 +6,7 @@ public class SeaBless extends NoLevelsModifier {
     public boolean hidden() {
         return true;
     }
+
     public boolean shouldDisplay(boolean advanced) {
         return !this.hidden() || advanced;
     }

@@ -21,8 +21,11 @@ public class OrdinaryTinkerEntityData {
             return new Vec3(pBuffer.readDouble(), pBuffer.readDouble(), pBuffer.readDouble());
         }
     };
-    static{
+
+    static {
         EntityDataSerializers.registerSerializer(VEC3);
     }
-    public static void init(){}
+
+    public static void init() {
+    }
 }

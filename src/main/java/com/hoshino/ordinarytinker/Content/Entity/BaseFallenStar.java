@@ -32,63 +32,74 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class BaseFallenStar extends Projectile implements ItemSupplier {
-    protected static final EntityDataAccessor<Vec3> targetPosition= SynchedEntityData.defineId(BaseFallenStar.class,OrdinaryTinkerEntityData.VEC3);
-    protected static final EntityDataAccessor<Integer> waitTick= SynchedEntityData.defineId(BaseFallenStar.class,EntityDataSerializers.INT);
+    protected static final EntityDataAccessor<Vec3> targetPosition = SynchedEntityData.defineId(BaseFallenStar.class, OrdinaryTinkerEntityData.VEC3);
+    protected static final EntityDataAccessor<Integer> waitTick = SynchedEntityData.defineId(BaseFallenStar.class, EntityDataSerializers.INT);
     protected boolean isArrived;
     protected int arrivedTime;
     protected boolean hasBeenSetSpeed;
+
     protected BaseFallenStar(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    protected BaseFallenStar(EntityType<? extends BaseFallenStar> pEntityType, LivingEntity owner,Level level,Vec3 targetPosition){
-        super(pEntityType,level);
+
+    protected BaseFallenStar(EntityType<? extends BaseFallenStar> pEntityType, LivingEntity owner, Level level, Vec3 targetPosition) {
+        super(pEntityType, level);
         setOwner(owner);
         this.setTargetPosition(targetPosition);
-        var source=this.level().random;
+        var source = this.level().random;
         this.setPos(targetPosition.add(new Vec3(source.nextInt(30), 50, source.nextInt(30))));
         this.setNoGravity(true);
         this.setDeltaMovement(getTargetPosition().subtract(this.position()).scale(0.02f));
     }
+
     @Override
     protected void defineSynchedData() {
-        this.entityData.define(targetPosition,Vec3.ZERO);
-        this.entityData.define(waitTick,0);
+        this.entityData.define(targetPosition, Vec3.ZERO);
+        this.entityData.define(waitTick, 0);
     }
-    public void setWaitTime(int tick){
-        this.entityData.set(waitTick,tick);
+
+    public void setWaitTime(int tick) {
+        this.entityData.set(waitTick, tick);
     }
-    public int getWaitTime(){
+
+    public int getWaitTime() {
         return this.entityData.get(waitTick);
     }
-    public Vec3 getTargetPosition(){
+
+    public Vec3 getTargetPosition() {
         return this.entityData.get(targetPosition);
     }
-    public void setTargetPosition(Vec3 position){
-        this.entityData.set(targetPosition,position);
+
+    public void setTargetPosition(Vec3 position) {
+        this.entityData.set(targetPosition, position);
     }
-    protected void onArrived(ServerPlayer player){
+
+    protected void onArrived(ServerPlayer player) {
         this.setDeltaMovement(Vec3.ZERO);
-        this.isArrived=true;
+        this.isArrived = true;
     }
-    protected void directHurtLiving(@Nullable DamageSource source,float amount,double range){
-        if(source!=null&&range>0){
-            var vec3=getTargetPosition();
-            int x= (int) vec3.x();
-            int y= (int) vec3.y();
-            int z= (int) vec3.z();
-            List<LivingEntity>livingEntities=level().getEntitiesOfClass(LivingEntity.class,new AABB(new BlockPos(x,y,z)).inflate(range),lv->{
-                boolean base=lv!=getOwner()&&lv.isAlive();
-                boolean isPet=lv instanceof TamableAnimal animal&&animal.isTame();
-                return base&&!isPet;
+
+    protected void directHurtLiving(@Nullable DamageSource source, float amount, double range) {
+        if (source != null && range > 0) {
+            var vec3 = getTargetPosition();
+            int x = (int) vec3.x();
+            int y = (int) vec3.y();
+            int z = (int) vec3.z();
+            List<LivingEntity> livingEntities = level().getEntitiesOfClass(LivingEntity.class, new AABB(new BlockPos(x, y, z)).inflate(range), lv -> {
+                boolean base = lv != getOwner() && lv.isAlive();
+                boolean isPet = lv instanceof TamableAnimal animal && animal.isTame();
+                return base && !isPet;
             });
-            for(LivingEntity lv:livingEntities){
-                lv.hurt(source,amount);
+            for (LivingEntity lv : livingEntities) {
+                lv.hurt(source, amount);
             }
         }
     }
+
     protected abstract void shockWaveHurt(Mob mob, Player player);
-    private void commonTick(){
-        if(this.isArrived){
+
+    private void commonTick() {
+        if (this.isArrived) {
             arrivedTime++;
         }
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
@@ -136,16 +147,16 @@ public abstract class BaseFallenStar extends Projectile implements ItemSupplier 
         if (this.tickCount > 500) {
             this.discard();
         }
-        if(this.getWaitTime()>0){
+        if (this.getWaitTime() > 0) {
             this.setWaitTime(this.getWaitTime() - 1);
             return;
         }
         commonTick();
         if (this.getWaitTime() == 0 || !hasBeenSetSpeed) {
-            hasBeenSetSpeed=true;
+            hasBeenSetSpeed = true;
         }
         Vec3 vec3 = this.getDeltaMovement();
-        if(this.level().isClientSide)return;
+        if (this.level().isClientSide) return;
         if (this.getOwner() instanceof ServerPlayer player) {
             for (int i = 0; i < 4; ++i) {
                 double x = vec3.x;
@@ -156,8 +167,8 @@ public abstract class BaseFallenStar extends Projectile implements ItemSupplier 
             if (this.level().getBlockState(this.blockPosition()).isSolid() && !isArrived) {
                 onArrived(player);
             }
-            if (isArrived&&arrivedTime<40){
-                var Vec3Pos=getTargetPosition();
+            if (isArrived && arrivedTime < 40) {
+                var Vec3Pos = getTargetPosition();
                 var pos = new BlockPos((int) Vec3Pos.x(), (int) Vec3Pos.y(), (int) Vec3Pos.z());
                 AABB aabb = new AABB(pos).inflate(50);
                 List<Mob> mobList = this.level().getEntitiesOfClass(Mob.class, aabb, LivingEntity::isAlive);

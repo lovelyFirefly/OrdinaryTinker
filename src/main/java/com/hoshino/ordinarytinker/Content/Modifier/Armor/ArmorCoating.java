@@ -28,29 +28,31 @@ public class ArmorCoating extends Modifier implements DamageBlockModifierHook, M
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.DAMAGE_BLOCK, ModifierHooks.MODIFY_HURT, ModifierHooks.ATTRIBUTES);
     }
-    private int totalModifierLevel(LivingEntity living){
-        return ModifierLevel.getAllSlotModifierlevel(living,this.getId());
+
+    private int totalModifierLevel(LivingEntity living) {
+        return ModifierLevel.getAllSlotModifierlevel(living, this.getId());
     }
 
     @Override
     public boolean isDamageBlocked(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount) {
-        float value = context.getEntity().getArmorValue() *0.1f * totalModifierLevel(context.getEntity());
+        float value = context.getEntity().getArmorValue() * 0.1f * totalModifierLevel(context.getEntity());
         return value > amount;
     }
 
 
     @Override
     public float modifyDamageTaken(IToolStackView tool, ModifierEntry modifier, EquipmentContext context, EquipmentSlot slotType, DamageSource source, float amount, boolean isDirectDamage) {
-        float value = context.getEntity().getArmorValue() *0.1f * totalModifierLevel(context.getEntity());
+        float value = context.getEntity().getArmorValue() * 0.1f * totalModifierLevel(context.getEntity());
         return amount - value * modifier.getLevel();
     }
-    public UUID UUIDFromSlot(EquipmentSlot slot, ModifierId modifierId){
-        return UUID.nameUUIDFromBytes((slot.getName() +modifierId.toString()).getBytes(StandardCharsets.UTF_8));
+
+    public UUID UUIDFromSlot(EquipmentSlot slot, ModifierId modifierId) {
+        return UUID.nameUUIDFromBytes((slot.getName() + modifierId.toString()).getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        var attributeModifier=new AttributeModifier(UUIDFromSlot(slot,modifier.getId()), Attributes.ARMOR.getDescriptionId(),0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
-        consumer.accept(Attributes.ARMOR,attributeModifier);
+        var attributeModifier = new AttributeModifier(UUIDFromSlot(slot, modifier.getId()), Attributes.ARMOR.getDescriptionId(), 0.1 * modifier.getLevel(), AttributeModifier.Operation.MULTIPLY_BASE);
+        consumer.accept(Attributes.ARMOR, attributeModifier);
     }
 }

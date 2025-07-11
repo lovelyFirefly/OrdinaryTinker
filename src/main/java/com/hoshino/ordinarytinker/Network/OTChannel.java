@@ -13,18 +13,21 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public class OTChannel {
     private static SimpleChannel INSTANCE;
-    public static int packetID=0;
-    public static int id(){return packetID++;}
+    public static int packetID = 0;
 
-    public static void register(){
-        SimpleChannel net= NetworkRegistry.ChannelBuilder
-                .named(new ResourceLocation(OrdinaryTinker.MODID,"messages"))
-                .networkProtocolVersion(()->"1.0")
-                .clientAcceptedVersions(s->true)
-                .serverAcceptedVersions(s->true)
+    public static int id() {
+        return packetID++;
+    }
+
+    public static void register() {
+        SimpleChannel net = NetworkRegistry.ChannelBuilder
+                .named(new ResourceLocation(OrdinaryTinker.MODID, "messages"))
+                .networkProtocolVersion(() -> "1.0")
+                .clientAcceptedVersions(s -> true)
+                .serverAcceptedVersions(s -> true)
                 .simpleChannel();
-        INSTANCE=net;
-        net.messageBuilder(KeyBoardPacket.class,id(), NetworkDirection.PLAY_TO_SERVER)
+        INSTANCE = net;
+        net.messageBuilder(KeyBoardPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(KeyBoardPacket::new)
                 .encoder(KeyBoardPacket::ToByte)
                 .consumerMainThread(KeyBoardPacket::handle)
@@ -42,10 +45,12 @@ public class OTChannel {
                 .consumerMainThread(SoulGeAttackPacket::handle)
                 .add();
     }
-    public static <MSG> void SendToServer(MSG msg){
+
+    public static <MSG> void SendToServer(MSG msg) {
         INSTANCE.sendToServer(msg);
     }
-    public static <MSG> void SendToPlayer(MSG msg, ServerPlayer player){
-        INSTANCE.send(PacketDistributor.PLAYER.with(()->player),msg);
+
+    public static <MSG> void SendToPlayer(MSG msg, ServerPlayer player) {
+        INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), msg);
     }
 }

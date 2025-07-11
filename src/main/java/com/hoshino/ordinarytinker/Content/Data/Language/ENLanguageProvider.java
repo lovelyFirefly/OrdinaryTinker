@@ -11,12 +11,15 @@ public class ENLanguageProvider extends LanguageProvider {
     public ENLanguageProvider(PackOutput output, String modid, String locale) {
         super(output, modid, locale);
     }
-    public String GetFluidlKeyName(String string){
-        return "fluid"+"."+MODID+"."+string.replace(MODID+":","");
+
+    public String GetFluidlKeyName(String string) {
+        return "fluid" + "." + MODID + "." + string.replace(MODID + ":", "");
     }
-    public String GetFluidBucketlKeyName(String string){
-        return "item"+"."+MODID+"."+string.replace(MODID+":","")+"_bucket";
+
+    public String GetFluidBucketlKeyName(String string) {
+        return "item" + "." + MODID + "." + string.replace(MODID + ":", "") + "_bucket";
     }
+
     @Override
     protected void addTranslations() {
         FluidEnum[] fluidEnums = FluidEnum.values();

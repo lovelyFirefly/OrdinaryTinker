@@ -16,21 +16,24 @@ public class Hajimi extends Cat {
     public Hajimi(EntityType<? extends Cat> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
     public static AttributeSupplier.@NotNull Builder createAttributes() {
-        return Cat.createAttributes().add(Attributes.ATTACK_DAMAGE,16F);
+        return Cat.createAttributes().add(Attributes.ATTACK_DAMAGE, 16F);
     }
+
     public float getAttackDamage() {
-        return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        return (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
     }
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
-        boolean flag = pEntity.hurt(OrdinaryTinkerDamageTypes.source(this.level(), OrdinaryTinkerDamageTypes.SpecailCatAttack,this), this.getAttackDamage());
+        boolean flag = pEntity.hurt(OrdinaryTinkerDamageTypes.source(this.level(), OrdinaryTinkerDamageTypes.SpecailCatAttack, this), this.getAttackDamage());
         if (flag) {
             this.playSound(SoundEvents.FOX_BITE, 1.0F, this.getVoicePitch());
         }
         return flag;
     }
+
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         if (pSource.getEntity() instanceof LivingEntity lv) {
@@ -49,7 +52,7 @@ public class Hajimi extends Cat {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 1.5D));
-        this.goalSelector.addGoal(3, new HajimiAttackGoal(this,1.2D, true));
+        this.goalSelector.addGoal(3, new HajimiAttackGoal(this, 1.2D, true));
         this.goalSelector.addGoal(4, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(5, new CatLieOnBedGoal(this, 1.1D, 8));
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 5.0F, false));
@@ -60,10 +63,12 @@ public class Hajimi extends Cat {
         this.goalSelector.addGoal(11, new WaterAvoidingRandomStrollGoal(this, 0.8D, 1.0000001E-5F));
         this.goalSelector.addGoal(12, new LookAtPlayerGoal(this, Player.class, 10.0F));
     }
+
     static class HajimiAttackGoal extends MeleeAttackGoal {
         public HajimiAttackGoal(PathfinderMob mob, double speedModifier, boolean followingTargetEvenIfNotSeen) {
             super(mob, speedModifier, followingTargetEvenIfNotSeen);
         }
+
         @Override
         protected void checkAndPerformAttack(LivingEntity enemy, double distToEnemySqr) {
             double attackRange = this.mob.getBbWidth() * 2.0F * this.mob.getBbWidth() * 2.0F + enemy.getBbWidth();

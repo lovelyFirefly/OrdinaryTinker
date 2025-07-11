@@ -19,6 +19,7 @@ public abstract class EagleAmmoRenderer extends EntityRenderer<EagleAmmo> {
         super(pContext);
         this.itemRenderer = pContext.getItemRenderer();
     }
+
     @Override
     public void render(EagleAmmo pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         if (pEntity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(pEntity) < 12.25D)) {

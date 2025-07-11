@@ -15,7 +15,7 @@ public class SpecialArrowItem extends ArrowItem {
 
     @Override
     public @NotNull AbstractArrow createArrow(Level pLevel, ItemStack pStack, LivingEntity pShooter) {
-        var arrow=new SpecialArrow(pLevel,pShooter);
+        var arrow = new SpecialArrow(pLevel, pShooter);
         arrow.setEffectsFromItem(pStack);
         return arrow;
     }

@@ -16,21 +16,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.UUID;
 
-@Mixin(value = Mob.class,priority = 2000)
+@Mixin(value = Mob.class, priority = 2000)
 public abstract class MobMixin extends LivingEntity {
     protected MobMixin(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
     @Inject(
             method = "<init>",
             at = @At("RETURN")
     )
     private void injectFearGoal(EntityType<?> type, Level level, CallbackInfo ci) {
-        Mob mob = (Mob)(Object)this;
-        if(!(mob instanceof Cat)&& mob instanceof PathfinderMob pathfinderMob){
+        Mob mob = (Mob) (Object) this;
+        if (!(mob instanceof Cat) && mob instanceof PathfinderMob pathfinderMob) {
             var goal = new FearGoal<>(pathfinderMob, Player.class, 50, 0.5f, 0.5f, 0.5f,
                     () -> level().getNearestPlayer(mob, 10),
-                    player -> player.getPersistentData().getInt("fearfield")>0);
+                    player -> player.getPersistentData().getInt("fearfield") > 0);
             mob.goalSelector.addGoal(0, goal);
         }
     }

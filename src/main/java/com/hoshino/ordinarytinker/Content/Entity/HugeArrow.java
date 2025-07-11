@@ -45,11 +45,11 @@ public class HugeArrow extends AbstractArrow {
         double d1 = vec3.z;
         this.setNoGravity(true);
         this.setDeltaMovement(this.getDeltaMovement().scale(1.01f));
-        if (this.tickCount > 400){
+        if (this.tickCount > 400) {
             this.discard();
         }
-        for(int i = 0; i < 4; ++i) {
-            this.level().addParticle(ParticleTypes.CRIT, this.getX() + d5 * (double)i / 4.0D, this.getY() + d6 * (double)i / 4.0D, this.getZ() + d1 * (double)i / 4.0D, -d5, -d6 + 0.2D, -d1);
+        for (int i = 0; i < 4; ++i) {
+            this.level().addParticle(ParticleTypes.CRIT, this.getX() + d5 * (double) i / 4.0D, this.getY() + d6 * (double) i / 4.0D, this.getZ() + d1 * (double) i / 4.0D, -d5, -d6 + 0.2D, -d1);
         }
     }
 
@@ -58,6 +58,6 @@ public class HugeArrow extends AbstractArrow {
         if (this.level().isClientSide()) return;
         Entity target = pResult.getEntity();
         float damage = (float) Mth.clamp(this.getDeltaMovement().length() * this.baseDamage, 0.0D, Float.MAX_VALUE);
-        target.hurt(this.damageSources().arrow(this, this.getOwner()), damage /5);
+        target.hurt(this.damageSources().arrow(this, this.getOwner()), damage / 5);
     }
 }

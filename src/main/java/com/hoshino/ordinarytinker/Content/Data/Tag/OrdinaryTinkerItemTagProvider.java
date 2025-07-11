@@ -17,6 +17,7 @@ public class OrdinaryTinkerItemTagProvider extends ItemTagsProvider {
     public OrdinaryTinkerItemTagProvider(PackOutput output, CompletableFuture<Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTagProvider, ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, blockTagProvider, OrdinaryTinker.MODID, existingFileHelper);
     }
+
     @Override
     protected void addTags(@NotNull Provider pProvider) {
         this.tag(OrdinaryTinkerTags.ItemTag.armorSteel_ingot).add(OrdinaryTinkerItem.ArmorSteel_ingot.get());

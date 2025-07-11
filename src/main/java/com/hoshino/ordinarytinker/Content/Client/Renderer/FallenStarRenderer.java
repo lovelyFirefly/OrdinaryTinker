@@ -18,6 +18,7 @@ public abstract class FallenStarRenderer extends EntityRenderer<FallenStar> {
         super(pContext);
         this.itemRenderer = pContext.getItemRenderer();
     }
+
     @Override
     public void render(FallenStar pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         if (pEntity.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(pEntity) < 12.25D)) {

@@ -100,6 +100,7 @@ public class TinkerTrident extends AbstractArrow {
     public void setBaseDamage(double a) {
         this.baseDamage = a;
     }
+
     protected void onHitEntity(EntityHitResult hitResult) {
         Entity entity = hitResult.getEntity();
         float f = (float) this.getDeltaMovement().length();
@@ -107,8 +108,8 @@ public class TinkerTrident extends AbstractArrow {
         Entity entity1 = this.getOwner();
         this.dealtDamage = true;
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
-        if(!(entity1 instanceof Player player))return;
-        ToolAttackUtil.attackEntity(tridentItem,player,entity);
+        if (!(entity1 instanceof Player player)) return;
+        ToolAttackUtil.attackEntity(tridentItem, player, entity);
         DamageSource damagesource = OrdinaryTinkerDamageTypes.source(player.level(), OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
         if (entity.hurt(damagesource, i)) {
             return;
@@ -131,6 +132,7 @@ public class TinkerTrident extends AbstractArrow {
         }
 
     }
+
     public boolean canSummon() {
         return ModifierUtil.getModifierLevel(this.tridentItem, OrdinaryTinkerModifier.lightningBoltStaticModifier.getId()) > 0;
     }

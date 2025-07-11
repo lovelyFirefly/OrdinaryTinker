@@ -17,16 +17,20 @@ import javax.annotation.Nullable;
 
 @Mixin(NearestAttackableTargetGoal.class)
 public abstract class NearestAttackableTargetGoalMixin<T extends LivingEntity> extends TargetGoal {
-    @Shadow @Nullable protected LivingEntity target;
+    @Shadow
+    @Nullable
+    protected LivingEntity target;
+
     public NearestAttackableTargetGoalMixin(Mob pMob, boolean pMustSee) {
         super(pMob, pMustSee);
     }
-    @Inject(method = "canUse", at = @At(value = "RETURN",ordinal = 1), cancellable = true)
-    private void setRange(CallbackInfoReturnable<Boolean> cir){
-        if(this.target!=null&&this.target instanceof Player player){
-            if(ModifierLevel.EquipHasModifierlevel(player, OrdinaryTinkerModifier.covertStaticModifier.getId())){
-                var distance=target.position().distanceTo(mob.position());
-                if(distance>3){
+
+    @Inject(method = "canUse", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
+    private void setRange(CallbackInfoReturnable<Boolean> cir) {
+        if (this.target != null && this.target instanceof Player player) {
+            if (ModifierLevel.EquipHasModifierlevel(player, OrdinaryTinkerModifier.covertStaticModifier.getId())) {
+                var distance = target.position().distanceTo(mob.position());
+                if (distance > 3) {
                     cir.setReturnValue(false);
                 }
             }

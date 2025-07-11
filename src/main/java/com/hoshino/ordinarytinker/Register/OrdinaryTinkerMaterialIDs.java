@@ -10,9 +10,11 @@ public class OrdinaryTinkerMaterialIDs {
     public static final MaterialId soulCheese = id("soulcheese");
     public static final MaterialId takeru = id("takeru");
     public static final MaterialId whiteDwarf = id("whitedwarf");
+
     private static MaterialId id(String name) {
         return new MaterialId(OrdinaryTinker.MODID, name);
     }
-    public static void init(){
+
+    public static void init() {
     }
 }

@@ -10,12 +10,14 @@ import org.jetbrains.annotations.Nullable;
 
 public class StarFallParticleProvider implements ParticleProvider<StarFallParticleType> {
     private final SpriteSet spriteSet;
-    public StarFallParticleProvider(SpriteSet spriteSet){
-        this.spriteSet=spriteSet;
+
+    public StarFallParticleProvider(SpriteSet spriteSet) {
+        this.spriteSet = spriteSet;
     }
+
     @Override
     public @Nullable Particle createParticle(StarFallParticleType pType, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-        var starfall= new StarFallParticle(pLevel,pX,pY,pZ,pType.getAlpha(),pType.getColor(),pType.getSpeed(),pType.getSize(),pType.getMaxRadius(),pType.getOrigin());
+        var starfall = new StarFallParticle(pLevel, pX, pY, pZ, pType.getAlpha(), pType.getColor(), pType.getSpeed(), pType.getSize(), pType.getMaxRadius(), pType.getOrigin());
         starfall.pickSprite(this.spriteSet);
         return starfall;
     }

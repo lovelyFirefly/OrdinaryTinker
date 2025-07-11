@@ -23,28 +23,28 @@ import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
-public class DeadlyPoison extends Modifier implements  MeleeHitModifierHook , ProjectileHitModifierHook {
+public class DeadlyPoison extends Modifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this,ModifierHooks.MELEE_HIT,ModifierHooks.PROJECTILE_HIT);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_HIT, ModifierHooks.PROJECTILE_HIT);
     }
 
     @Override
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
-        var entity=context.getLivingTarget();
+        var entity = context.getLivingTarget();
         if (entity != null) {
-            entity.getActiveEffectsMap().put(MobEffects.POISON,new MobEffectInstance(MobEffects.POISON,200 * modifier.getLevel(),modifier.getLevel()));
+            entity.getActiveEffectsMap().put(MobEffects.POISON, new MobEffectInstance(MobEffects.POISON, 200 * modifier.getLevel(), modifier.getLevel()));
         }
     }
 
     @Override
     public boolean onProjectileHitEntity(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         if (target != null) {
-            if(attacker instanceof ServerPlayer player){
-                var level=player.serverLevel();
-                var tool=ToolStack.from(player.getOffhandItem());
-                var fallenStar=new FallenStar(player.level(),target.position(),3,player);
-                level.playSound(null,player.getOnPos(), OrdinaryTinkerSound.eagleShootSound.get(), SoundSource.AMBIENT,0.5f,1);
+            if (attacker instanceof ServerPlayer player) {
+                var level = player.serverLevel();
+                var tool = ToolStack.from(player.getOffhandItem());
+                var fallenStar = new FallenStar(player.level(), target.position(), 3, player);
+                level.playSound(null, player.getOnPos(), OrdinaryTinkerSound.eagleShootSound.get(), SoundSource.AMBIENT, 0.5f, 1);
                 level.addFreshEntity(fallenStar);
             }
         }
@@ -56,5 +56,5 @@ public class DeadlyPoison extends Modifier implements  MeleeHitModifierHook , Pr
 
     }
 
-    private final int[] color=new int[]{0xffea95,0xffaaff,0x55c4ff};
+    private final int[] color = new int[]{0xffea95, 0xffaaff, 0x55c4ff};
 }

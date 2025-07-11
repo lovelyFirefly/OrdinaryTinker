@@ -36,62 +36,66 @@ import slimeknights.tconstruct.tools.modifiers.effect.NoMilkEffect;
 public class CommonLivingEvent {
     @SubscribeEvent
     public static void costHealEvent(LivingHealEvent event) {
-        var entity=event.getEntity();
+        var entity = event.getEntity();
         if (entity.hasEffect(OrdinaryTinkerEffect.mercurypoisoning.get())) {
             event.setAmount(event.getAmount() * 0.5F);
         }
-        int layer=entity.getPersistentData().getInt("natsuheal");
-        if(layer>0){
-            event.setAmount(event.getAmount() * (1+ 0.138f * layer ));
+        int layer = entity.getPersistentData().getInt("natsuheal");
+        if (layer > 0) {
+            event.setAmount(event.getAmount() * (1 + 0.138f * layer));
         }
     }
 
     @SubscribeEvent
     public static void drinkMilk(LivingEntityUseItemEvent.Finish event) {
-        var entity=event.getEntity();
+        var entity = event.getEntity();
         if (entity.level().isClientSide()) return;
         if (event.getItem().getItem() == Items.MILK_BUCKET && ModifierLevel.getHeadModifierlevel(entity, OrdinaryTinkerModifier.natsuHaloStaticModifier.getId()) > 0) {
             entity.heal(entity.getMaxHealth() * 0.24f);
             natsuLayer(entity);
         }
     }
+
     @SubscribeEvent
     public static void usePotion(LivingEntityUseItemEvent.Finish event) {
-        var entity=event.getEntity();
-        if (entity.level().isClientSide()||!(entity instanceof Player player))return;
-        var item=event.getItem();
-        if(item.getItem() instanceof PotionItem){
+        var entity = event.getEntity();
+        if (entity.level().isClientSide() || !(entity instanceof Player player)) return;
+        var item = event.getItem();
+        if (item.getItem() instanceof PotionItem) {
             player.addItem(item);
         }
     }
+
     @SubscribeEvent
     public static void craftBack(PlayerEvent.ItemCraftedEvent event) {
-        var entity=event.getEntity();
-        if (entity.level().isClientSide())return;
-        var item=event.getCrafting();
-        if(item.getItem()== TinkerTables.pattern.get()&&ModifierLevel.EquipHasModifierlevel(entity,OrdinaryTinkerModifier.flashOfInspirationStaticModifier.getId())){
-            ItemStack stack=new ItemStack(item.getItem(), Math.round(item.getCount() * 0.5f));
+        var entity = event.getEntity();
+        if (entity.level().isClientSide()) return;
+        var item = event.getCrafting();
+        if (item.getItem() == TinkerTables.pattern.get() && ModifierLevel.EquipHasModifierlevel(entity, OrdinaryTinkerModifier.flashOfInspirationStaticModifier.getId())) {
+            ItemStack stack = new ItemStack(item.getItem(), Math.round(item.getCount() * 0.5f));
             entity.addItem(stack);
         }
     }
+
     @SubscribeEvent
     public static void onBack(PlayerEvent.ItemCraftedEvent event) {
-        var item=event.getCrafting();
-        var player=event.getEntity();
+        var item = event.getCrafting();
+        var player = event.getEntity();
         ICondition.IContext conditionContext = ICondition.IContext.EMPTY;
-        RecipeManager manager=new RecipeManager(conditionContext);
-        var a= manager.getRecipes();
-        for(Recipe<?>recipe:a){
-            var resultItem=recipe.getResultItem(player.level().registryAccess());
-            if(resultItem.getItem()==item.getItem()){
-                var input=recipe.getIngredients();
+        RecipeManager manager = new RecipeManager(conditionContext);
+        var a = manager.getRecipes();
+        for (Recipe<?> recipe : a) {
+            var resultItem = recipe.getResultItem(player.level().registryAccess());
+            if (resultItem.getItem() == item.getItem()) {
+                var input = recipe.getIngredients();
             }
         }
     }
-    private static void natsuLayer(LivingEntity entity){
-        int layer=entity.getPersistentData().getInt("natsuheal");
-        if(layer<3){
-            entity.getPersistentData().putInt("natsuheal",layer+1);
+
+    private static void natsuLayer(LivingEntity entity) {
+        int layer = entity.getPersistentData().getInt("natsuheal");
+        if (layer < 3) {
+            entity.getPersistentData().putInt("natsuheal", layer + 1);
         }
     }
 
@@ -103,37 +107,40 @@ public class CommonLivingEvent {
             natsuLayer(event.getPlayer());
         }
     }
+
     @SubscribeEvent
     public static void conservePotion(FluidConsumedEvent event) {
-        int modifierLevel=ModifierLevel.getTotalArmorModifierlevel(event.getPlayer(),OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
-        if(modifierLevel==0)return;
+        int modifierLevel = ModifierLevel.getTotalArmorModifierlevel(event.getPlayer(), OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
+        if (modifierLevel == 0) return;
         if (event.getOriginalFluid().getFluid() == TinkerFluids.potion.get()) {
-            boolean shouldSave=event.getPlayer().level().random.nextInt(100) * modifierLevel>8;
-            if(shouldSave){
+            boolean shouldSave = event.getPlayer().level().random.nextInt(100) * modifierLevel > 8;
+            if (shouldSave) {
                 event.setConsumed(0);
             }
         }
     }
+
     @SubscribeEvent
     public static void extensionMobEffectEvent(MobEffectEvent.Applicable event) {
-        var entity=event.getEntity();
-        int modifierLevel=ModifierLevel.getTotalArmorModifierlevel(entity,OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
-        var instance=event.getEffectInstance();
-        var effect=instance.getEffect();
-        if(instance.getEffect() instanceof NoMilkEffect)return;
-        if(instance.isInfiniteDuration()||effect.isInstantenous())return;
+        var entity = event.getEntity();
+        int modifierLevel = ModifierLevel.getTotalArmorModifierlevel(entity, OrdinaryTinkerModifier.potionMasterStaticModifier.getId());
+        var instance = event.getEffectInstance();
+        var effect = instance.getEffect();
+        if (instance.getEffect() instanceof NoMilkEffect) return;
+        if (instance.isInfiniteDuration() || effect.isInstantenous()) return;
         Component.literal("aaa").withStyle(style -> style.withColor(0x654145));
-        boolean shouldAdd=entity.level().random.nextInt(11)==5;
-        if(entity instanceof Player&&modifierLevel>0){
-            instance.duration= instance.mapDuration(duration-> Math.round(duration * (1-0.1f * modifierLevel)));
-            if(shouldAdd&&modifierLevel>1&&instance.isInfiniteDuration()){
-                instance.mapDuration(duration->{
-                    instance.amplifier=instance.amplifier+1;
-                    return Math.round(duration * (1+0.3f));
+        boolean shouldAdd = entity.level().random.nextInt(11) == 5;
+        if (entity instanceof Player && modifierLevel > 0) {
+            instance.duration = instance.mapDuration(duration -> Math.round(duration * (1 - 0.1f * modifierLevel)));
+            if (shouldAdd && modifierLevel > 1 && instance.isInfiniteDuration()) {
+                instance.mapDuration(duration -> {
+                    instance.amplifier = instance.amplifier + 1;
+                    return Math.round(duration * (1 + 0.3f));
                 });
             }
         }
     }
+
     @SubscribeEvent
     public static void preventDeath(LivingDeathEvent event) {
         ResourceLocation SOUL = OrdinaryTinker.getResource("soul");
@@ -162,7 +169,7 @@ public class CommonLivingEvent {
 
     @SubscribeEvent
     public static void afterKill(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof Player player&&ModifierLevel.EquipHasModifierlevel(player,OrdinaryTinkerModifier.uncannyValleyStaticModifier.getId())) {
+        if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, OrdinaryTinkerModifier.uncannyValleyStaticModifier.getId())) {
             player.getPersistentData().putInt("fearfield", 100);
         }
     }

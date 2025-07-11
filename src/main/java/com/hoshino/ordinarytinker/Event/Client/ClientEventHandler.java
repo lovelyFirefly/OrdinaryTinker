@@ -25,10 +25,10 @@ public class ClientEventHandler {
     public static void onKeyPressed(InputEvent.Key event) {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
-            if(player.level().isClientSide()){
+            if (player.level().isClientSide()) {
                 if (player.getMainHandItem().getItem() instanceof MekaTool mekaTool) {
                     ItemStack stack = player.getMainHandItem();
-                    if (KeyBinding.DIGGING_SPEED_KEY.consumeClick()){
+                    if (KeyBinding.DIGGING_SPEED_KEY.consumeClick()) {
                         if (mekaTool.getToolLevel(stack) == 0) {
                             OTChannel.SendToServer(new MekaKeyBoardPacket(0));
                             player.sendSystemMessage(Component.literal("切换到中速模式"));
@@ -48,8 +48,9 @@ public class ClientEventHandler {
             }
         }
     }
+
     @SubscribeEvent
-    public static void onFOVSet(ComputeFovModifierEvent event){
-       var player= event.getPlayer();
+    public static void onFOVSet(ComputeFovModifierEvent event) {
+        var player = event.getPlayer();
     }
 }

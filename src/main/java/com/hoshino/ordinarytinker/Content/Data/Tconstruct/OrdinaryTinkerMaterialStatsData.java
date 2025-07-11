@@ -34,7 +34,7 @@ public class OrdinaryTinkerMaterialStatsData extends AbstractMaterialStatsDataPr
         addMaterialStats(OrdinaryTinkerMaterialIDs.armorSteel.getId(),
                 new HeadMaterialStats(1442, 7.5f, NETHERITE, 3.5f),
                 HandleMaterialStats.multipliers().durability(1.35f).miningSpeed(1.2f).attackSpeed(1.1f).attackDamage(1.2f).build(),
-                new SoulGeHeartMaterialStats(15,10,6,0.12f),
+                new SoulGeHeartMaterialStats(15, 10, 6, 0.12f),
                 StatlessMaterialStats.BINDING);
     }
 
@@ -46,7 +46,7 @@ public class OrdinaryTinkerMaterialStatsData extends AbstractMaterialStatsDataPr
     private void addArmor() {
         addArmorShieldStats(OrdinaryTinkerMaterialIDs.armorSteel,
                 PlatingMaterialStats.builder().durabilityFactor(350).armor(2, 4, 5, 2).knockbackResistance(0.1f).toughness(3),
-                new FluidEscapeMaterialStats(4,5,3,2),
+                new FluidEscapeMaterialStats(4, 5, 3, 2),
                 StatlessMaterialStats.MAILLE);
         addMaterialStats(OrdinaryTinkerMaterialIDs.soulCheese,
                 StatlessMaterialStats.SHIELD_CORE,

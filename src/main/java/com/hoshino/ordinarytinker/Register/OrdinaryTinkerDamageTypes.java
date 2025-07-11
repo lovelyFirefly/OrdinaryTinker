@@ -15,9 +15,11 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 public class OrdinaryTinkerDamageTypes {
     //Source的Create方法
     private static ResourceKey<DamageType> create(String name) {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MODID,name));
+        return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MODID, name));
     }
-    public OrdinaryTinkerDamageTypes(){}
+
+    public OrdinaryTinkerDamageTypes() {
+    }
 
     //生成Source
     public static DamageSource source(Level level, ResourceKey<DamageType> type, @Nullable Entity direct, @Nullable Entity causing) {
@@ -28,10 +30,12 @@ public class OrdinaryTinkerDamageTypes {
     public static DamageSource source(Level level, ResourceKey<DamageType> type, @Nullable Entity entity) {
         return source(level, type, entity, entity);
     }
+
     //无源
     public static DamageSource source(Level level, ResourceKey<DamageType> type) {
         return source(level, type, null, null);
     }
+
     //DamageType项
     public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
     public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
