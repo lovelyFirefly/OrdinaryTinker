@@ -190,6 +190,39 @@ public final class HaloRenderLogic {
         poseStack.popPose();
         buffer.endBatch();
     }
+    public static void renderRotationHaloHorizontal(PoseStack poseStack, Player player, float partialTick, ResourceLocation haloTexture) {
+        poseStack.pushPose();
+        poseStack.translate(0, player.getBbHeight() + 0.35f, 0);
+        float yaw = player.getViewYRot(partialTick);
+        float rotationAngle=player.tickCount;
+        Quaternionf rotation = new Quaternionf().rotateY(rotationAngle *(float) Math.PI/180);
+        poseStack.mulPose(rotation);
+        MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
+        VertexConsumer vertexBuilder = buffer.getBuffer(RenderType.entityTranslucent(haloTexture));
+        Matrix4f poseMatrix = poseStack.last().pose();
+        Matrix3f normalMatrix = poseStack.last().normal();
+        int light = 15728880;
+        int overlay = OverlayTexture.NO_OVERLAY;
+        float period = 3.0f;
+        float minAlpha = 50.0f;
+        float maxAlpha = 200.0f;
+        float minBrightness = 0.5f;
+        float maxBrightness = 1.0f;
+        long currentTime = System.currentTimeMillis();
+        float phase = (currentTime % (long) (period * 1000)) / (period * 1000.0f);
+        float waveFactor = (float) Math.sin(phase * 2 * Math.PI);
+        int dynamicAlpha = (int) ((waveFactor + 1) / 2 * (maxAlpha - minAlpha) + minAlpha);
+        int dynamicBrightness = (int) (
+                ((waveFactor + 1) / 2 * (maxBrightness - minBrightness) + minBrightness) * 255
+        );
+        float size = 0.4f;
+        buildVertex(vertexBuilder, poseMatrix, normalMatrix, -size, 0, -size, 0, 0, dynamicBrightness, dynamicAlpha, overlay, light);
+        buildVertex(vertexBuilder, poseMatrix, normalMatrix, size, 0, -size, 1, 0, dynamicBrightness, dynamicAlpha, overlay, light);
+        buildVertex(vertexBuilder, poseMatrix, normalMatrix, size, 0, size, 1, 1, dynamicBrightness, dynamicAlpha, overlay, light);
+        buildVertex(vertexBuilder, poseMatrix, normalMatrix, -size, 0, size, 0, 1, dynamicBrightness, dynamicAlpha, overlay, light);
+        poseStack.popPose();
+        buffer.endBatch();
+    }
 
     private static void buildVertex(
             VertexConsumer builder, Matrix4f pose, Matrix3f normal,

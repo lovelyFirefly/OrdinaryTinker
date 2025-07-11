@@ -4,6 +4,7 @@ import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.FluidEscapeMaterialSta
 import com.hoshino.ordinarytinker.Content.Item.Tool.Stats.SoulGeHeartMaterialStats;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerMaterialIDs;
 import net.minecraft.data.PackOutput;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataProvider;
 import slimeknights.tconstruct.tools.stats.*;
@@ -38,7 +39,7 @@ public class OrdinaryTinkerMaterialStatsData extends AbstractMaterialStatsDataPr
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "OrdinaryTinker's MaterialsStats";
     }
 
