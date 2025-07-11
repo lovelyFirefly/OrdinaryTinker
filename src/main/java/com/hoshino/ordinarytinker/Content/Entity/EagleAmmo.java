@@ -31,6 +31,16 @@ public class EagleAmmo extends BaseFallenStar{
         mob.hurt(this.damageSources().fellOutOfWorld(),10);
         mob.setDeltaMovement(new Vec3(1,1,1));
     }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(level().isClientSide())return;
+        if(this.tickCount==60&&getOwner()!=null){
+            this.level().playSound(null,getOwner().getOnPos(),OrdinaryTinkerSound.eagleShootSound.get(),SoundSource.AMBIENT,1f,1);
+        }
+    }
+
     @Override
     protected void onArrived(ServerPlayer player) {
         super.onArrived(player);
@@ -39,7 +49,7 @@ public class EagleAmmo extends BaseFallenStar{
         if (!this.level().isClientSide) {
             var particle = new StarFallParticleType(true, 20, 0xf8ffb2, 1, 1, 10, getTargetPosition());
             player.serverLevel().sendParticles(particle, getTargetPosition().x(), getTargetPosition().y() + 0.05, getTargetPosition().z(), 1, 0, 0, 0, 0.25);
-            level().playSound(null,player.getOnPos(), OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT,0.5f,1);
+            level().playSound(null,player.getOnPos(), OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT,1f,1);
         }
     }
 

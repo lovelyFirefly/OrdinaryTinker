@@ -18,5 +18,65 @@
         "stream": "true"
       }
     ]
+  },
+  "beam_up": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.beam_up",
+    "sounds": [
+      {
+        "name": "ordinarytinker:beam_up",
+        "stream": "true"
+      }
+    ]
+  },
+  "eagle_aim": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.eagle_aim",
+    "sounds": [
+      {
+        "name": "ordinarytinker:eagle_aim",
+        "stream": "true"
+      }
+    ]
+  },
+  "super_die1": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.super_die1",
+    "sounds": [
+      {
+        "name": "ordinarytinker:super_die1",
+        "stream": "true"
+      }
+    ]
+  },
+  "super_die2": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.super_die2",
+    "sounds": [
+      {
+        "name": "ordinarytinker:super_die2",
+        "stream": "true"
+      }
+    ]
+  },
+  "electric_hit": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.electric_hit",
+    "sounds": [
+      {
+        "name": "ordinarytinker:electric_hit",
+        "stream": "true"
+      }
+    ]
+  },
+  "mika_miss": {
+    "category": "voice",
+    "subtitle": "subtitles.ordinarytinker.mika_miss",
+    "sounds": [
+      {
+        "name": "ordinarytinker:mika_miss",
+        "stream": "true"
+      }
+    ]
   }
 }

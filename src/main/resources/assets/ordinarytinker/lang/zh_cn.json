@@ -200,9 +200,32 @@
   "modifier.ordinarytinker.covert.description": "常规寻敌逻辑的怪不会在3格以外主动发现你",
   "modifier.ordinarytinker.covert.flavor": "这是滚木吗",
 
+  "modifier.ordinarytinker.nkssdtt": "诺克萨斯断头台",
+  "modifier.ordinarytinker.nkssdtt.description": "攻击流血等级大于等于5的目标时候会给予血怒状态,在空中右键实体会劈向该实体,造成230%攻击力的穿甲穿魔伤害,目标身上的流血效果每多一层这个伤害就会增加20%\n如果击杀了目标则会恐惧周围生命值小于20的生物,并且直接刷新斩击效果,斩击效果冷却80秒",
+  "modifier.ordinarytinker.nkssdtt.flavor": "一人血怒全家升天",
+
+  "modifier.ordinarytinker.bladedwaltz": "利刃华尔兹",
+  "modifier.ordinarytinker.bladedwaltz.description": "右键实体立刻后撤,在接下来1.5秒内连续斩击四段并且瞬闪,此斩击附带少量目标最大生命值的无视护甲和附魔的伤害,提升词条等级以提高穿甲比例和额外伤害以及瞬闪距离,根据结束时打出的总斩击次数恢复部分生命,每段5%最大生命,冷却10秒",
+  "modifier.ordinarytinker.bladedwaltz.flavor": "我,没有对手",
+
+  "modifier.ordinarytinker.electricbatons": "雷霆龙力",
+  "modifier.ordinarytinker.electricbatons.description": "你的攻击会连锁附近20格内的有生生物,至多连锁七次",
+  "modifier.ordinarytinker.electricbatons.flavor": "好笑吗,我只看到10条闪电",
+
+  "modifier.ordinarytinker.mikamiss": "未花说的道理",
+  "modifier.ordinarytinker.mikamiss.description": "50%概率触发闪避",
+  "modifier.ordinarytinker.mikamiss.flavor": "好笑吗",
+
 
   "subtitles.ordinarytinker.star_hit": "天鹰火炮:宣泄怒火",
   "subtitles.ordinarytinker.eagle_shoot_sound": "天鹰火炮:瞄准并发射",
+  "subtitles.ordinarytinker.super_die1": "私人叫声",
+  "subtitles.ordinarytinker.super_die2": "私人叫声",
+  "subtitles.ordinarytinker.electric_hit": "电流连锁",
+  "subtitles.ordinarytinker.beam_up": "升档",
+  "subtitles.ordinarytinker.mika_miss": "未花:闪避",
+
+
   "fluid_plate.tooltip1": "当前存储的流体",
   "fluid_plate.water.tooltip": "减免你受到的伤害,着火时候每隔0.5秒尝试熄灭身上的火焰,每次熄灭消耗10mb水",
   "fluid_plate.lava.tooltip": "减免你受到的伤害并且返还部分伤害给攻击者,并使目标着火",

@@ -2,6 +2,9 @@ package com.hoshino.ordinarytinker.Register;
 
 import com.hoshino.ordinarytinker.Content.Modifier.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Armor.*;
+import com.hoshino.ordinarytinker.Content.Modifier.Combat.BladedWaltz;
+import com.hoshino.ordinarytinker.Content.Modifier.Combat.ElectricBatons;
+import com.hoshino.ordinarytinker.Content.Modifier.Combat.Nkssdtt;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.UncannyValley;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Dementors;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Fear;
@@ -51,6 +54,11 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<StarFall> starFallStaticModifier = MODIFIERS.register("starfall", StarFall::new);
     public static final StaticModifier<Covert> covertStaticModifier = MODIFIERS.register("covert", Covert::new);
     public static final StaticModifier<Test> testStaticModifier = MODIFIERS.register("test", Test::new);
+    public static final StaticModifier<ElectricBatons> electricBatonsStaticModifier = MODIFIERS.register("electricbatons", ElectricBatons::new);
+    public static final StaticModifier<Nkssdtt> nkssdttStaticModifier = MODIFIERS.register("nkssdtt", Nkssdtt::new);
+    public static final StaticModifier<BladedWaltz> bladedWaltzStaticModifier = MODIFIERS.register("bladedwaltz", BladedWaltz::new);
+    public static final StaticModifier<CatSpeed> catSpeedStaticModifier = MODIFIERS.register("catspeed", CatSpeed::new);
+    public static final StaticModifier<MikaMiss> mikaMissStaticModifier = MODIFIERS.register("mikamiss", MikaMiss::new);
     public static void register(IEventBus bus){
         MODIFIERS.register(bus);
     }

@@ -14,9 +14,11 @@
     "LivingEntityMixin",
     "MobMixin",
     "NearestAttackableTargetGoalMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "ToolAttackUtilMixin"
   ],
   "client": [
+    "LocalPlayerMixin"
   ],
   "server": [
   ],

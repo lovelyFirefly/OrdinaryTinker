@@ -5,6 +5,8 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerToolStat;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -34,6 +36,7 @@ public class FluidShieldArmor extends MultilayerArmorItem {
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        super.onInventoryTick(stack,level,player,slotIndex,selectedIndex);
         if(player.tickCount%10==0&&player.getRemainingFireTicks()>10){
             if(slotIndex>36){
                 var view=ToolStack.from(stack);

@@ -19,6 +19,7 @@ import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 

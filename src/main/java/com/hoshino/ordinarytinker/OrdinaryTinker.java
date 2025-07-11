@@ -1,9 +1,12 @@
 package com.hoshino.ordinarytinker;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
+import com.hoshino.ordinarytinker.Content.Item.Tool.Tier.NewNew;
 import com.hoshino.ordinarytinker.Network.OTChannel;
 import com.hoshino.ordinarytinker.Register.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,6 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
@@ -38,6 +42,7 @@ public class OrdinaryTinker {
         OrdinaryTinkerTags.init();
         OrdinaryTinkerMaterialIDs.init();
         OrdinaryTinkerEntityData.init();
+        TierSortingRegistry.registerTier(NewNew.instance, getResource("new_new"), List.of(Tiers.NETHERITE), List.of());
     }
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {

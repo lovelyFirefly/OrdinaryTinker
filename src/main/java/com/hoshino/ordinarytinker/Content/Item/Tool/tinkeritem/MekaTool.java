@@ -25,6 +25,7 @@ public class MekaTool extends ModifiableItem {
     public void setToolLevel(int level, ItemStack stack) {
         ToolStack.from(stack).getPersistentData().putInt(SPEED, level);
     }
+
     public MekaTool(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
     }
@@ -33,14 +34,15 @@ public class MekaTool extends ModifiableItem {
     public boolean mineBlock(ItemStack stack, Level level, BlockState blockState, BlockPos pos, LivingEntity entity) {
         return true;
     }
+
     @Override
     public float getDestroySpeed(@NotNull ItemStack stack, @NotNull BlockState state) {
-        var view=ToolStack.from(stack);
-        int speed=view.getStats().getInt(ToolStats.MINING_SPEED);
-        var toolSpeedLevels=MekaToolSpeedLevel.values();
+        var view = ToolStack.from(stack);
+        int speed = view.getStats().getInt(ToolStats.MINING_SPEED);
+        var toolSpeedLevels = MekaToolSpeedLevel.values();
         var nbt = view.getPersistentData();
         int toolLevel = nbt.getInt(SPEED);
-        return (int) Math.min(Math.round(toolSpeedLevels[toolLevel].getSpeed() * speed),2048);
+        return (int) Math.min(Math.round(toolSpeedLevels[toolLevel].getSpeed() * speed), 2048);
     }
 
     @Override
