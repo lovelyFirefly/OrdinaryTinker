@@ -10,7 +10,9 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -171,6 +174,18 @@ public class CommonLivingEvent {
     public static void afterKill(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player && ModifierLevel.EquipHasModifierlevel(player, OrdinaryTinkerModifier.uncannyValleyStaticModifier.getId())) {
             player.getPersistentData().putInt("fearfield", 100);
+        }
+    }
+    @SubscribeEvent
+    public static void entityInteract(PlayerInteractEvent.EntityInteract event) {
+        var player=event.getEntity();
+        if(player!=null &&event.getTarget() instanceof LivingEntity living){
+            var stack=player.getMainHandItem();
+            if(stack.is(Tags.Items.BONES)&&living instanceof Cat cat){
+                cat.heal(10);
+                stack.shrink(1);
+                player.setItemInHand(InteractionHand.MAIN_HAND,stack);
+            }
         }
     }
 }

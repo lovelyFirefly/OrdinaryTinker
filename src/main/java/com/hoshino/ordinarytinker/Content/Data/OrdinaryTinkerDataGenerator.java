@@ -50,13 +50,13 @@ public final class OrdinaryTinkerDataGenerator {
         generator.addProvider(server, new CNLanguageProvider(output, MODID, "zh_cn"));
         generator.addProvider(server, new ENLanguageProvider(output, MODID, "en_us"));
         generator.addProvider(server, new OrdinaryTinkerBucketModelProvider(output, MODID));
-
-        OrdinaryTinkerMaterialDefinitionData materials = new OrdinaryTinkerMaterialDefinitionData(output);
-        OrdinaryTinkerMaterialStatsData statsData = new OrdinaryTinkerMaterialStatsData(output, materials);
-        OrdinaryTinkerMaterialTraitsData traitsData = new OrdinaryTinkerMaterialTraitsData(output, materials);
-        generator.addProvider(server, materials);
-        generator.addProvider(server, statsData);
-        generator.addProvider(server, traitsData);
+//        弃用掉了
+//        OrdinaryTinkerMaterialDefinitionData materials = new OrdinaryTinkerMaterialDefinitionData(output);
+//        OrdinaryTinkerMaterialStatsData statsData = new OrdinaryTinkerMaterialStatsData(output, materials);
+//        OrdinaryTinkerMaterialTraitsData traitsData = new OrdinaryTinkerMaterialTraitsData(output, materials);
+//        generator.addProvider(server, materials);
+//        generator.addProvider(server, statsData);
+//        generator.addProvider(server, traitsData);
 
         OrdinaryTinkerBlockTagProvider blockTags = new OrdinaryTinkerBlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(server, blockTags);
