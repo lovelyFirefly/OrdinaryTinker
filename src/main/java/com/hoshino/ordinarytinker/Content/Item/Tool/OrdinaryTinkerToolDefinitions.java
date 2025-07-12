@@ -10,4 +10,5 @@ public class OrdinaryTinkerToolDefinitions {
     public static final ToolDefinition MEKATOOL = ToolDefinition.create(OrdinaryTinkerItem.mekatool);
     public static final ToolDefinition TRIDENT = ToolDefinition.create(OrdinaryTinkerItem.trident);
     public static final ToolDefinition Soulge = ToolDefinition.create(OrdinaryTinkerItem.soulge);
+    public static final ToolDefinition electric_baton = ToolDefinition.create(OrdinaryTinkerItem.electric_baton);
 }

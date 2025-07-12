@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialTraitDataProvider;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
-
+@Deprecated
 public class OrdinaryTinkerMaterialTraitsData extends AbstractMaterialTraitDataProvider {
     public OrdinaryTinkerMaterialTraitsData(PackOutput packOutput, AbstractMaterialDataProvider materials) {
         super(packOutput, materials);

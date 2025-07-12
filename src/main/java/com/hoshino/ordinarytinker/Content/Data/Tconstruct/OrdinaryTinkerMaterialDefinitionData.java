@@ -4,7 +4,7 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerMaterialIDs;
 import net.minecraft.data.PackOutput;
 import slimeknights.tconstruct.library.data.material.AbstractMaterialDataProvider;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
-
+@Deprecated
 public class OrdinaryTinkerMaterialDefinitionData extends AbstractMaterialDataProvider {
     public OrdinaryTinkerMaterialDefinitionData(PackOutput packOutput) {
         super(packOutput);

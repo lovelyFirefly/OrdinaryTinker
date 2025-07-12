@@ -22,6 +22,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper;
 import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.helper.TooltipBuilder;
+import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 import slimeknights.tconstruct.library.tools.item.armor.MultilayerArmorItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -36,7 +37,6 @@ public class FluidShieldArmor extends MultilayerArmorItem {
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
-        super.onInventoryTick(stack, level, player, slotIndex, selectedIndex);
         if (player.tickCount % 10 == 0 && player.getRemainingFireTicks() > 10) {
             if (slotIndex > 36) {
                 var view = ToolStack.from(stack);

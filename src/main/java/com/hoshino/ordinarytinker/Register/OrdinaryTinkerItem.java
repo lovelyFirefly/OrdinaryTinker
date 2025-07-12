@@ -33,9 +33,10 @@ import java.util.function.Supplier;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
+
 public class OrdinaryTinkerItem {
     private static final ItemDeferredRegisterExtension OTHER_ITEM = new ItemDeferredRegisterExtension(MODID);
-    private static final ItemDeferredRegisterExtension ModifiableArmor = new ItemDeferredRegisterExtension(OrdinaryTinker.MODID);
+    private static final ItemDeferredRegisterExtension ModifiableArmor = new ItemDeferredRegisterExtension(MODID);
     private static final DeferredRegister<Item> ITEM = DeferredRegister.create(Registries.ITEM, MODID);
 
     private static final Item.Properties TOOL = (new Item.Properties()).stacksTo(1);
@@ -62,7 +63,6 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> experiencesteel_ingot = registerCommonMaterials(ITEM, "experiencesteel_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> kemomimi_ingot = registerCommonMaterials(ITEM, "kemomimi_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> takeru_ingot = registerCommonMaterials(ITEM, "takeru_ingot", () -> new Item(new Item.Properties()));
-    public static final Supplier<Item> jd_heart = registerCommonMaterials(ITEM, "jd_heart", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> star_debris = ITEM.register("star_debris", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> eagle_ammo = ITEM.register("eagle_ammo", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> special_arrow = ITEM.register("special_arrow", () -> new SpecialArrowItem(new Item.Properties()));
@@ -78,6 +78,7 @@ public class OrdinaryTinkerItem {
     public static final RegistryObject<ModifiableItem> mekatool = ITEM.register("mekatool", () -> new MekaTool(TOOL, OrdinaryTinkerToolDefinitions.MEKATOOL));
     public static final RegistryObject<ModifiableItem> trident = ITEM.register("trident", () -> new Trident(TOOL, OrdinaryTinkerToolDefinitions.TRIDENT));
     public static final RegistryObject<ModifiableItem> soulge = ITEM.register("soulge", () -> new SoulGe(TOOL, OrdinaryTinkerToolDefinitions.Soulge));
+    public static final RegistryObject<ModifiableItem> electric_baton = ITEM.register("electric_baton", () -> new ElectricBatons(TOOL, OrdinaryTinkerToolDefinitions.electric_baton));
     public static final EnumObject<ArmorItem.Type, ModifiableArmorItem> fluid_plate = ModifiableArmor.registerEnum("fluid_plate", ArmorItem.Type.values(), type -> new FluidShieldArmor(OrdinaryTinkerArmorDefinitions.FLUID_PLATE, type, TOOL));
 
     public OrdinaryTinkerItem() {

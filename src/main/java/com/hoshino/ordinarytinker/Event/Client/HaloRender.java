@@ -38,6 +38,6 @@ public class HaloRender {
         float partialTick = event.getPartialTick();
         Arrays.stream(HaloRendererEnum.values())
                 .filter(halo -> halo.checkCondition(player))
-                .forEach(halo -> HaloRenderLogic.renderRotationHaloHorizontal(poseStack, player, partialTick, halo.getTexture()));
+                .forEach(halo -> HaloRenderLogic.renderCompleteDynamicHaloHorizontal(poseStack, player, partialTick, halo.getTexture()));
     }
 }
