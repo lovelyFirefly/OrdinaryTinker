@@ -48,7 +48,7 @@ public class StarFall extends Modifier implements ProjectileHitModifierHook {
         attacker.level().addFreshEntity(eagleAmmo);
         attacker.level().addFreshEntity(eagleAmmo2);
         attacker.level().addFreshEntity(eagleAmmo3);
-        level.playSound(null, player.getOnPos(), OrdinaryTinkerSound.eagle_aim.get(), SoundSource.AMBIENT, 1f, 1);
+        level.playSound(null, player, OrdinaryTinkerSound.eagle_aim.get(), SoundSource.AMBIENT, 1f, 1);
         return false;
     }
 

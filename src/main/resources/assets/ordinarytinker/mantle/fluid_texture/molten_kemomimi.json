@@ -1,5 +1,5 @@
 {
   "color": "fff7ffae",
-  "flowing": "ordinarytinker:fluid/molten_armorsteel/flowing",
-  "still": "ordinarytinker:fluid/molten_armorsteel/still"
+  "flowing": "ordinarytinker:fluid/base/base_fluid",
+  "still": "ordinarytinker:fluid/base/base_fluid"
 }

@@ -1,5 +1,6 @@
 package com.hoshino.ordinarytinker.Content.Data.Tag;
 
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypeTag;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -26,5 +27,6 @@ public class OrdinaryTinkerDamageTypeTagProvider extends DamageTypeTagsProvider 
         tag(DamageTypeTags.BYPASSES_COOLDOWN).add(OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, OrdinaryTinkerDamageTypes.MERCURYPOISONING, OrdinaryTinkerDamageTypes.SpecialReflect);
         tag(DamageTypeTags.BYPASSES_INVULNERABILITY).add(OrdinaryTinkerDamageTypes.SpecailCatAttack, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack);
         tag(DamageTypeTags.NO_IMPACT).add(OrdinaryTinkerDamageTypes.MERCURYPOISONING);
+        tag(OrdinaryTinkerDamageTypeTag.AVOID_KNOCK).add(OrdinaryTinkerDamageTypes.MERCURYPOISONING);
     }
 }

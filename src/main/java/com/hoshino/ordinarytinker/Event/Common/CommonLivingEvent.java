@@ -9,9 +9,12 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEffect;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -28,7 +31,9 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.fluids.TinkerFluids;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
@@ -176,16 +181,17 @@ public class CommonLivingEvent {
             player.getPersistentData().putInt("fearfield", 100);
         }
     }
+
     @SubscribeEvent
-    public static void entityInteract(PlayerInteractEvent.EntityInteract event) {
-        var player=event.getEntity();
-        if(player!=null &&event.getTarget() instanceof LivingEntity living){
-            var stack=player.getMainHandItem();
-            if(stack.is(Tags.Items.BONES)&&living instanceof Cat cat){
-                cat.heal(10);
-                stack.shrink(1);
-                player.setItemInHand(InteractionHand.MAIN_HAND,stack);
-            }
+    public static void onPainShare(LivingDamageEvent event) {
+        if (!(event.getEntity() instanceof TamableAnimal tamableAnimal) || !tamableAnimal.isTame())return;
+        LivingEntity owner = tamableAnimal.getOwner();
+        if (owner == null || owner.getHealth() <= owner.getMaxHealth() * 0.1f) return;
+        int level = ModifierLevel.getTotalArmorModifierlevel(owner, OrdinaryTinkerModifier.painSharerStaticModifier.getId());
+        if (level > 0) {
+            float modifiedDamage = event.getAmount() * Math.min(0.1f * level, 1);
+            event.setAmount(event.getAmount() - modifiedDamage);
+            owner.hurt(event.getSource(), modifiedDamage);
         }
     }
 }

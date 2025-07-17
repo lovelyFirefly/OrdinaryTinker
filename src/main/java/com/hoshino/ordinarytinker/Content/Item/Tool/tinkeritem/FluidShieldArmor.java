@@ -37,6 +37,7 @@ public class FluidShieldArmor extends MultilayerArmorItem {
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        super.onInventoryTick(stack,level,player,slotIndex,selectedIndex);
         if (player.tickCount % 10 == 0 && player.getRemainingFireTicks() > 10) {
             if (slotIndex > 36) {
                 var view = ToolStack.from(stack);

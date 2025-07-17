@@ -27,6 +27,8 @@ import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
@@ -63,7 +65,7 @@ public class CatSpeed extends Modifier implements DamageBlockModifierHook, ToolS
 
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-        if (itemSlot > 35 && itemSlot < 40 && holder.tickCount % 200 == 0) {
+        if (isCorrectSlot && holder.tickCount % 200 == 0) {
             holder.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0, false, false, true));
         }
     }
@@ -75,8 +77,8 @@ public class CatSpeed extends Modifier implements DamageBlockModifierHook, ToolS
 
     @Override
     public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute, AttributeModifier> consumer) {
-        var attributeModifier = new AttributeModifier(getUUID(this, slot, Attributes.MAX_HEALTH), Attributes.MAX_HEALTH.getDescriptionId(), 1.5f, AttributeModifier.Operation.MULTIPLY_TOTAL);
-        consumer.accept(Attributes.MAX_HEALTH, attributeModifier);
+        var attributeModifier = new AttributeModifier(getUUID(this, slot, Attributes.MOVEMENT_SPEED), Attributes.MOVEMENT_SPEED.getDescriptionId(), 1.5f, AttributeModifier.Operation.MULTIPLY_TOTAL);
+        consumer.accept(Attributes.MOVEMENT_SPEED, attributeModifier);
     }
 
     @Override

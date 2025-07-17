@@ -30,15 +30,17 @@ public class EagleAmmo extends BaseFallenStar {
     @Override
     protected void shockWaveHurt(Mob mob, Player player) {
         mob.hurt(this.damageSources().fellOutOfWorld(), 10);
-        mob.setDeltaMovement(new Vec3(1, 1, 1));
+        Vec3 knock=mob.position().subtract(getTargetPosition()).normalize().scale(1.5);
+        Vec3 finalKnock=new Vec3(knock.x(),0.8, knock.z());
+        mob.setDeltaMovement(finalKnock);
     }
 
     @Override
     public void tick() {
         super.tick();
         if (level().isClientSide()) return;
-        if (this.tickCount == 60 && getOwner() != null) {
-            this.level().playSound(null, getOwner().getOnPos(), OrdinaryTinkerSound.eagleShootSound.get(), SoundSource.AMBIENT, 1f, 1);
+        if (this.tickCount == 60 && getOwner() instanceof Player player) {
+            this.level().playSound(null, player, OrdinaryTinkerSound.eagleShootSound.get(), SoundSource.AMBIENT, 1f, 1);
         }
     }
 
@@ -50,7 +52,7 @@ public class EagleAmmo extends BaseFallenStar {
         if (!this.level().isClientSide) {
             var particle = new StarFallParticleType(true, 20, 0xf8ffb2, 1, 1, 10, getTargetPosition());
             player.serverLevel().sendParticles(particle, getTargetPosition().x(), getTargetPosition().y() + 0.05, getTargetPosition().z(), 1, 0, 0, 0, 0.25);
-            level().playSound(null, player.getOnPos(), OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT, 1f, 1);
+            level().playSound(null, player, OrdinaryTinkerSound.starHit.get(), SoundSource.AMBIENT, 1f, 1);
         }
     }
 

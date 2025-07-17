@@ -216,6 +216,10 @@
   "modifier.ordinarytinker.mikamiss.description": "50%概率触发闪避",
   "modifier.ordinarytinker.mikamiss.flavor": "好笑吗",
 
+  "modifier.ordinarytinker.painsharer": "分担苦痛",
+  "modifier.ordinarytinker.painsharer.description": "你的宠物受伤会转移10% * 盔甲该词条的等级点伤害到你身上,只有当你生命值高于最大生命10%时候触发",
+  "modifier.ordinarytinker.painsharer.flavor": "打狗还得看主人",
+
 
   "subtitles.ordinarytinker.star_hit": "天鹰火炮:宣泄怒火",
   "subtitles.ordinarytinker.eagle_shoot_sound": "天鹰火炮:瞄准并发射",
