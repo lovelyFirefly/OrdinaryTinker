@@ -43,12 +43,12 @@ public class OrdinaryTinker {
         OrdinaryTinkerMaterialIDs.init();
         OrdinaryTinkerEntityData.init();
         TierSortingRegistry.registerTier(NewNew.instance, getResource("new_new"), List.of(Tiers.NETHERITE), List.of());
+        OTChannel.register();
     }
 
     @SubscribeEvent
     public void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(OrdinaryTinkerMaterialStat::setup);
-        OTChannel.register();
     }
 
     public static String prefix(String name) {

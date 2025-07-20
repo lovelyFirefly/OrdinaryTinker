@@ -14,7 +14,7 @@ public class BasePacket {
     public BasePacket(FriendlyByteBuf buf) {
     }
 
-    public void ToByte(FriendlyByteBuf buf) {
+    public void toByte(FriendlyByteBuf buf) {
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {

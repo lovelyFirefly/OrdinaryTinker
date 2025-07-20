@@ -22,7 +22,7 @@ public class MekaKeyBoardPacket extends BasePacket {
     }
 
     @Override
-    public void ToByte(FriendlyByteBuf buf) {
+    public void toByte(FriendlyByteBuf buf) {
         buf.writeInt(ToolLevel);
     }
 

@@ -7,6 +7,7 @@ import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,17 +20,7 @@ import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 public class HaloRender {
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.side == LogicalSide.CLIENT) {
-            Player player = event.player;
-            if (player.isSleeping()) return;
-            Arrays.stream(HaloRendererEnum.values()).parallel().forEach(halo -> {
-                int level = ModifierLevel.getAllSlotModifierlevel(player, halo.getModifierId());
-                HaloRendererUtil.HALO_STATES.put(halo.getModifierId(), level > 0);
-            });
-        }
-    }
+
 
     @SubscribeEvent
     public static void onRenderPlayer(RenderPlayerEvent.Post event) {
@@ -39,5 +30,9 @@ public class HaloRender {
         Arrays.stream(HaloRendererEnum.values())
                 .filter(halo -> halo.checkCondition(player))
                 .forEach(halo -> HaloRenderLogic.renderCompleteDynamicHaloHorizontal(poseStack, player, partialTick, halo.getTexture()));
+    }
+    @SubscribeEvent
+    public static void onClientPlayerLoggedOut(ClientPlayerNetworkEvent.LoggingOut event) {
+        HaloRendererUtil.clearAllHaloStates();
     }
 }

@@ -23,7 +23,7 @@ public class SoulGeAttackPacket extends BasePacket {
     }
 
     @Override
-    public void ToByte(FriendlyByteBuf buf) {
+    public void toByte(FriendlyByteBuf buf) {
         buf.writeUUID(mobUUID);
         buf.writeInt(targetedTimes);
     }

@@ -5,16 +5,27 @@ import net.minecraft.world.entity.player.Player;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public interface HaloRendererUtil {
-    Map<ModifierId, Boolean> HALO_STATES = new ConcurrentHashMap<>();
-
+    Map<UUID, Map<ModifierId, Boolean>> PLAYER_HALO_STATES = new ConcurrentHashMap<>();
     ResourceLocation getTexture();
-
+    ModifierId getModifierId();
     default boolean checkCondition(Player player) {
-        return HALO_STATES.getOrDefault(getModifierId(), false) && !player.isInvisible();
+        Map<ModifierId, Boolean> playerHalos = PLAYER_HALO_STATES.get(player.getUUID());
+        boolean hasHaloEnabled = playerHalos != null && playerHalos.getOrDefault(getModifierId(), false);
+        return hasHaloEnabled && !player.isInvisible();
     }
 
-    ModifierId getModifierId();
+    static void setPlayerHaloState(UUID playerUUID, ModifierId modifierId, boolean isEnabled) {
+        PLAYER_HALO_STATES.computeIfAbsent(playerUUID, k -> new ConcurrentHashMap<>())
+                .put(modifierId, isEnabled);
+    }
+    static void clearPlayerHaloStates(UUID playerUUID) {
+        PLAYER_HALO_STATES.remove(playerUUID);
+    }
+    static void clearAllHaloStates() {
+        PLAYER_HALO_STATES.clear();
+    }
 }
