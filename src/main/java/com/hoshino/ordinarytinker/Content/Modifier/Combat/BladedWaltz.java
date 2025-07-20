@@ -31,18 +31,6 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.UUID;
 
-public class BladedWaltz extends Modifier implements InventoryTickModifierHook, EntityInteractionModifierHook {
-    @Override
-    protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
-        hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK, ModifierHooks.ENTITY_INTERACT);
-    }
+public class BladedWaltz extends Modifier {
 
-    @Override
-    public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
-
-    }
-    @Override
-    public @NotNull InteractionResult beforeEntityUse(IToolStackView tool, ModifierEntry modifier, Player player, Entity target, InteractionHand hand, InteractionSource source) {
-
-    }
 }

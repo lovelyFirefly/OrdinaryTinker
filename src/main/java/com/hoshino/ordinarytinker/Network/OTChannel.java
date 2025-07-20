@@ -3,6 +3,7 @@ package com.hoshino.ordinarytinker.Network;
 import com.hoshino.ordinarytinker.Network.Packet.KeyBoardPacket;
 import com.hoshino.ordinarytinker.Network.Packet.MekaKeyBoardPacket;
 import com.hoshino.ordinarytinker.Network.Packet.SoulGeAttackPacket;
+import com.hoshino.ordinarytinker.Network.Packet.ToolUpdatePacket;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,6 +44,11 @@ public class OTChannel {
                 .decoder(SoulGeAttackPacket::new)
                 .encoder(SoulGeAttackPacket::ToByte)
                 .consumerMainThread(SoulGeAttackPacket::handle)
+                .add();
+        net.messageBuilder(ToolUpdatePacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ToolUpdatePacket::new)
+                .encoder(ToolUpdatePacket::ToByte)
+                .consumerMainThread(ToolUpdatePacket::handle)
                 .add();
     }
 

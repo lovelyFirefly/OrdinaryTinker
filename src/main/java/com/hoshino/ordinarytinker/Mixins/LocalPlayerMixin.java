@@ -28,11 +28,6 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     @Shadow
     @Final
     protected Minecraft minecraft;
-
-    @Shadow
-    @Final
-    public ClientPacketListener connection;
-
     public LocalPlayerMixin(ClientLevel pClientLevel, GameProfile pGameProfile) {
         super(pClientLevel, pGameProfile);
     }

@@ -15,7 +15,8 @@
     "MobMixin",
     "NearestAttackableTargetGoalMixin",
     "PlayerMixin",
-    "ToolAttackUtilMixin"
+    "ToolAttackUtilMixin",
+    "ToolstackMixin"
   ],
   "client": [
     "LocalPlayerMixin"
