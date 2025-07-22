@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "ordinarytinker:takeru_ingot"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "ordinarytinker:takeru"
+}

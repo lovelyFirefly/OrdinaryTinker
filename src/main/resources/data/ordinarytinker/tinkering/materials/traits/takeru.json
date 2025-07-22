@@ -1,0 +1,24 @@
+{
+  "default": [
+    {
+      "level": 1,
+      "name": "ordinarytinker:catspeed"
+    },
+    {
+      "level": 1,
+      "name": "ordinarytinker:uncannyvalley"
+    }
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "level": 1,
+        "name": "ordinarytinker:catspeed"
+      },
+      {
+        "level": 1,
+        "name": "ordinarytinker:disguise"
+      }
+    ]
+  }
+}

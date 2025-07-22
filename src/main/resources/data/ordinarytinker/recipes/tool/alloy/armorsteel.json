@@ -1,0 +1,22 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "name": "tconstruct:molten_steel",
+      "amount": 180
+    },
+    {
+      "name": "tconstruct:molten_quartz",
+      "amount": 400
+    },
+    {
+      "name": "tconstruct:molten_debris",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "ordinarytinker:molten_armorsteel",
+    "amount": 180
+  },
+  "temperature": 1320
+}

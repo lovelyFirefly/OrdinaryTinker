@@ -1,6 +1,20 @@
 {
+  "material.ordinarytinker": {
+    "takeru": "#848484",
+    "armorsteel": "#dceaf6",
+    "soulcheese": "#766251",
+    "jailerslime": "#9e4043"
+  },
   "modifier.ordinarytinker": {
+    "misery": "#9e4043",
+    "torture": "#9e4043",
+    "dementors": "#766251",
+    "armorcoating": "#dceaf6",
+    "ironheart": "#dceaf6",
+    "disguise": "#848484",
     "hoshinohalo":"#ffaaff",
+    "catspeed": "#848484",
+    "uncannyvalley": "#848484",
     "azusahalo":"#ffff9b",
     "reisahalo":"#aaaaff",
     "natsuhalo":"#ffb9df",

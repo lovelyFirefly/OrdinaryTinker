@@ -52,6 +52,7 @@ public class OrdinaryTinkerItem {
     }
 
     public static final Supplier<Item> ArmorSteel_ingot = registerCommonMaterials(ITEM, "armorsteel_ingot", () -> new Item(new Item.Properties()));
+    public static final Supplier<Item> Jailerslime_ingot = registerCommonMaterials(ITEM, "jailerslime_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> SoulcheeseAlloy_ingot = registerCommonMaterials(ITEM, "soulcheese_ingot", () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
             .nutrition(6)
             .saturationMod(0.6F)

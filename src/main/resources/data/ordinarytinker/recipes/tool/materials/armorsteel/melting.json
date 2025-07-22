@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "ordinarytinker:armorsteel_ingot"
+  },
+  "result": {
+    "fluid": "ordinarytinker:molten_armorsteel",
+    "amount": 90
+  },
+  "temperature": 1320,
+  "time": 20
+}
