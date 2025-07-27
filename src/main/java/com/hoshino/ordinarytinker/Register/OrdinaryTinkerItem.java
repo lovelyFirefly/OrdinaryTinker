@@ -80,6 +80,7 @@ public class OrdinaryTinkerItem {
     public static final RegistryObject<ModifiableItem> soulge = ITEM.register("soulge", () -> new SoulGe(TOOL, OrdinaryTinkerToolDefinitions.Soulge));
 
     public static final RegistryObject<ModifiableItem> electric_baton = ITEM.register("electric_baton", () -> new ElectricBatons(TOOL, OrdinaryTinkerToolDefinitions.electric_baton));
+    public static final RegistryObject<ModifiableItem> rapier = ITEM.register("rapier", () -> new Rapier(TOOL, OrdinaryTinkerToolDefinitions.rapier));
     public static final EnumObject<ArmorItem.Type, ModifiableArmorItem> fluid_plate = ModifiableArmor.registerEnum("fluid_plate", ArmorItem.Type.values(), type -> new FluidShieldArmor(OrdinaryTinkerArmorDefinitions.FLUID_PLATE, type, TOOL));
 
     public OrdinaryTinkerItem() {
