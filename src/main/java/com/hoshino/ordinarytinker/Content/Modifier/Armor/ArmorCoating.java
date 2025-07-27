@@ -23,7 +23,7 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class ArmorCoating extends Modifier implements DamageBlockModifierHook, ModifyDamageModifierHook, AttributesModifierHook {
+public class ArmorCoating extends Modifier implements DamageBlockModifierHook, ModifyDamageModifierHook, AttributesModifierHook{
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.DAMAGE_BLOCK, ModifierHooks.MODIFY_HURT, ModifierHooks.ATTRIBUTES);

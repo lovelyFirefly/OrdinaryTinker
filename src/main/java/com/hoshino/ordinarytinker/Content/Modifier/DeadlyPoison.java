@@ -2,6 +2,7 @@ package com.hoshino.ordinarytinker.Content.Modifier;
 
 import com.hoshino.ordinarytinker.Content.Entity.FallenStar;
 import com.hoshino.ordinarytinker.Content.Particle.ParticleType.StarFallParticleType;
+import com.hoshino.ordinarytinker.Content.Util.MobEffectUtil;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerSound;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,7 +34,7 @@ public class DeadlyPoison extends Modifier implements MeleeHitModifierHook, Proj
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         var entity = context.getLivingTarget();
         if (entity != null) {
-            entity.getActiveEffectsMap().put(MobEffects.POISON, new MobEffectInstance(MobEffects.POISON, 200 * modifier.getLevel(), modifier.getLevel()));
+            MobEffectUtil.directAddMobEffect(entity,new MobEffectInstance(MobEffects.POISON,1000,1));
         }
     }
 

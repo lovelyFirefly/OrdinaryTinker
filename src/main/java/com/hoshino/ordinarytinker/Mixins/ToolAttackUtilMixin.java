@@ -28,11 +28,12 @@ public class ToolAttackUtilMixin {
     )
 
     private static boolean a(boolean value) {
-        return ModifierUtil.getModifierLevel(ordinarytinker$player.getMainHandItem(), OrdinaryTinkerModifier.covertStaticModifier.getId()) > 0;
+        return ModifierUtil.getModifierLevel(ordinarytinker$player.getMainHandItem(), OrdinaryTinkerModifier.covertStaticModifier.getId()) > 0||value;
     }
 
     @Inject(method = "attackEntity(Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Ljava/util/function/DoubleSupplier;ZLnet/minecraft/world/entity/EquipmentSlot;)Z", at = @At("HEAD"), remap = false)
     private static void cache(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity, DoubleSupplier cooldownFunction, boolean isExtraAttack, EquipmentSlot sourceSlot, CallbackInfoReturnable<Boolean> cir) {
-        ordinarytinker$player = attackerLiving;
+        var attackerLiving1=attackerLiving;
+        ordinarytinker$player = attackerLiving1;
     }
 }

@@ -75,17 +75,19 @@ mixin {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenLocal()
     maven {
         url "https://cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
     }
-    mavenLocal()
+
     maven {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
     }
+    mavenCentral()
     flatDir {
         dir 'libs'
     }

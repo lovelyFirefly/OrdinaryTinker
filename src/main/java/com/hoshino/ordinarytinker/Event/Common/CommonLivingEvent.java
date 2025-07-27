@@ -3,42 +3,36 @@ package com.hoshino.ordinarytinker.Event.Common;
 import com.c2h6s.etstlib.event.CompletelyNewEvent.FluidConsumedEvent;
 import com.hoshino.ordinarytinker.Content.Util.EquipmentHelper;
 import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
-import com.hoshino.ordinarytinker.Content.Util.ToolDataNBTCache;
+import com.hoshino.ordinarytinker.Content.Util.ModifyDamageTag;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEffect;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.fluids.TinkerFluids;
-import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.modifiers.effect.NoMilkEffect;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID)
 public class CommonLivingEvent {
@@ -172,6 +166,17 @@ public class CommonLivingEvent {
         if (event.getEntity() instanceof Player player) {
             var tick = player.getPersistentData().getInt("fearfield");
             player.getPersistentData().putInt("fearfield", tick - 1);
+
+
+            Vec3 eyePos = player.getEyePosition();
+
+            Vec3 lookAt = player.getLookAngle();
+
+            Vec3 eyeSight = eyePos.add(lookAt.x * 20, lookAt.y * 20, lookAt.z * 20);
+
+            AABB playerNearByBox = new AABB(player.blockPosition()).inflate(20);
+
+            List<LivingEntity> nearByentityList = player.level().getEntitiesOfClass(LivingEntity.class,playerNearByBox, LivingEntity::isAlive);
         }
     }
 
@@ -184,7 +189,7 @@ public class CommonLivingEvent {
 
     @SubscribeEvent
     public static void onPainShare(LivingDamageEvent event) {
-        if (!(event.getEntity() instanceof TamableAnimal tamableAnimal) || !tamableAnimal.isTame())return;
+        if (!(event.getEntity() instanceof TamableAnimal tamableAnimal) || !tamableAnimal.isTame()) return;
         LivingEntity owner = tamableAnimal.getOwner();
         if (owner == null || owner.getHealth() <= owner.getMaxHealth() * 0.1f) return;
         int level = ModifierLevel.getTotalArmorModifierlevel(owner, OrdinaryTinkerModifier.painSharerStaticModifier.getId());
@@ -192,6 +197,9 @@ public class CommonLivingEvent {
             float modifiedDamage = event.getAmount() * Math.min(0.1f * level, 1);
             event.setAmount(event.getAmount() - modifiedDamage);
             owner.hurt(event.getSource(), modifiedDamage);
+            if (event.getSource() instanceof ModifyDamageTag tag) {
+                tag.ordinarytinker$addDamageTag(tagKeyList -> tagKeyList.add(DamageTypeTags.IS_FIRE));
+            }
         }
     }
 }

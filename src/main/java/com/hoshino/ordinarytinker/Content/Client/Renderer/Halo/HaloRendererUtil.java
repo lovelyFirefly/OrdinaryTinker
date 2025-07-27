@@ -17,13 +17,8 @@ public interface HaloRendererUtil {
         boolean hasHaloEnabled = playerHalos != null && playerHalos.getOrDefault(getModifierId(), false);
         return hasHaloEnabled && !player.isInvisible();
     }
-
     static void setPlayerHaloState(UUID playerUUID, ModifierId modifierId, boolean isEnabled) {
-        PLAYER_HALO_STATES.computeIfAbsent(playerUUID, k -> new ConcurrentHashMap<>())
-                .put(modifierId, isEnabled);
-    }
-    static void clearPlayerHaloStates(UUID playerUUID) {
-        PLAYER_HALO_STATES.remove(playerUUID);
+        PLAYER_HALO_STATES.computeIfAbsent(playerUUID, k -> new ConcurrentHashMap<>()).put(modifierId, isEnabled);
     }
     static void clearAllHaloStates() {
         PLAYER_HALO_STATES.clear();

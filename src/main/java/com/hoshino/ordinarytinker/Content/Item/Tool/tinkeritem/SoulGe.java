@@ -2,29 +2,26 @@ package com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem;
 
 
 import com.c2h6s.etstlib.util.DynamicComponentUtil;
+import com.hoshino.ordinarytinker.Content.Util.Vec3Helper;
 import com.hoshino.ordinarytinker.Network.OTChannel;
 import com.hoshino.ordinarytinker.Network.Packet.SoulGeAttackPacket;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerToolStat;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
@@ -44,7 +41,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class SoulGe extends ModifiableItem {
     public SoulGe(Properties properties, ToolDefinition toolDefinition) {
@@ -111,55 +108,23 @@ public class SoulGe extends ModifiableItem {
         int dist = Math.round(tool.getStats().get(OrdinaryTinkerToolStat.DETECTION_RANGE));
         int attackFrequency = Math.round(tool.getStats().get(OrdinaryTinkerToolStat.ATTACK_FREQUENCY));
         int exertTimes = Math.round(tool.getStats().get(OrdinaryTinkerToolStat.EXERT_TIMES));
-        var pointedEntity = this.getPointedEntity(attacker, level, dist);
+        var pointedEntity = Vec3Helper.getPointedEntity(attacker, level, dist, LivingEntity.class,
+                LivingEntity::isAlive,
+                living -> living instanceof TamableAnimal tamableAnimal&&tamableAnimal.isTame()
+        );
         if (pointedEntity != null && pointedEntity.isAlive()) {
             var targetedTimes = pointedEntity.getPersistentData().getInt("targeted");
             if (targetedTimes < exertTimes * 3) {
                 pointedEntity.getPersistentData().putInt("targeted", Math.min(exertTimes * 3, exertTimes + targetedTimes));
             }
-
         }
         if (attacker.tickCount % attackFrequency == 0) {
             this.attackTargets(attacker, tool, dist);
         }
     }
-
-    public LivingEntity getPointedEntity(LivingEntity attacker, Level level, int dist) {
-        Vec3 playerEyePosition = attacker.getEyePosition(1F);
-        Vec3 playerLook = attacker.getViewVector(1F);
-        Vec3 Vector3d2 = playerEyePosition.add(playerLook.x * dist, playerLook.y * dist, playerLook.z * dist);
-        LivingEntity pointedEntity = null;
-        List<LivingEntity> nearbyEntities = level.getEntitiesOfClass(LivingEntity.class, attacker.getBoundingBox().expandTowards(playerLook.x * dist, playerLook.y * dist, playerLook.z * dist).inflate(1.0F, 1.0F, 1.0F));
-        double d2 = dist;
-        for (LivingEntity nearbyEntity : nearbyEntities) {
-            AABB axisAlignedBB = nearbyEntity.getBoundingBox().inflate(nearbyEntity.getPickRadius());
-            Optional<Vec3> optional = axisAlignedBB.clip(playerEyePosition, Vector3d2);
-            if (axisAlignedBB.contains(playerEyePosition)) {
-                if (d2 >= (double) 0.0F) {
-                    pointedEntity = nearbyEntity;
-                    d2 = 0.0F;
-                }
-            } else if (optional.isPresent()) {
-                double d3 = playerEyePosition.distanceTo(optional.get());
-                if (d3 < d2 || d2 == (double) 0.0F) {
-                    if (nearbyEntity.getRootVehicle() == attacker.getRootVehicle() && !attacker.canRiderInteract()) {
-                        if (d2 == (double) 0.0F) {
-                            pointedEntity = nearbyEntity;
-                        }
-                    } else {
-                        pointedEntity = nearbyEntity;
-                    }
-                    return pointedEntity;
-                }
-            }
-        }
-        return null;
-    }
-
     private void drawParticleBeam(LivingEntity player, LivingEntity target) {
         double d0 = target.getX() - player.getX();
-        double d1 = target.getY() + (double) (target.getBbHeight() * 0.5F)
-                - (player.getY() + (double) player.getEyeHeight() * 0.5D);
+        double d1 = target.getY() + (double) (target.getBbHeight() * 0.5F) - (player.getY() + (double) player.getEyeHeight() * 0.5D);
         double d2 = target.getZ() - player.getZ();
         double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
         d0 = d0 / d3;

@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Mixins;
 
-import com.hoshino.ordinarytinker.Event.CompletelyNewEvent.AddDamageTag;
+import com.hoshino.ordinarytinker.Content.Util.ModifyDamageTag;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -13,26 +13,27 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 @Mixin(DamageSource.class)
-public abstract class DamageSourceMixin implements AddDamageTag {
+public abstract class DamageSourceMixin implements ModifyDamageTag {
     @Shadow
     @Final
     private Holder<DamageType> type;
     @Unique
-    List<TagKey<DamageType>> ordinarytinker$tagKeyList = new ArrayList<>();
+    List<TagKey<DamageType>> etst$tagKeyList = null;
 
     @Inject(method = "is(Lnet/minecraft/tags/TagKey;)Z", at = @At("HEAD"), cancellable = true)
     private void addTag(TagKey<DamageType> pDamageTypeKey, CallbackInfoReturnable<Boolean> cir) {
-        if (ordinarytinker$tagKeyList == null) return;
-        cir.setReturnValue(this.type.is(pDamageTypeKey) || ordinarytinker$tagKeyList.contains(pDamageTypeKey));
+        if (etst$tagKeyList == null) return;
+        cir.setReturnValue(etst$tagKeyList.contains(pDamageTypeKey));
     }
-
     @Override
     public void ordinarytinker$addDamageTag(Consumer<List<TagKey<DamageType>>> list) {
-        list.accept(ordinarytinker$tagKeyList);
+        if(etst$tagKeyList==null){
+            etst$tagKeyList=type.tags().toList();
+        }
+        list.accept(etst$tagKeyList);
     }
 }

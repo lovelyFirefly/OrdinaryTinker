@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
+import slimeknights.tconstruct.library.modifiers.hook.build.ToolStatsModifierHook;
 
 public abstract class EagleAmmoRenderer extends EntityRenderer<EagleAmmo> {
 

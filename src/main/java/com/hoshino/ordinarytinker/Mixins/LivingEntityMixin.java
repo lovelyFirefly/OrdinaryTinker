@@ -1,5 +1,6 @@
 package com.hoshino.ordinarytinker.Mixins;
 
+import com.hoshino.ordinarytinker.Content.Util.LivingPositionRecord;
 import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypeTag;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDataKeys;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -25,7 +27,7 @@ import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import java.util.Optional;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
+public abstract class LivingEntityMixin extends Entity implements LivingPositionRecord {
     @Shadow
     public abstract int getArmorValue();
 
@@ -33,9 +35,15 @@ public abstract class LivingEntityMixin extends Entity {
     public abstract double getAttributeValue(Attribute pAttribute);
     @Unique
     public boolean ordinarytinker$shouldCancelKnockBack=false;
+    @Unique
+    private Vec3 ordinarytinker$lastPos=Vec3.ZERO;
 
     public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+    }
+    @Inject(method = "tick",at = @At("TAIL"))
+    private void setLastPos(CallbackInfo ci){
+        this.ordinarytinker$lastPos =this.position();
     }
 
     @Inject(method = "getMaxHealth", at = @At("HEAD"), cancellable = true)
@@ -72,5 +80,19 @@ public abstract class LivingEntityMixin extends Entity {
             ordinarytinker$shouldCancelKnockBack=false;
             ci.cancel();
         }
+    }
+    @Unique
+    @Override
+    public Vec3 ordinarytinker$getLastPosition() {
+        return this.ordinarytinker$lastPos;
+    }
+    @Unique
+    @Override
+    public boolean ordinarytinker$movedinLastTick(double offset) {
+        var nowPos=this.position();
+        var lastpos=ordinarytinker$lastPos;
+        return Math.abs(nowPos.x - lastpos.x) > offset ||
+                Math.abs(nowPos.y - lastpos.y) > offset ||
+                Math.abs(nowPos.z - lastpos.z) > offset;
     }
 }
