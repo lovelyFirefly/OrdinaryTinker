@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_melting",
+  "input": "ordinarytinker:takeru",
+  "temperature": 980,
+  "result": {
+    "fluid": "ordinarytinker:molten_takeru",
+    "amount": 90
+  }
+}

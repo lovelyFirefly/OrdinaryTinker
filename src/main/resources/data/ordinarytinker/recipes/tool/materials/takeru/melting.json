@@ -1,0 +1,12 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "ordinarytinker:takeru_ingot"
+  },
+  "result": {
+    "fluid": "ordinarytinker:molten_takeru",
+    "amount": 90
+  },
+  "temperature": 980,
+  "time": 20
+}

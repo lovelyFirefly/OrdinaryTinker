@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "level": 1,
+      "name": "ordinarytinker:torture"
+    },
+    {
+      "level": 1,
+      "name": "ordinarytinker:misery"
+    }
+  ]
+}

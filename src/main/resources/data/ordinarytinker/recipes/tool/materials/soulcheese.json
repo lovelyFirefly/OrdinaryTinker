@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material",
+  "ingredient": {
+    "item": "ordinarytinker:soulcheese_ingot"
+  },
+  "value": 1,
+  "needed": 1,
+  "material": "ordinarytinker:soulcheese"
+}

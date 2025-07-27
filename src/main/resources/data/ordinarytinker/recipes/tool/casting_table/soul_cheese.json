@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:cheese_ingot"
+  },
+  "cast_consumed": true,
+  "cooling_time": 10,
+  "fluid": {
+    "amount": 500,
+    "fluid": "tconstruct:liquid_soul"
+  },
+  "result": "ordinarytinker:soulcheese_ingot"
+}

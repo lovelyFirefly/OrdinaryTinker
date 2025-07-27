@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:entity_melting",
+  "damage": 1,
+  "entity": {
+    "type": "minecraft:cat"
+  },
+  "result": {
+    "amount": 15,
+    "fluid": "ordinarytinker:molten_takeru"
+  }
+}

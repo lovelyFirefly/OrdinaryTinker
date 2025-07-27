@@ -1,0 +1,34 @@
+{
+  "stats": {
+    "ordinarytinker:soulge_heart": {
+      "attack_frequency": 7.0,
+      "detection_range": 22.0,
+      "exert_times": 12.0,
+      "kill_threshold": 0.14
+    },
+    "tconstruct:binding": {},
+    "tconstruct:grip": {
+      "accuracy": -0.1,
+      "durability": 0,
+      "melee_damage": 3.2
+    },
+    "tconstruct:handle": {
+      "durability": 0.35,
+      "melee_damage": 0.2,
+      "melee_speed": 0.1,
+      "mining_speed": 0.2
+    },
+    "tconstruct:head": {
+      "durability": 842,
+      "melee_attack": 3.2,
+      "mining_speed": 5.5,
+      "mining_tier": "minecraft:diamond"
+    },
+    "tconstruct:limb": {
+      "accuracy": 0.15,
+      "draw_speed": 0.05,
+      "durability": 550,
+      "velocity": -0.05
+    }
+  }
+}
