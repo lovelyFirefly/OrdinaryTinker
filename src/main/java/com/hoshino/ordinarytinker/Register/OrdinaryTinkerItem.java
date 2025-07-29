@@ -45,8 +45,8 @@ public class OrdinaryTinkerItem {
     public static final RegistryObject<ModifiableItem> mekatool = ITEM.register("mekatool", () -> new MekaTool(TOOL, OrdinaryTinkerToolDefinitions.MEKATOOL));
     public static final RegistryObject<ModifiableItem> trident = ITEM.register("trident", () -> new Trident(TOOL, OrdinaryTinkerToolDefinitions.TRIDENT));
     public static final RegistryObject<ModifiableItem> soulge = ITEM.register("soulge", () -> new SoulGe(TOOL, OrdinaryTinkerToolDefinitions.Soulge));
-    public static final RegistryObject<ModifiableItem> electric_baton = ITEM.register("electric_baton", () -> new ElectricBatons(TOOL, OrdinaryTinkerToolDefinitions.electric_baton));
-    public static final RegistryObject<ModifiableItem> rapier = ITEM.register("rapier", () -> new Rapier(TOOL, OrdinaryTinkerToolDefinitions.rapier));
+    public static final RegistryObject<ModifiableItem> electric_baton = ITEM.register("electric_baton", () -> new ElectricBatons(TOOL, OrdinaryTinkerToolDefinitions.Electicbaton));
+    public static final RegistryObject<ModifiableItem> rapier = ITEM.register("rapier", () -> new Rapier(TOOL, OrdinaryTinkerToolDefinitions.Rapier));
     public static final EnumObject<ArmorItem.Type, ModifiableArmorItem> fluid_plate = ModifiableArmor.registerEnum("fluid_plate", ArmorItem.Type.values(), type -> new FluidShieldArmor(OrdinaryTinkerArmorDefinitions.FLUID_PLATE, type, TOOL));
     private static final Item.Properties PART = (new Item.Properties()).stacksTo(64);
     public static final ItemObject<ToolPartItem> mining_core = OTHER_ITEM.register("mining_core", () -> new ToolPartItem(PART, StatlessMaterialStats.BINDING.getIdentifier()));

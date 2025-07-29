@@ -86,6 +86,8 @@ public class OrdinaryTinkerTab {
         acceptTool(output, OrdinaryTinkerItem.mekatool);
         acceptPart(output, OrdinaryTinkerItem.mining_core);
         acceptTool(output, OrdinaryTinkerItem.soulge);
+        acceptTool(output, OrdinaryTinkerItem.electric_baton);
+        acceptTool(output, OrdinaryTinkerItem.rapier);
         acceptPart(output, OrdinaryTinkerItem.soulge_heart);
         acceptTools(output, OrdinaryTinkerItem.fluid_plate);
         acceptPart(output, OrdinaryTinkerItem.fluid_escape);
