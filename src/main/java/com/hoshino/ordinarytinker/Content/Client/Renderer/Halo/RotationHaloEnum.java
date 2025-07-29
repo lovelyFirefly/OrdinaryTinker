@@ -11,18 +11,13 @@ import slimeknights.tconstruct.library.modifiers.ModifierId;
 
 import java.util.function.Supplier;
 
-public enum HaloRendererEnum implements HaloRendererUtil {
-    HOSHINO(OrdinaryTinkerModifier.hoshinoHaloStaticModifier, "hoshino"),
-    AZUSA(OrdinaryTinkerModifier.azusaHaloStaticModifier, "azusa"),
-    REISA(OrdinaryTinkerModifier.reisaHaloStaticModifier, "reisa"),
-    NATSU(OrdinaryTinkerModifier.natsuHaloStaticModifier, "natsu"),
-    AL1S(OrdinaryTinkerModifier.al1sHaloStaticModifier, "al1s"),
-    MARI(OrdinaryTinkerModifier.mariHaloStaticModifier, "mari");
+public enum RotationHaloEnum implements HaloRendererUtil {
+    LXJ(OrdinaryTinkerModifier.chachaStaticModifier, "lxj");
     private final Supplier<Modifier> modifierSupplier;
     private final ResourceLocation texture;
     private Modifier cachedModifier;
 
-    HaloRendererEnum(Supplier<Modifier> modifierSupplier, String textureName) {
+    RotationHaloEnum(Supplier<Modifier> modifierSupplier, String textureName) {
         this.modifierSupplier = modifierSupplier;
         this.texture = Tinkerorthodox.getResource("textures/halo/" + textureName + ".png");
     }
@@ -46,7 +41,7 @@ public enum HaloRendererEnum implements HaloRendererUtil {
 
     @Override
     public void doRender(PoseStack poseStack, Player player, float partialTick) {
-        HaloRenderLogic.renderCompleteDynamicHaloHorizontal(poseStack, player, partialTick, this.texture);
+        HaloRenderLogic.renderRotationHaloHorizontal(poseStack, player, partialTick, this.texture);
     }
 
     @Override

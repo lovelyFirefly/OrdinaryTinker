@@ -11,6 +11,7 @@ import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 public class OrdinaryTinkerMaterialStat {
     public static final MaterialStatsId SOULGE_HEART = new MaterialStatsId(OrdinaryTinker.getResource("soulge_heart"));
     public static final MaterialStatsId FLUID_ESCAPE = new MaterialStatsId(OrdinaryTinker.getResource("fluid_escape"));
+
     public OrdinaryTinkerMaterialStat() {
     }
 

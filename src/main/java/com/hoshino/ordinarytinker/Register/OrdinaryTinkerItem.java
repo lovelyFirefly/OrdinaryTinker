@@ -70,6 +70,7 @@ public class OrdinaryTinkerItem {
     public static final Supplier<Item> experiencesteel_ingot = registerCommonMaterials(ITEM, "experiencesteel_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> kemomimi_ingot = registerCommonMaterials(ITEM, "kemomimi_ingot", () -> new Item(new Item.Properties()));
     public static final Supplier<Item> takeru_ingot = registerCommonMaterials(ITEM, "takeru_ingot", () -> new Item(new Item.Properties()));
+
     public OrdinaryTinkerItem() {
     }
 

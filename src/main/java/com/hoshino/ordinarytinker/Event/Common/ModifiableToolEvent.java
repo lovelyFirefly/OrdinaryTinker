@@ -1,17 +1,13 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
-import com.hoshino.ordinarytinker.Content.Client.CacheTest;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

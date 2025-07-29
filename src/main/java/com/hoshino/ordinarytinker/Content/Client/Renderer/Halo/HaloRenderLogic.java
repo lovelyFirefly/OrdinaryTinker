@@ -211,6 +211,7 @@ public final class HaloRenderLogic {
         poseStack.popPose();
         buffer.endBatch();
     }
+
     private static void buildVertexWithoutBrightness(VertexConsumer consumer, Matrix4f poseMatrix, Matrix3f normalMatrix, float x, float y, float z, float u, float v, int red, int green, int blue, int alpha, int overlay, int light) {
         consumer.vertex(poseMatrix, x, y, z)
                 .color(red, green, blue, alpha)
@@ -220,6 +221,7 @@ public final class HaloRenderLogic {
                 .normal(normalMatrix, 0, 1, 0)
                 .endVertex();
     }
+
     private static void buildVertex(VertexConsumer builder, Matrix4f pose, Matrix3f normal, float x, float y, float z, float u, float v, int brightness, int alpha, int overlay, int light) {
         builder.vertex(pose, x, y, z)
                 .color(brightness, brightness, brightness, alpha)

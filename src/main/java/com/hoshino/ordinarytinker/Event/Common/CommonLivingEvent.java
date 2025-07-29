@@ -22,7 +22,6 @@ import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.fluids.TinkerFluids;

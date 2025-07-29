@@ -20,6 +20,7 @@ public class OrdinaryTinkerDamageTypes {
     public static final ResourceKey<DamageType> SpecailCatAttack = create("specialcatattack");
     public static final ResourceKey<DamageType> eagleAmmoHurt = create("eagleammohurt");
     public static final ResourceKey<DamageType> shockwaveHurt = create("shockwavehurt");
+
     public OrdinaryTinkerDamageTypes() {
     }
 
