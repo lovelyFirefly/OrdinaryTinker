@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerItem;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEntity;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerItem;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Arrow;

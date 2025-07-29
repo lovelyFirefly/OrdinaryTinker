@@ -1,7 +1,5 @@
 package com.hoshino.ordinarytinker.Content.Util;
 
-import slimeknights.tconstruct.library.modifiers.impl.DurabilityShieldModifier;
-
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 

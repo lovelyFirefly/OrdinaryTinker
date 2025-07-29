@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public class Vec3Helper {
-    public static @Nullable <T extends Entity> T getPointedEntity(LivingEntity viewer, Level level, int dist, Class<T> tClass, Predicate<? super T> nearByFilter,Predicate<? super T> passFilter) {
+    public static @Nullable <T extends Entity> T getPointedEntity(LivingEntity viewer, Level level, int dist, Class<T> tClass, Predicate<? super T> nearByFilter, Predicate<? super T> passFilter) {
         var playerEyePosition = viewer.getEyePosition(1F);
         var playerLook = viewer.getViewVector(1F);
         var eyeSight = playerEyePosition.add(playerLook.x * dist, playerLook.y * dist, playerLook.z * dist);
@@ -22,7 +22,7 @@ public class Vec3Helper {
         List<T> nearbyEntities = level.getEntitiesOfClass(tClass, nearByBox, nearByFilter);
         for (T nearbyEntity : nearbyEntities) {
             if (nearbyEntity == viewer) continue;
-            if(passFilter.test(nearbyEntity))continue;
+            if (passFilter.test(nearbyEntity)) continue;
             AABB axisAlignedBB = nearbyEntity.getBoundingBox().inflate(nearbyEntity.getPickRadius());
             Optional<Vec3> optional = axisAlignedBB.clip(playerEyePosition, eyeSight);
             if (axisAlignedBB.contains(playerEyePosition)) {

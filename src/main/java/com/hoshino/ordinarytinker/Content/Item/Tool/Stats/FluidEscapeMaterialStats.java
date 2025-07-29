@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerToolStat;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ArmorItem;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.mantle.data.loadable.primitive.FloatLoadable;
 import slimeknights.mantle.data.loadable.record.RecordLoadable;
@@ -15,9 +14,6 @@ import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper;
 import slimeknights.tconstruct.library.tools.stat.IToolStat;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
-import slimeknights.tconstruct.tools.modifiers.upgrades.general.MagneticModifier;
-import slimeknights.tconstruct.tools.modules.ArmorModuleBuilder;
-import slimeknights.tconstruct.tools.stats.PlatingMaterialStats;
 
 import java.util.List;
 

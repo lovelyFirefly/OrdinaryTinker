@@ -8,7 +8,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -37,13 +36,13 @@ public class ElectricBatons extends ModifiableItem {
         Mob currentTarget = mob;
         List<Mob> hasBeenAttackedMob = new ArrayList<>();
         hasBeenAttackedMob.add(mob);
-        var tool= ToolStack.from(stack);
+        var tool = ToolStack.from(stack);
         player.level().playSound(null, player.getOnPos(), OrdinaryTinkerSound.electric_hit.get(), SoundSource.AMBIENT, 1, 1);
         for (int i = 0; i < 8; i++) {
             Mob nextMob = getNearestMob(currentTarget, hasBeenAttackedMob, 20);
             if (nextMob == null) break;
             nextMob.hurt(OrdinaryTinkerDamageTypes.source(level, OrdinaryTinkerDamageTypes.PlayerSoulgeAttack, player), 10);
-            ToolAttackUtil.attackEntity(tool,player,InteractionHand.MAIN_HAND,nextMob,() ->1,false);
+            ToolAttackUtil.attackEntity(tool, player, InteractionHand.MAIN_HAND, nextMob, () -> 1, false);
             drawParticleBeam(currentTarget, nextMob, random, level);
             currentTarget = nextMob;
             hasBeenAttackedMob.add(nextMob);

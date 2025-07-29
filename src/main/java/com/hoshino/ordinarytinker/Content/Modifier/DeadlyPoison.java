@@ -1,10 +1,8 @@
 package com.hoshino.ordinarytinker.Content.Modifier;
 
 import com.hoshino.ordinarytinker.Content.Entity.FallenStar;
-import com.hoshino.ordinarytinker.Content.Particle.ParticleType.StarFallParticleType;
 import com.hoshino.ordinarytinker.Content.Util.MobEffectUtil;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerSound;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,7 +12,9 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
-import slimeknights.tconstruct.library.modifiers.*;
+import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeHitModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileHitModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
@@ -25,6 +25,8 @@ import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 public class DeadlyPoison extends Modifier implements MeleeHitModifierHook, ProjectileHitModifierHook {
+    private final int[] color = new int[]{0xffea95, 0xffaaff, 0x55c4ff};
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.MELEE_HIT, ModifierHooks.PROJECTILE_HIT);
@@ -34,7 +36,7 @@ public class DeadlyPoison extends Modifier implements MeleeHitModifierHook, Proj
     public void afterMeleeHit(IToolStackView tool, ModifierEntry modifier, ToolAttackContext context, float damageDealt) {
         var entity = context.getLivingTarget();
         if (entity != null) {
-            MobEffectUtil.directAddMobEffect(entity,new MobEffectInstance(MobEffects.POISON,1000,1));
+            MobEffectUtil.directAddMobEffect(entity, new MobEffectInstance(MobEffects.POISON, 1000, 1));
         }
     }
 
@@ -56,6 +58,4 @@ public class DeadlyPoison extends Modifier implements MeleeHitModifierHook, Proj
     public void onProjectileHitBlock(ModifierNBT modifiers, ModDataNBT persistentData, ModifierEntry modifier, Projectile projectile, BlockHitResult hit, @Nullable LivingEntity attacker) {
 
     }
-
-    private final int[] color = new int[]{0xffea95, 0xffaaff, 0x55c4ff};
 }

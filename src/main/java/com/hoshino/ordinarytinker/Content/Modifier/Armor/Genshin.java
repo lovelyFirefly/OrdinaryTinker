@@ -17,6 +17,7 @@ public class Genshin extends Modifier implements InventoryTickModifierHook {
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.INVENTORY_TICK);
     }
+
     @Override
     public void onInventoryTick(IToolStackView tool, ModifierEntry modifier, Level world, LivingEntity holder, int itemSlot, boolean isSelected, boolean isCorrectSlot, ItemStack stack) {
         if (holder instanceof Player player && player.tickCount % 8 == 0) {

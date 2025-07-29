@@ -11,26 +11,17 @@ import com.hoshino.ordinarytinker.Content.Entity.SpecialArrow;
 import com.hoshino.ordinarytinker.Content.Particle.ParticleType.StarFallParticleProvider;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEntity;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerParticle;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.*;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
+import net.minecraft.client.renderer.entity.CatRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Cat;
-import net.minecraft.world.entity.projectile.Fireball;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.jetbrains.annotations.NotNull;
-import slimeknights.tconstruct.library.modifiers.ModifierId;
-import slimeknights.tconstruct.tools.TinkerModifiers;
-import slimeknights.tconstruct.tools.data.ModifierIds;
 
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 

@@ -1,9 +1,9 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.FluidShieldArmor;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;

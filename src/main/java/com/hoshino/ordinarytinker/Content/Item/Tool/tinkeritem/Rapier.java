@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.item.ModifiableItem;
@@ -30,7 +31,7 @@ public class Rapier extends ModifiableItem {
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player playerIn, LivingEntity target, InteractionHand hand) {
+    public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player playerIn, LivingEntity target, InteractionHand hand) {
         if (target.isAlive()) {
             var view = ToolStack.from(playerIn.getMainHandItem());
             ModDataNBT data = view.getPersistentData();
@@ -48,7 +49,7 @@ public class Rapier extends ModifiableItem {
         if (!(entityIn instanceof Player player)) return;
         if (!isSelected) return;
 
-        var tool= ToolStack.from(stack);
+        var tool = ToolStack.from(stack);
 
         var data = tool.getPersistentData();
         var tick = data.getInt(ToolDataNBTCache.waltzTick);
@@ -126,6 +127,7 @@ public class Rapier extends ModifiableItem {
             }
         }
     }
+
     private void clearData(ModDataNBT data) {
         data.remove(ToolDataNBTCache.waltzAttackTime);
         data.remove(ToolDataNBTCache.waltzTick);
@@ -133,6 +135,7 @@ public class Rapier extends ModifiableItem {
         data.remove(ToolDataNBTCache.waltzAngle);
         data.remove(ToolDataNBTCache.waltzSet);
     }
+
     private void runToolAttack(Player player, SoundEvent event, LivingEntity target, ServerLevel level, IToolStackView tool) {
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), event, SoundSource.AMBIENT, 1, 1);
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.AMBIENT, 1, 1);

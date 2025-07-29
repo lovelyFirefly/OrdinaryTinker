@@ -14,41 +14,6 @@ import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class StarFallParticleType extends ParticleType<StarFallParticleType> implements ParticleOptions {
-    private final int alpha;
-    private final int color;
-    private final float speed;
-    private final float size;
-    private final float maxRadius;
-    private final Vec3 origin;
-
-    public StarFallParticleType(boolean pOverrideLimiter, int alpha, int color, float speed, float size, float maxRadius, Vec3 origin) {
-        super(pOverrideLimiter, DESERIALIZER);
-        this.alpha = alpha;
-        this.color = color;
-        this.speed = speed;
-        this.size = size;
-        this.maxRadius = maxRadius;
-        this.origin = origin;
-    }
-
-    @Override
-    public @NotNull ParticleType<?> getType() {
-        return OrdinaryTinkerParticle.STARFALL.get();
-    }
-
-    @Override
-    public void writeToNetwork(@NotNull FriendlyByteBuf pBuffer) {
-        pBuffer.writeInt(alpha);
-        pBuffer.writeInt(color);
-        pBuffer.writeFloat(speed);
-        pBuffer.writeFloat(size);
-        pBuffer.writeFloat(maxRadius);
-
-        pBuffer.writeDouble(origin.x);
-        pBuffer.writeDouble(origin.y);
-        pBuffer.writeDouble(origin.z);
-    }
-
     public static final Deserializer<StarFallParticleType> DESERIALIZER = new Deserializer<>() {
         @Override
         public @NotNull StarFallParticleType fromCommand(@NotNull ParticleType<StarFallParticleType> pParticleType, StringReader pReader) throws CommandSyntaxException {
@@ -100,7 +65,40 @@ public class StarFallParticleType extends ParticleType<StarFallParticleType> imp
             return new StarFallParticleType(true, color, alpha, speed, size, maxRadius, origin);
         }
     };
+    private final int alpha;
+    private final int color;
+    private final float speed;
+    private final float size;
+    private final float maxRadius;
+    private final Vec3 origin;
 
+    public StarFallParticleType(boolean pOverrideLimiter, int alpha, int color, float speed, float size, float maxRadius, Vec3 origin) {
+        super(pOverrideLimiter, DESERIALIZER);
+        this.alpha = alpha;
+        this.color = color;
+        this.speed = speed;
+        this.size = size;
+        this.maxRadius = maxRadius;
+        this.origin = origin;
+    }
+
+    @Override
+    public @NotNull ParticleType<?> getType() {
+        return OrdinaryTinkerParticle.STARFALL.get();
+    }
+
+    @Override
+    public void writeToNetwork(@NotNull FriendlyByteBuf pBuffer) {
+        pBuffer.writeInt(alpha);
+        pBuffer.writeInt(color);
+        pBuffer.writeFloat(speed);
+        pBuffer.writeFloat(size);
+        pBuffer.writeFloat(maxRadius);
+
+        pBuffer.writeDouble(origin.x);
+        pBuffer.writeDouble(origin.y);
+        pBuffer.writeDouble(origin.z);
+    }
 
     @Override
     public @NotNull String writeToString() {

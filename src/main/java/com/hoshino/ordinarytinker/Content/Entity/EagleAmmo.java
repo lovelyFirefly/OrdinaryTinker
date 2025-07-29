@@ -30,8 +30,8 @@ public class EagleAmmo extends BaseFallenStar {
     @Override
     protected void shockWaveHurt(Mob mob, Player player) {
         mob.hurt(this.damageSources().fellOutOfWorld(), 10);
-        Vec3 knock=mob.position().subtract(getTargetPosition()).normalize().scale(1.5);
-        Vec3 finalKnock=new Vec3(knock.x(),0.8, knock.z());
+        Vec3 knock = mob.position().subtract(getTargetPosition()).normalize().scale(1.5);
+        Vec3 finalKnock = new Vec3(knock.x(), 0.8, knock.z());
         mob.setDeltaMovement(finalKnock);
     }
 

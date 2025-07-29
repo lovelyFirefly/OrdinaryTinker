@@ -1,7 +1,6 @@
 package com.hoshino.ordinarytinker.Content.Modifier.Armor;
 
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerSound;
-import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;

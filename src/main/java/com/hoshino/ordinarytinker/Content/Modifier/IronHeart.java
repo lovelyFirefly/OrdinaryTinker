@@ -18,12 +18,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class IronHeart extends Modifier implements TooltipModifierHook {
+    private final int[] color = new int[]{0x485876, 0xcbc1ff, 0xe1e3ff};
+
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         hookBuilder.addHook(this, ModifierHooks.TOOLTIP);
     }
-
-    private final int[] color = new int[]{0x485876, 0xcbc1ff, 0xe1e3ff};
 
     @Override
     public @NotNull List<Component> getDescriptionList() {

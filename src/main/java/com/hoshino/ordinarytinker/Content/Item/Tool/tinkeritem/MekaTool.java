@@ -17,6 +17,10 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 public class MekaTool extends ModifiableItem {
     private static final ResourceLocation SPEED = OrdinaryTinker.getResource("speedlevel");
 
+    public MekaTool(Properties properties, ToolDefinition toolDefinition) {
+        super(properties, toolDefinition);
+    }
+
     public int getToolLevel(ItemStack stack) {
         ModDataNBT nbt = ToolStack.from(stack).getPersistentData();
         return nbt.getInt(SPEED);
@@ -24,10 +28,6 @@ public class MekaTool extends ModifiableItem {
 
     public void setToolLevel(int level, ItemStack stack) {
         ToolStack.from(stack).getPersistentData().putInt(SPEED, level);
-    }
-
-    public MekaTool(Properties properties, ToolDefinition toolDefinition) {
-        super(properties, toolDefinition);
     }
 
     @Override

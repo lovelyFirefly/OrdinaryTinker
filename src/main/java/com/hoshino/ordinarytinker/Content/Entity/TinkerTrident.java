@@ -35,9 +35,8 @@ public class TinkerTrident extends AbstractArrow {
     }
 
     private final ItemStack tridentItem;
-
-    private boolean dealtDamage;
     public int clientSideReturnTridentTickCount;
+    private boolean dealtDamage;
 
     public TinkerTrident(Level level, LivingEntity entity, ItemStack stack) {
         super(EntityType.TRIDENT, entity, level);

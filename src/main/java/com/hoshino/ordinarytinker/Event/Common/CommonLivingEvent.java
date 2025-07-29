@@ -18,12 +18,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.fluids.TinkerFluids;
@@ -31,8 +30,6 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.tables.TinkerTables;
 import slimeknights.tconstruct.tools.modifiers.effect.NoMilkEffect;
-
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID)
 public class CommonLivingEvent {
@@ -166,17 +163,6 @@ public class CommonLivingEvent {
         if (event.getEntity() instanceof Player player) {
             var tick = player.getPersistentData().getInt("fearfield");
             player.getPersistentData().putInt("fearfield", tick - 1);
-
-
-            Vec3 eyePos = player.getEyePosition();
-
-            Vec3 lookAt = player.getLookAngle();
-
-            Vec3 eyeSight = eyePos.add(lookAt.x * 20, lookAt.y * 20, lookAt.z * 20);
-
-            AABB playerNearByBox = new AABB(player.blockPosition()).inflate(20);
-
-            List<LivingEntity> nearByentityList = player.level().getEntitiesOfClass(LivingEntity.class,playerNearByBox, LivingEntity::isAlive);
         }
     }
 

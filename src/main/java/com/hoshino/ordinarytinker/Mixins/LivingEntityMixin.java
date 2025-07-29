@@ -28,22 +28,31 @@ import java.util.Optional;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements LivingPositionRecord {
+    @Unique
+    public boolean ordinarytinker$shouldCancelKnockBack = false;
+    @Unique
+    private Vec3 ordinarytinker$lastPos = Vec3.ZERO;
+
+    public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+    }
+
+    @Unique
+    private static float ordinarytinker$getDamageAfterAbsorb(float pDamage, float pTotalArmor, float pToughnessAttribute) {
+        float f = 2.0F + pToughnessAttribute / 4.0F;
+        float f1 = Mth.clamp(pTotalArmor - pDamage / f, pTotalArmor * 0.2F, 20.0F);
+        return pDamage * (1.0F - f1 / 25.0F);
+    }
+
     @Shadow
     public abstract int getArmorValue();
 
     @Shadow
     public abstract double getAttributeValue(Attribute pAttribute);
-    @Unique
-    public boolean ordinarytinker$shouldCancelKnockBack=false;
-    @Unique
-    private Vec3 ordinarytinker$lastPos=Vec3.ZERO;
 
-    public LivingEntityMixin(EntityType<?> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
-    }
-    @Inject(method = "tick",at = @At("TAIL"))
-    private void setLastPos(CallbackInfo ci){
-        this.ordinarytinker$lastPos =this.position();
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void setLastPos(CallbackInfo ci) {
+        this.ordinarytinker$lastPos = this.position();
     }
 
     @Inject(method = "getMaxHealth", at = @At("HEAD"), cancellable = true)
@@ -62,35 +71,33 @@ public abstract class LivingEntityMixin extends Entity implements LivingPosition
             cir.setReturnValue(ordinarytinker$getDamageAfterAbsorb(pDamageAmount, this.getArmorValue(), (float) this.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
         }
     }
-    @Unique
-    private static float ordinarytinker$getDamageAfterAbsorb(float pDamage, float pTotalArmor, float pToughnessAttribute) {
-        float f = 2.0F + pToughnessAttribute / 4.0F;
-        float f1 = Mth.clamp(pTotalArmor - pDamage / f, pTotalArmor * 0.2F, 20.0F);
-        return pDamage * (1.0F - f1 / 25.0F);
-    }
-    @Inject(method = "hurt",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V"))
-    private void set(DamageSource pSource, float pAmount, CallbackInfoReturnable<Boolean> cir){
-        if(pSource.is(OrdinaryTinkerDamageTypeTag.AVOID_KNOCK)){
-            ordinarytinker$shouldCancelKnockBack=true;
+
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V"))
+    private void set(DamageSource pSource, float pAmount, CallbackInfoReturnable<Boolean> cir) {
+        if (pSource.is(OrdinaryTinkerDamageTypeTag.AVOID_KNOCK)) {
+            ordinarytinker$shouldCancelKnockBack = true;
         }
     }
-    @Inject(method = "knockback",at = @At("HEAD"), cancellable = true)
-    private void knock(double pStrength, double pX, double pZ, CallbackInfo ci){
-        if(ordinarytinker$shouldCancelKnockBack){
-            ordinarytinker$shouldCancelKnockBack=false;
+
+    @Inject(method = "knockback", at = @At("HEAD"), cancellable = true)
+    private void knock(double pStrength, double pX, double pZ, CallbackInfo ci) {
+        if (ordinarytinker$shouldCancelKnockBack) {
+            ordinarytinker$shouldCancelKnockBack = false;
             ci.cancel();
         }
     }
+
     @Unique
     @Override
     public Vec3 ordinarytinker$getLastPosition() {
         return this.ordinarytinker$lastPos;
     }
+
     @Unique
     @Override
     public boolean ordinarytinker$movedinLastTick(double offset) {
-        var nowPos=this.position();
-        var lastpos=ordinarytinker$lastPos;
+        var nowPos = this.position();
+        var lastpos = ordinarytinker$lastPos;
         return Math.abs(nowPos.x - lastpos.x) > offset ||
                 Math.abs(nowPos.y - lastpos.y) > offset ||
                 Math.abs(nowPos.z - lastpos.z) > offset;

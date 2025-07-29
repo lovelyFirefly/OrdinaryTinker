@@ -4,12 +4,11 @@ import com.hoshino.ordinarytinker.Register.OrdinaryTinkerItem;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 
 public class OrdinaryTinkerToolDefinitions {
-    public OrdinaryTinkerToolDefinitions() {
-    }
-
     public static final ToolDefinition MEKATOOL = ToolDefinition.create(OrdinaryTinkerItem.mekatool);
     public static final ToolDefinition TRIDENT = ToolDefinition.create(OrdinaryTinkerItem.trident);
     public static final ToolDefinition Soulge = ToolDefinition.create(OrdinaryTinkerItem.soulge);
     public static final ToolDefinition electric_baton = ToolDefinition.create(OrdinaryTinkerItem.electric_baton);
     public static final ToolDefinition rapier = ToolDefinition.create(OrdinaryTinkerItem.rapier);
+    public OrdinaryTinkerToolDefinitions() {
+    }
 }

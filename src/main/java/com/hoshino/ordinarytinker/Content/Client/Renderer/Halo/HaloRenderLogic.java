@@ -179,9 +179,7 @@ public final class HaloRenderLogic {
         float phase = (currentTime % (long) (period * 1000)) / (period * 1000.0f);
         float waveFactor = (float) Math.sin(phase * 2 * Math.PI);
         int dynamicAlpha = (int) ((waveFactor + 1) / 2 * (maxAlpha - minAlpha) + minAlpha);
-        int dynamicBrightness = (int) (
-                ((waveFactor + 1) / 2 * (maxBrightness - minBrightness) + minBrightness) * 255
-        );
+        int dynamicBrightness = (int) (((waveFactor + 1) / 2 * (maxBrightness - minBrightness) + minBrightness) * 255);
         float size = 0.4f;
         buildVertex(vertexBuilder, poseMatrix, normalMatrix, -size, 0, -size, 0, 0, dynamicBrightness, dynamicAlpha, overlay, light);
         buildVertex(vertexBuilder, poseMatrix, normalMatrix, size, 0, -size, 1, 0, dynamicBrightness, dynamicAlpha, overlay, light);
@@ -194,8 +192,7 @@ public final class HaloRenderLogic {
     public static void renderRotationHaloHorizontal(PoseStack poseStack, Player player, float partialTick, ResourceLocation haloTexture) {
         poseStack.pushPose();
         poseStack.translate(0, player.getBbHeight() + 0.35f, 0);
-        float yaw = player.getViewYRot(partialTick);
-        float rotationAngle = player.tickCount;
+        float rotationAngle = player.tickCount * 18 + partialTick;
         Quaternionf rotation = new Quaternionf().rotateY(rotationAngle * (float) Math.PI / 180);
         poseStack.mulPose(rotation);
         MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
@@ -204,32 +201,26 @@ public final class HaloRenderLogic {
         Matrix3f normalMatrix = poseStack.last().normal();
         int light = 15728880;
         int overlay = OverlayTexture.NO_OVERLAY;
-        float period = 3.0f;
-        float minAlpha = 50.0f;
-        float maxAlpha = 200.0f;
-        float minBrightness = 0.5f;
-        float maxBrightness = 1.0f;
-        long currentTime = System.currentTimeMillis();
-        float phase = (currentTime % (long) (period * 1000)) / (period * 1000.0f);
-        float waveFactor = (float) Math.sin(phase * 2 * Math.PI);
-        int dynamicAlpha = (int) ((waveFactor + 1) / 2 * (maxAlpha - minAlpha) + minAlpha);
-        int dynamicBrightness = (int) (
-                ((waveFactor + 1) / 2 * (maxBrightness - minBrightness) + minBrightness) * 255
-        );
+        int fixedAlpha = 255;
+        int fixedBrightness = 255;
         float size = 0.4f;
-        buildVertex(vertexBuilder, poseMatrix, normalMatrix, -size, 0, -size, 0, 0, dynamicBrightness, dynamicAlpha, overlay, light);
-        buildVertex(vertexBuilder, poseMatrix, normalMatrix, size, 0, -size, 1, 0, dynamicBrightness, dynamicAlpha, overlay, light);
-        buildVertex(vertexBuilder, poseMatrix, normalMatrix, size, 0, size, 1, 1, dynamicBrightness, dynamicAlpha, overlay, light);
-        buildVertex(vertexBuilder, poseMatrix, normalMatrix, -size, 0, size, 0, 1, dynamicBrightness, dynamicAlpha, overlay, light);
+        buildVertexWithoutBrightness(vertexBuilder, poseMatrix, normalMatrix, -size, 0, -size, 0, 0, fixedBrightness, fixedBrightness, fixedBrightness, fixedAlpha, overlay, light);
+        buildVertexWithoutBrightness(vertexBuilder, poseMatrix, normalMatrix, size, 0, -size, 1, 0, fixedBrightness, fixedBrightness, fixedBrightness, fixedAlpha, overlay, light);
+        buildVertexWithoutBrightness(vertexBuilder, poseMatrix, normalMatrix, size, 0, size, 1, 1, fixedBrightness, fixedBrightness, fixedBrightness, fixedAlpha, overlay, light);
+        buildVertexWithoutBrightness(vertexBuilder, poseMatrix, normalMatrix, -size, 0, size, 0, 1, fixedBrightness, fixedBrightness, fixedBrightness, fixedAlpha, overlay, light);
         poseStack.popPose();
         buffer.endBatch();
     }
-
-    private static void buildVertex(
-            VertexConsumer builder, Matrix4f pose, Matrix3f normal,
-            float x, float y, float z, float u, float v,
-            int brightness, int alpha, int overlay, int light
-    ) {
+    private static void buildVertexWithoutBrightness(VertexConsumer consumer, Matrix4f poseMatrix, Matrix3f normalMatrix, float x, float y, float z, float u, float v, int red, int green, int blue, int alpha, int overlay, int light) {
+        consumer.vertex(poseMatrix, x, y, z)
+                .color(red, green, blue, alpha)
+                .uv(u, v)
+                .overlayCoords(overlay)
+                .uv2(light)
+                .normal(normalMatrix, 0, 1, 0)
+                .endVertex();
+    }
+    private static void buildVertex(VertexConsumer builder, Matrix4f pose, Matrix3f normal, float x, float y, float z, float u, float v, int brightness, int alpha, int overlay, int light) {
         builder.vertex(pose, x, y, z)
                 .color(brightness, brightness, brightness, alpha)
                 .uv(u, v)

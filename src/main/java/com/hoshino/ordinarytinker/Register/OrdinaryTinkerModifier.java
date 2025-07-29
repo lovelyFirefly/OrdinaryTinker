@@ -1,20 +1,19 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Content.Modifier.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Armor.*;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.BladedWaltz;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.ElectricBatons;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.Nkssdtt;
 import com.hoshino.ordinarytinker.Content.Modifier.Combat.UncannyValley;
+import com.hoshino.ordinarytinker.Content.Modifier.*;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Dementors;
 import com.hoshino.ordinarytinker.Content.Modifier.General.Fear;
 import com.hoshino.ordinarytinker.Content.Modifier.General.FlashOfInspiration;
 import com.hoshino.ordinarytinker.Content.Modifier.Halo.*;
-import com.hoshino.ordinarytinker.Content.Modifier.Tool.Concomitant.*;
+import com.hoshino.ordinarytinker.Content.Modifier.Tool.Concomitant.Sophisticated;
 import com.hoshino.ordinarytinker.Content.Modifier.Tool.Exclusive.*;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraftforge.eventbus.api.IEventBus;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -22,8 +21,6 @@ import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 public class OrdinaryTinkerModifier {
 
     public static final ModifierDeferredRegister MODIFIERS = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
-    private static final ModifierDeferredRegister ThermalModifiers = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
-
     //工具专属类词条
     public static final StaticModifier<Riptide> riptideStaticModifier = MODIFIERS.register("riptide", Riptide::new);   //激流
     public static final StaticModifier<Crcs> crcsStaticModifier = MODIFIERS.register("crcs", Crcs::new);   //风雨无阻
@@ -61,6 +58,7 @@ public class OrdinaryTinkerModifier {
     public static final StaticModifier<MikaMiss> mikaMissStaticModifier = MODIFIERS.register("mikamiss", MikaMiss::new);
     public static final StaticModifier<PainSharer> painSharerStaticModifier = MODIFIERS.register("painsharer", PainSharer::new);
     public static final StaticModifier<chacha> chachaStaticModifier = MODIFIERS.register("chacha", chacha::new);
+    private static final ModifierDeferredRegister ThermalModifiers = ModifierDeferredRegister.create(OrdinaryTinker.MODID);
 
     public static void register(IEventBus bus) {
         MODIFIERS.register(bus);

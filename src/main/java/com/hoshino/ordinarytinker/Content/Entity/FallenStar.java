@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Content.Entity;
 
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import com.hoshino.ordinarytinker.Content.Particle.ParticleType.StarFallParticleType;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerEntity;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerItem;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerSound;

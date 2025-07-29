@@ -11,7 +11,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
@@ -39,16 +38,14 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
-import java.util.function.Predicate;
 
 public class SoulGe extends ModifiableItem {
+    private final Random rand = new Random();
+
     public SoulGe(Properties properties, ToolDefinition toolDefinition) {
         super(properties, toolDefinition);
     }
-
-    private final Random rand = new Random();
 
     @Override
     public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack) {
@@ -110,7 +107,7 @@ public class SoulGe extends ModifiableItem {
         int exertTimes = Math.round(tool.getStats().get(OrdinaryTinkerToolStat.EXERT_TIMES));
         var pointedEntity = Vec3Helper.getPointedEntity(attacker, level, dist, LivingEntity.class,
                 LivingEntity::isAlive,
-                living -> living instanceof TamableAnimal tamableAnimal&&tamableAnimal.isTame()
+                living -> living instanceof TamableAnimal tamableAnimal && tamableAnimal.isTame()
         );
         if (pointedEntity != null && pointedEntity.isAlive()) {
             var targetedTimes = pointedEntity.getPersistentData().getInt("targeted");
@@ -122,6 +119,7 @@ public class SoulGe extends ModifiableItem {
             this.attackTargets(attacker, tool, dist);
         }
     }
+
     private void drawParticleBeam(LivingEntity player, LivingEntity target) {
         double d0 = target.getX() - player.getX();
         double d1 = target.getY() + (double) (target.getBbHeight() * 0.5F) - (player.getY() + (double) player.getEyeHeight() * 0.5D);

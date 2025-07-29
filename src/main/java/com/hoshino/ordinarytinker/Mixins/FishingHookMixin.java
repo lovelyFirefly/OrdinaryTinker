@@ -21,16 +21,16 @@ import javax.annotation.Nullable;
 public abstract class FishingHookMixin extends Projectile {
 
     @Shadow
-    @Nullable
-    public abstract Player getPlayerOwner();
-
-    @Shadow
     @Final
     private static EntityDataAccessor<Boolean> DATA_BITING;
 
     protected FishingHookMixin(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
+    @Shadow
+    @Nullable
+    public abstract Player getPlayerOwner();
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void on(CallbackInfo ci) {

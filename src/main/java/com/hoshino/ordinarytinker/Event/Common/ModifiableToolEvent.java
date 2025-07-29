@@ -1,36 +1,20 @@
 package com.hoshino.ordinarytinker.Event.Common;
 
 import com.hoshino.ordinarytinker.Config.OrdinaryTinkerConfig;
-import com.hoshino.ordinarytinker.Content.Util.ToolDataNBTCache;
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
+import com.hoshino.ordinarytinker.Content.Client.CacheTest;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
-import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.protocol.game.ServerboundUseItemPacket;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.ServerGamePacketListenerImpl;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import com.hoshino.ordinarytinker.Register.OrdinaryTinkerDamageTypes;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
-import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolDataNBT;
-import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID)
 public class ModifiableToolEvent {

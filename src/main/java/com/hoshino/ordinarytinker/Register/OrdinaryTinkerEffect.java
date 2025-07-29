@@ -1,6 +1,6 @@
 package com.hoshino.ordinarytinker.Register;
 
-import com.hoshino.ordinarytinker.Content.MobEffect.*;
+import com.hoshino.ordinarytinker.Content.MobEffect.MercuryPoisoning;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

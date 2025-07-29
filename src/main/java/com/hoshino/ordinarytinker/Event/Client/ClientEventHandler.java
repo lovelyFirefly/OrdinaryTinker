@@ -1,7 +1,7 @@
 package com.hoshino.ordinarytinker.Event.Client;
 
+import com.hoshino.ordinarytinker.Content.Client.CacheTest;
 import com.hoshino.ordinarytinker.Content.Client.KeyBroad.KeyBinding;
-
 import com.hoshino.ordinarytinker.Content.Item.Tool.tinkeritem.MekaTool;
 import com.hoshino.ordinarytinker.Network.OTChannel;
 import com.hoshino.ordinarytinker.Network.Packet.MekaKeyBoardPacket;
@@ -11,12 +11,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 
 
 @Mod.EventBusSubscriber(modid = OrdinaryTinker.MODID, value = Dist.CLIENT)

@@ -58,12 +58,12 @@ public abstract class BaseFallenStar extends Projectile implements ItemSupplier 
         this.entityData.define(waitTick, 0);
     }
 
-    public void setWaitTime(int tick) {
-        this.entityData.set(waitTick, tick);
-    }
-
     public int getWaitTime() {
         return this.entityData.get(waitTick);
+    }
+
+    public void setWaitTime(int tick) {
+        this.entityData.set(waitTick, tick);
     }
 
     public Vec3 getTargetPosition() {

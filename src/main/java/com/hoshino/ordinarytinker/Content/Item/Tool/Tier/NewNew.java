@@ -2,7 +2,6 @@ package com.hoshino.ordinarytinker.Content.Item.Tool.Tier;
 
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class NewNew implements Tier {
     public static Tier instance = new NewNew();

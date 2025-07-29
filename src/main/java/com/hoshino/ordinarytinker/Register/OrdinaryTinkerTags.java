@@ -3,14 +3,11 @@ package com.hoshino.ordinarytinker.Register;
 import com.hoshino.ordinarytinker.OrdinaryTinker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TagsUpdatedEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
-
-import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 
 public class OrdinaryTinkerTags {
@@ -22,6 +19,9 @@ public class OrdinaryTinkerTags {
     }
 
     public static class ItemTag {
+        public static final TagKey<Item> armorSteel_ingot = forge("armorsteel_ingot");
+        private static final TagKey<Item> bottle = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "water_bottles"));
+
         private static TagKey<Item> local(String name) {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
@@ -33,10 +33,6 @@ public class OrdinaryTinkerTags {
         private static TagKey<Item> vanilla(String name) {
             return TagKey.create(Registries.ITEM, OrdinaryTinker.getResource(name));
         }
-
-        public static final TagKey<Item> armorSteel_ingot = forge("armorsteel_ingot");
-
-        private static final TagKey<Item> bottle = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "water_bottles"));
 
         public static void init() {
         }

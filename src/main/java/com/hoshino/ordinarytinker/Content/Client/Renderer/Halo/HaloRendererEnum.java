@@ -12,7 +12,8 @@ public enum HaloRendererEnum implements HaloRendererUtil {
     REISA(OrdinaryTinkerModifier.reisaHaloStaticModifier.get(), "reisa"),
     NATSU(OrdinaryTinkerModifier.natsuHaloStaticModifier.get(), "natsu"),
     AL1S(OrdinaryTinkerModifier.al1sHaloStaticModifier.get(), "al1s"),
-    MARI(OrdinaryTinkerModifier.mariHaloStaticModifier.get(), "mari");
+    MARI(OrdinaryTinkerModifier.mariHaloStaticModifier.get(), "mari"),
+    LXJ(OrdinaryTinkerModifier.chachaStaticModifier.get(), "lxj");
     private final Modifier modifier;
     private final ResourceLocation texture;
 

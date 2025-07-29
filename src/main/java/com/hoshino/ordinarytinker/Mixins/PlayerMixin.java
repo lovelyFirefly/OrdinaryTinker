@@ -2,7 +2,6 @@ package com.hoshino.ordinarytinker.Mixins;
 
 import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Abilities;
@@ -15,7 +14,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {

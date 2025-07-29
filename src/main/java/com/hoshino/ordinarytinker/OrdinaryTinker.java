@@ -48,11 +48,6 @@ public class OrdinaryTinker {
         OTChannel.register();
     }
 
-    @SubscribeEvent
-    public void commonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(OrdinaryTinkerMaterialStat::setup);
-    }
-
     public static String prefix(String name) {
         return MODID + "." + name.toLowerCase(Locale.CHINA);
     }
@@ -67,6 +62,11 @@ public class OrdinaryTinker {
 
     public static String makeDescriptionId(String type, String name) {
         return type + "." + MODID + "." + name;
+    }
+
+    @SubscribeEvent
+    public void commonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(OrdinaryTinkerMaterialStat::setup);
     }
 
 }

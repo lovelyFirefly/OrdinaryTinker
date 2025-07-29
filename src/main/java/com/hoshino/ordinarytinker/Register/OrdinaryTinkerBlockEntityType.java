@@ -2,12 +2,10 @@ package com.hoshino.ordinarytinker.Register;
 
 
 import com.hoshino.ordinarytinker.OrdinaryTinker;
-import com.mojang.datafixers.DSL;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 public class OrdinaryTinkerBlockEntityType {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =

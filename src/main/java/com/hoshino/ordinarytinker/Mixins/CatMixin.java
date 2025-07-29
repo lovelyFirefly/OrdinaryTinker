@@ -2,7 +2,8 @@ package com.hoshino.ordinarytinker.Mixins;
 
 import com.hoshino.ordinarytinker.Content.Util.ModifierLevel;
 import com.hoshino.ordinarytinker.Register.OrdinaryTinkerModifier;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.animal.Cat;
 import org.spongepowered.asm.mixin.Final;

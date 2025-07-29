@@ -21,14 +21,13 @@ import java.util.Optional;
 public abstract class FoodDataMixin {
     @Shadow
     private int tickTimer;
-
-    @Shadow
-    public abstract void addExhaustion(float pExhaustion);
-
     @Shadow
     private int foodLevel;
     @Unique
     private Player ordinarytinker$player;
+
+    @Shadow
+    public abstract void addExhaustion(float pExhaustion);
 
     @ModifyArg(method = "eat(IF)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(II)I"), index = 1)
     private int eat(int a) {

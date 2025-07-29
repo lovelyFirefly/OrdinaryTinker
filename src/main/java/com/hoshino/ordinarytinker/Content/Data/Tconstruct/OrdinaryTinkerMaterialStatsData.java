@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.data.material.AbstractMaterialStatsDataPr
 import slimeknights.tconstruct.tools.stats.*;
 
 import static net.minecraft.world.item.Tiers.NETHERITE;
+
 @Deprecated
 public class OrdinaryTinkerMaterialStatsData extends AbstractMaterialStatsDataProvider {
     public OrdinaryTinkerMaterialStatsData(PackOutput packOutput, AbstractMaterialDataProvider materials) {

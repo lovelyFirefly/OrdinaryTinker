@@ -19,6 +19,7 @@ public class HaloUpdatePacket {
         this.modifierId = modifierId;
         this.isEnabled = isEnabled;
     }
+
     public HaloUpdatePacket(FriendlyByteBuf buf) {
         this.playerUUID = buf.readUUID();
         this.modifierId = new ModifierId(buf.readResourceLocation());
@@ -27,7 +28,7 @@ public class HaloUpdatePacket {
 
     public void toByte(FriendlyByteBuf buf) {
         buf.writeUUID(playerUUID);
-        ResourceLocation location=new ResourceLocation(modifierId.getNamespace(),modifierId.getPath());
+        ResourceLocation location = new ResourceLocation(modifierId.getNamespace(), modifierId.getPath());
         buf.writeResourceLocation(location);
         buf.writeBoolean(isEnabled);
     }
@@ -35,7 +36,7 @@ public class HaloUpdatePacket {
     public void handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            HaloRendererUtil.setPlayerHaloState(playerUUID,modifierId,isEnabled);
+            HaloRendererUtil.setPlayerHaloState(playerUUID, modifierId, isEnabled);
         });
         context.setPacketHandled(true);
     }

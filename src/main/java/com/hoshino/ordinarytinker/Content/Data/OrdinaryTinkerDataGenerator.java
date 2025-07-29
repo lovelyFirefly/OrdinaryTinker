@@ -1,16 +1,13 @@
 package com.hoshino.ordinarytinker.Content.Data;
 
 import com.hoshino.ordinarytinker.Content.Data.DamageType.OrdinaryTinkerDamageTypeProvider;
-import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerBlockTagProvider;
-import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerDamageTypeTagProvider;
 import com.hoshino.ordinarytinker.Content.Data.Language.CNLanguageProvider;
 import com.hoshino.ordinarytinker.Content.Data.Language.ENLanguageProvider;
 import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerBucketModelProvider;
 import com.hoshino.ordinarytinker.Content.Data.Model.OrdinaryTinkerModelProvider;
+import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerBlockTagProvider;
+import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerDamageTypeTagProvider;
 import com.hoshino.ordinarytinker.Content.Data.Tag.OrdinaryTinkerItemTagProvider;
-import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialDefinitionData;
-import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialStatsData;
-import com.hoshino.ordinarytinker.Content.Data.Tconstruct.OrdinaryTinkerMaterialTraitsData;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.DataGenerator;
@@ -22,7 +19,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
-
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

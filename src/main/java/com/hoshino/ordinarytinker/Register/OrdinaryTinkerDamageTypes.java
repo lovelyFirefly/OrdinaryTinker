@@ -13,12 +13,19 @@ import javax.annotation.Nullable;
 import static com.hoshino.ordinarytinker.OrdinaryTinker.MODID;
 
 public class OrdinaryTinkerDamageTypes {
+    //DamageType项
+    public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
+    public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
+    public static final ResourceKey<DamageType> SpecialReflect = create("specialreflect");
+    public static final ResourceKey<DamageType> SpecailCatAttack = create("specialcatattack");
+    public static final ResourceKey<DamageType> eagleAmmoHurt = create("eagleammohurt");
+    public static final ResourceKey<DamageType> shockwaveHurt = create("shockwavehurt");
+    public OrdinaryTinkerDamageTypes() {
+    }
+
     //Source的Create方法
     private static ResourceKey<DamageType> create(String name) {
         return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MODID, name));
-    }
-
-    public OrdinaryTinkerDamageTypes() {
     }
 
     //生成Source
@@ -35,12 +42,4 @@ public class OrdinaryTinkerDamageTypes {
     public static DamageSource source(Level level, ResourceKey<DamageType> type) {
         return source(level, type, null, null);
     }
-
-    //DamageType项
-    public static final ResourceKey<DamageType> MERCURYPOISONING = create("mercurypoisoning");
-    public static final ResourceKey<DamageType> PlayerSoulgeAttack = create("playersoulgeattack");
-    public static final ResourceKey<DamageType> SpecialReflect = create("specialreflect");
-    public static final ResourceKey<DamageType> SpecailCatAttack = create("specialcatattack");
-    public static final ResourceKey<DamageType> eagleAmmoHurt = create("eagleammohurt");
-    public static final ResourceKey<DamageType> shockwaveHurt = create("shockwavehurt");
 }
